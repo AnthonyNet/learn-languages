@@ -2,41 +2,194 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 200 20% 98%;
-    --btn-background: 200 10% 91%;
-    --btn-background-hover: 200 10% 89%;
-    --foreground: 200 50% 3%;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: 200 50% 3%;
-      --btn-background: 200 10% 9%;
-      --btn-background-hover: 200 10% 12%;
-      --foreground: 200 20% 96%;
-    }
-  }
-}
 
 @layer base {
-  * {
-    @apply border-foreground/20;
-  }
+	body {
+		@apply tracking-wide;
+	}
+
+	h1 {
+		@apply text-4xl sm:text-5xl md:text-6xl;
+	}
+
+	h2 {
+		@apply text-3xl sm:text-4xl;
+	}
+
+	li {
+		@apply cursor-pointer;
+	}
+
 }
 
-.animate-in {
-  animation: animateIn 0.3s ease 0.15s both;
+/* :-( */
+:root {
+	--max-width: 1100px;
+	--font-family: "Noto Sans", sans-serif;
+
+	--white: rgb(255, 255, 255);
+	--black: rgb(0, 0, 0);
+
+	--color-main: #0043ff;
+	--color-light: #9c64ba;
+	--color-light2: #6900c5;
+	--color-dark:  #4e0f8c;
+	--color-blue: #0f4c75;
+	--color-green: rgb(0, 128, 0);
+
+	--font-weight: 850;
+	--shadow: 0px;
+	--text-shadow:  4px 4px 3px rgb(0, 0, 0);
+	--border-radius: 12px;
+	--border-shadow: 1px 10px 15px var(--color-main);
+	--hover-nav-items: rgb(255, 255, 255);
+	--memory-border-active: var(--color-green);
+
+	--gradient: linear-gradient(132deg, var(--white) 0%, var(--color-main) 100%);
+
+	--btn-background: var(--color-main);
+	--btn-text-color: var(--black);
 }
 
-@keyframes animateIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/*if browser´s theme is dark */
+/*
+@media (prefers-color-scheme: dark) {
+	:root {
+		--white: var(--black);
+		--shadow: 0px 3px 10px rgba(26, 25, 25, 0.97);
+		--text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.97);
+		--hover-nav-items: var(--white);
+	}
+}
+*/
+
+/* Theme button light/dark switch */
+[data-theme="violet"] {
+	--color-main: #881df2;
+}
+[data-theme="green"] {
+	--color-main: #10b310;
+	--memory-border-active: blue;
+}
+[data-theme="blue"] {
+	--color-main: #0640fb;
+}
+[data-theme="pink"] {
+	--color-main: #da06fb;
+}
+
+[data-theme="yellow"] {
+	--color-main: #fff70e;
+	--memory-border-active: blue;
+	--text-shadow: 4px 4px 3px rgb(0, 0, 0),
+					0px 0px 3px rgb(0, 0, 0);
+}
+[data-theme="light"]{
+	--black: white;
+	--hover-nav-items: black;
+	--btn-background: var(--white);
+	--btn-text-color: var(--color-main);
+
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: var(--font-family);
+}
+html{
+	scroll-behavior: smooth !important;
+}
+html,
+body {
+	margin: 0 auto;
+	width: 100vw;
+	max-width: 1280px;
+	overflow-x: hidden;
+	color: var(--color-main);
+}
+
+body,
+.main-bg,
+.mobile__Nav {
+	background: var(--black);
+}
+
+.h-90-dvh{height: 90dvh;}
+.h-100-dvh, section{height: 100dvh;}
+
+.__text_color { color: var(--color-main);}
+.__text_color2 { color: var(--btn-text-color);}
+.__border_color { border-color: var(--color-main); }
+.__border_hover:hover{ box-shadow: var(--border-shadow); }
+.__box_shadow_color { box-shadow: var(--border-shadow);}
+.__background { background: var(--black); }
+.__background2 { background: var(--btn-background); }
+.__gradient { background: var(--gradient); }
+
+.__text_shadow { text-shadow: var(--text-shadow); }
+.__button_color { background: var(--gradient); }
+.__memory_border_green { border-color: var(--memory-border-active) }
+.__oxford_card_background { background: var(--black); }
+strong { font-weight: var(--font-weight); }
+
+
+/* ------------------
+Animations
+--------------------- */
+
+details[open] summary ~ *,
+.starsDiv > *,
+nav {
+	animation: animate 1s ease-in-out;
+}
+
+@keyframes animate {
+	0% {
+		opacity: 0;
+		margin-left: -20px;
+
+	}
+	100% {
+		opacity: 1;
+		margin-left: 0px;
+		filter: saturate(4);
+	}
+}
+
+.ulAnimation li{
+	filter: saturate(2);
+}
+
+.ulAnimation li:nth-child(1) {
+	transition-delay: 0.2s;
+}
+
+.ulAnimation li:nth-child(2) {
+	transition-delay: 0.4s;
+}
+
+.ulAnimation li:nth-child(3) {
+	transition-delay: 0.6s;
+}
+
+.ulAnimation li:nth-child(4) {
+	transition-delay: 0.8s;
+}
+
+.ulAnimation li:nth-child(5) {
+	transition-delay: 1s;
+}
+
+.ulAnimation li:nth-child(6) {
+	transition-delay: 1.2s;
+}
+
+.ulAnimation li:nth-child(7) {
+	transition-delay: 1.4s;
+}
+
+.ulAnimation li:nth-child(8) {
+	transition-delay: 1.6s;
 }
