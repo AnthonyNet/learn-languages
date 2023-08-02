@@ -74,9 +74,11 @@ export default function Memory({lang}: Props) {
 	};
 
 	useEffect(() => {
-		getData().then(() => {
+	/*	getData().then(() => {
 			english && createData(english);
-		});
+		});*/
+		getData();
+		createData(english);
 	}, [supabase, setDataTS]);
 
 	const createData = async (dataLanguage: Data[]) => {

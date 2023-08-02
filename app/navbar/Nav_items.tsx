@@ -43,6 +43,11 @@ export default function NavItems({navData} : {navData: NavData}) {
 								Memory game({navData.irregularEng}){" "}
 							</Link>
 						</li>
+						<li className={styles.ul__li}>
+							<Link href="/search/eng">
+								Search irregular({navData.irregularEng}){" "}
+							</Link>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -62,6 +67,11 @@ export default function NavItems({navData} : {navData: NavData}) {
 						<li className={styles.ul__li}>
 							<Link href="/memory/ger">
 								Memory game({navData.irregularGer}){" "}
+							</Link>
+						</li>
+						<li className={styles.ul__li}>
+							<Link href="/search/ger">
+								Seach irregular({navData.irregularGer}){" "}
 							</Link>
 						</li>
 					</ul>

@@ -1,5 +1,5 @@
 import Irregular from "../../components/irregular/Irregular";
 
-export default function IrregularGer() {
+export default function Page() {
 	return <Irregular lang={"eng"} />;
 }
