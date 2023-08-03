@@ -17,6 +17,7 @@ const styles = {
 interface NavData {
 	irregularEng: number;
 	irregularGer: number;
+	oxfordB2: number;
 }
 
 export default function NavItems({navData} : {navData: NavData}) {
@@ -46,6 +47,11 @@ export default function NavItems({navData} : {navData: NavData}) {
 						<li className={styles.ul__li}>
 							<Link href="/search/eng">
 								Search irregular({navData.irregularEng}){" "}
+							</Link>
+						</li>
+						<li className={styles.ul__li}>
+							<Link href="/search/eng">
+								Oxford B2({navData.oxfordB2}){" "}
 							</Link>
 						</li>
 					</ul>

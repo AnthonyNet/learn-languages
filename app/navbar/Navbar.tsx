@@ -32,6 +32,7 @@ const styles = {
 interface NavData {
 	irregularEng: number;
 	irregularGer: number;
+	oxfordB2: number;
 }
 
 export default function Navbar() {
@@ -43,9 +44,11 @@ export default function Navbar() {
 		const getData = async () => {
 			const { data: irregular_eng } = await supabase.from("irregular_eng").select();
 			const { data: irregular_ger } = await supabase.from("irregular_ger").select();
-
-			if(irregular_eng && irregular_ger){
-				setNavData({irregularEng:irregular_eng.length, irregularGer:irregular_ger.length});
+			const { data: oxford_b2 } = await supabase
+				.from("oxford_b2")
+				.select();
+			if(irregular_eng && irregular_ger && oxford_b2){
+				setNavData({irregularEng:irregular_eng.length, irregularGer:irregular_ger.length, oxfordB2:oxford_b2.length});
 			}
 		}
 		getData();
@@ -75,7 +78,7 @@ export default function Navbar() {
 					<TiThMenu onClick={handleNav} />
 				</div>
 			</div>
-			<Mobile__Nav nav={nav} handleNav={handleNav} />
+			<Mobile__Nav nav={nav} handleNav={handleNav} navData={navData} />
 		</nav>
 	);
 }

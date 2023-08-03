@@ -20,9 +20,14 @@ const styles = {
 interface Mobile {
 	nav: boolean;
 	handleNav: () => void;
+	navData: null | {
+		irregularEng: number;
+		irregularGer: number;
+		oxfordB2: number;
+	};
 }
 
-function Mobile_nav({ nav, handleNav }: Mobile) {
+function Mobile_nav({ nav, handleNav, navData }: Mobile) {
 	return (
 		<main className={nav ? styles.main__open : styles.main__close}>
 			<div className={nav ? styles.main__div__open : styles.main__div__close}>
@@ -40,7 +45,7 @@ function Mobile_nav({ nav, handleNav }: Mobile) {
 					<p>Evolution means everyday learning</p>
 				</div>
 
-				<Mobile_items handleNav={handleNav} />
+				{navData&&<Mobile_items handleNav={handleNav} navData={navData} />}
 			</div>
 		</main>
 	);

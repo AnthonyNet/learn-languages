@@ -24,9 +24,14 @@ const styles = {
 
 type Mobile = {
 	handleNav: () => void;
+	navData:{
+		irregularEng:number,
+		irregularGer:number,
+		oxfordB2:number
+	}
 };
 
-const Mobile_UL = ({ handleNav }: Mobile) => {
+const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 	const [english, setEnglish] = useState(false);
 	const [german, setGerman] = useState(false);
 
@@ -85,7 +90,28 @@ const Mobile_UL = ({ handleNav }: Mobile) => {
 					</h3>
 				</div>
 				<ul className={english ? styles.section.ul__open : " text-transparent"}>
-					{english && menuItems(menuData.english)}
+					{english && (
+						<>
+							<li onClick={handleNav} className={styles.section.ul__li__open}>
+								<Link href="/irregular/eng">
+									Irregular verbs({navData.irregularEng}){" "}
+								</Link>
+							</li>
+							<li onClick={handleNav} className={styles.section.ul__li__open}>
+								<Link href="/memory/eng">
+									Memory game({navData.irregularEng}){" "}
+								</Link>
+							</li>
+							<li onClick={handleNav} className={styles.section.ul__li__open}>
+								<Link href="/search/eng">
+									Search irregular({navData.irregularEng}){" "}
+								</Link>
+							</li>
+							<li onClick={handleNav} className={styles.section.ul__li__open}>
+								<Link href="/search/eng">Oxford B2({navData.oxfordB2}) </Link>
+							</li>
+						</>
+					)}
 				</ul>
 				<div className={styles.section.div}>
 					<span
@@ -99,7 +125,25 @@ const Mobile_UL = ({ handleNav }: Mobile) => {
 					</h3>
 				</div>
 				<ul className={german ? styles.section.ul__open : " text-transparent "}>
-					{german && menuItems(menuData.german)}
+					{german && (
+						<>
+							<li onClick={handleNav} className={styles.section.ul__li__open}>
+								<Link href="/irregular/ger">
+									Irregular verbs({navData.irregularGer}){" "}
+								</Link>
+							</li>
+							<li onClick={handleNav} className={styles.section.ul__li__open}>
+								<Link href="/memory/ger">
+									Memory game({navData.irregularGer}){" "}
+								</Link>
+							</li>
+							<li onClick={handleNav} className={styles.section.ul__li__open}>
+								<Link href="/search/ger">
+									Seach irregular({navData.irregularGer}){" "}
+								</Link>
+							</li>
+						</>
+					)}
 				</ul>
 			</section>
 		</main>
