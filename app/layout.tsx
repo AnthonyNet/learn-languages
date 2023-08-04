@@ -1,4 +1,4 @@
-"use client"
+
 import './globals.css'
 /*import '@/components/navbar/Navbar.css'*/
 import Providers from "./Providers";
