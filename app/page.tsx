@@ -34,7 +34,7 @@ export default function MainPage() {
 					}}
 					className={styles.h1__cover}>
 					<h1 className={styles.h1}>
-						Learn <strong>languages</strong>
+						Learn <strong className="pl-2">languages</strong>
 					</h1>
 				</motion.div>
 				<div className={styles.bottom__container}>

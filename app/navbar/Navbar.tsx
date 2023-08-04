@@ -12,11 +12,11 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 
 const styles = {
-	nav: "flex justify-center items-center w-full  min-h-[10vh] shadow-xl z-[400] px-4 fixed max-w-[1280px] __background",
-	nav__div: "w-full h-full flex items-start relative md:text-xl xl:text-3xl ",
+	nav: "flex justify-center items-center w-full  h-[50px] md:h-[70px] shadow-xl z-[400] px-4 fixed max-w-[1280px] __background",
+	nav__div: "w-full h-full flex items-center relative md:text-xl xl:text-3xl ",
 	aside:
-		"logo w-auto md:w-[35vw] lg:w-1/3 transition ease-in-out duration-1000 __nav-item",
-	article: "justify-around items-start w-full h-full hidden md:flex ",
+		"logo w-auto md:w-[35vw] lg:w-1/3 transition ease-in-out duration-1000  __nav-item",
+	article: "justify-around items-start w-full h-full hidden md:flex",
 	container:
 		"relative inline-block tooltip hover:text-white transition ease-in-out duration-700 font-extrabold",
 	main__a:

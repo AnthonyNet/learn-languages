@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 const styles = {
-	article: "justify-around items-start w-[90%] h-full hidden md:flex",
+	article: "justify-around items-center w-[90%] h-full hidden md:flex",
 	homeBtn: "font-bold hover:text-indigo-800 __nav-item",
 	container: "relative inline-block tooltip text-xl xl:text-3xl",
 	main__a: "px-2 py-1 font-medium   __nav-item", //ulAnimation
@@ -36,23 +36,27 @@ export default function NavItems({navData} : {navData: NavData}) {
 					<ul className={styles.ul}>
 						<li className={styles.ul__li}>
 							<Link href="/irregular/eng">
-								Irregular verbs({navData.irregularEng}){" "}
+								Irregular verbs ({navData.irregularEng}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/memory/eng">
-								Memory game({navData.irregularEng}){" "}
+								Memory game ({navData.irregularEng}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/search/eng">
-								Search irregular({navData.irregularEng}){" "}
+								Search irregular ({navData.irregularEng}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/search/eng">
-								Oxford B2({navData.oxfordB2}){" "}
-							</Link>
+							<Link href="/oxford">Oxford B2 ({navData.oxfordB2}) </Link>
+						</li>
+						<li className={styles.ul__li}>
+							<Link href="/oxford-flip">Oxford B2-2 ({navData.oxfordB2}) </Link>
+						</li>
+						<li className={styles.ul__li}>
+							<Link href="/pagination">Pagination ({navData.oxfordB2}) </Link>
 						</li>
 					</ul>
 				</div>
@@ -67,17 +71,17 @@ export default function NavItems({navData} : {navData: NavData}) {
 					<ul className={styles.ul}>
 						<li className={styles.ul__li}>
 							<Link href="/irregular/ger">
-								Irregular verbs({navData.irregularGer}){" "}
+								Irregular verbs ({navData.irregularGer}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/memory/ger">
-								Memory game({navData.irregularGer}){" "}
+								Memory game ({navData.irregularGer}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/search/ger">
-								Seach irregular({navData.irregularGer}){" "}
+								Seach irregular ({navData.irregularGer}){" "}
 							</Link>
 						</li>
 					</ul>

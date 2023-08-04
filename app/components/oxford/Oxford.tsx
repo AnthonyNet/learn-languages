@@ -58,7 +58,7 @@ async function createRandoms(): Promise<void> {
 
 	return (
 		<section className="w-screen h-screen flex items-center justify-center ">
-			<div className="w-[400px] h-[450px] border-2 flex flex-col justify-around rounded-3xl __border_color relative">
+			<div className="w-[400px] h-[450px] border-4 border-double flex flex-col justify-around rounded-3xl __border_color relative">
 				<Select onValueChange={handleSelectChange}>
 					<SelectTrigger className="absolute top-2 right-2 w-[180px] border-2 __border_color">
 						<SelectValue placeholder="Items number" />
@@ -73,7 +73,7 @@ async function createRandoms(): Promise<void> {
 				<Accordion
 					type="single"
 					collapsible
-					className="rounded-lg p-8 flex flex-col justify-center items-center">
+					className="rounded-lg p-8 flex flex-col justify-center items-center grow ">
 					<AccordionItem value="item-1">
 						<AccordionTrigger>
 							{start && dataTS[rand.number1].sentence}
