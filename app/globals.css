@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+	/*ShadCN root */
   :root {
    /* --background: 0 0% 100%;*/
     --foreground: 222.2 84% 4.9%;
@@ -73,12 +74,13 @@
     @apply border-border;
   }
 }
-
+/* CUSTOM ROOT */
 :root {
 	--max-width: 1100px;
 	--font-family: "Noto Sans", sans-serif;
 
 	--white: rgb(255, 255, 255);
+	--white-logo: rgb(255, 255, 255);
 	--black: rgb(0, 0, 0);
 
 	--color-main: #0043ff;
@@ -130,7 +132,7 @@
 }
 
 [data-theme="yellow"] {
-	--color-main: #fff70e;
+	--color-main: #d4c918;
 	--memory-border-active: blue;
 	--text-shadow: 4px 4px 3px rgb(0, 0, 0),
 					0px 0px 3px rgb(0, 0, 0);
@@ -140,7 +142,7 @@
 	--hover-nav-items: black;
 	--btn-background: var(--white);
 	--btn-text-color: var(--color-main);
-
+	--white-logo: #cac3c3;
 }
 
 * {
@@ -183,7 +185,8 @@ body,
 .__button_color { background: var(--gradient); }
 .__memory_border_green { border-color: var(--memory-border-active) }
 .__oxford_card_background { background: var(--black); }
-strong { font-weight: var(--font-weight); }
+strong { font-weight: var(--font-weight)}
+
 
 
 /* ------------------

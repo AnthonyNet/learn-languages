@@ -14,7 +14,7 @@ interface Card {
 
 const styles = {
 	container:
-		"relative flex items-center justify-center  cursor-pointer group perspective transition ease-in-out duration-500 __border_color __border_hover ",
+		"relative flex items-center justify-center  cursor-pointer group perspective transition ease-in-out duration-500  __border_color __border_hover ",
 	cover: "preserve-3d group my-rotate-y-180 w-full h-full ",
 	cover__div: "w-full h-full flex items-center justify-center",
 	cardBack:

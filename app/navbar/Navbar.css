@@ -64,8 +64,9 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(45deg, var(--color-main), var(--white), var(--color-main));
-  animation: flameAnimation 2s ease-in-out infinite;
+  background-image: linear-gradient(45deg, var(--color-main), var(--white-logo), var(--color-main));
+  animation: flameAnimation 3s ease-in-out infinite;
+
 }
 
 @keyframes flameAnimation {
@@ -76,6 +77,5 @@
   50% {
     transform: scale(1.05) translateY(-1px);
     filter: brightness(130%);
-	background-image: linear-gradient(45deg, rgb(15rgb(92, 85, 78)6, 97), #f93, rgb(24, 12, 158));
   }
 }

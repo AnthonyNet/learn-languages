@@ -2,6 +2,9 @@
 import { useState, useEffect } from "react";
 
 import Image from "next/image";
+import { TbZoomQuestion } from "react-icons/tb";
+import { RxArrowRight } from "react-icons/rx";
+import Button from "@/app/components/button/Button";
 import { motion } from "framer-motion";
 //FLAGS images
 import czFlag from "@/myData/images/cz.png";
@@ -23,9 +26,14 @@ const styles = {
 	card__btn__container:
 		"flex justify-around w-full h-[70px] items-center text-center border-t-2 __border_color",
 	h3: "py-2 md:py-4  text-center border-b  w-auto mx-auto __border_color",
+	button__cover:
+		"relative rounded  w-[90px] h-14 text-2xl font-extrabold  opacity-100 cursor-pointer __button_color  __text_color2",
 	button:
-		"rounded w-30 sm:w-40 h-14 text-2xl font-extrabold scale-90 hover:scale-100 transition-all ease-in-out delay-100 duration-1000  __button_color  __text_color2 opacity-100 cursor-pointer",
-	icon: "hover:rotate-90 transition ease-in-out duration-700 fixed top-2 left-2  ring-2 rounded-full  drop-shadow-sm __background __gradient",
+		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
+	button__animation:
+		" hover:translate-x-[20px] ",
+	flag__icon:
+		"hover:rotate-90 transition ease-in-out duration-700 fixed top-2 left-2  ring-2 rounded-full  drop-shadow-sm __background __gradient",
 };
 
 interface Props  {
@@ -75,14 +83,17 @@ useEffect(() => {
 				{switchSide && (
 					<button onClick={() => [setSwitchLanguage(!switchLanguage)]}>
 						{switchLanguage ? (
-							<Image className={styles.icon} src={czFlag} alt="cz-flag" />
+							<Image className={styles.flag__icon} src={czFlag} alt="cz-flag" />
 						) : (
-							<Image className={styles.icon} src={enFlag} alt="eng-flag" />
+							<Image
+								className={styles.flag__icon}
+								src={enFlag}
+								alt="eng-flag"
+							/>
 						)}
 					</button>
 				)}
 				{start && (
-
 					<Text_Card
 						switchLanguage={switchLanguage}
 						word={dataTS[rand].word}
@@ -94,15 +105,16 @@ useEffect(() => {
 				<div className={styles.card__btn__container}>
 					{switchSide && (
 						<>
-							<button
-								className={styles.button}
-								onClick={() => [setSwitchSide(!switchSide)]}>
-								Answer
-							</button>
 
-							<button className={styles.button} onClick={createRandoms}>
-								Next word
-							</button>
+							<Button onClick={() =>setSwitchSide(!switchSide)}>
+								<TbZoomQuestion className={styles.button} />
+							</Button>
+
+							<Button onClick={createRandoms}>
+								<RxArrowRight
+									className={styles.button + " " + styles.button__animation}
+								/>
+							</Button>
 						</>
 					)}
 				</div>
@@ -115,6 +127,7 @@ useEffect(() => {
 							word: dataTS[rand].word,
 							sentence: dataTS[rand].sentence,
 							cz_sentence: dataTS[rand].cz_sentence,
+							stylesProp: styles.button + " " + styles.button__animation,
 						}}
 					/>
 				)}

@@ -27,7 +27,7 @@ const styles = {
 	h2: "text-lg sm:text-2xl",
 	navItem: "__nav-item",
 	article_cover:
-		" w-full max-h-[800px] min-h-[80vh] grid items-center ",
+		" w-full max-h-[800px] h-full grid items-center ",
 	article:
 		"w-full h-full grid grid-cols-2 sm:grid-cols-4 grid-rows-8 sm:grid-rows-3 gap-2 sm:gap-4 grid-flow-row p-4 sm:p-2 ",
 };

@@ -5,18 +5,29 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select";
+} from "@/app/components/ui/select";
 
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@/app/components/ui/accordion";
 
 import { useState, useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import Button from "./Button";
+import Button from "../button/Button";
+import { RxArrowRight } from "react-icons/rx";
+
+const styles = {
+	card__btn__container:
+		"flex justify-around w-full h-[70px] items-center text-center  __border_color",
+	button__cover:
+		"relative rounded  w-[90px] h-14 text-2xl font-extrabold  opacity-100 cursor-pointer __button_color  __text_color2",
+	button:
+		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
+	button__animation: " hover:translate-x-[20px] ",
+};
 
 export default function Oxford() {
 	const supabase = createClientComponentClient();
@@ -115,7 +126,13 @@ async function createRandoms(): Promise<void> {
 						</>
 					)}
 				</Accordion>
-				<Button createRandoms={createRandoms} />
+				<div className={styles.card__btn__container}>
+					<Button onClick={createRandoms}>
+						<RxArrowRight
+							className={styles.button + " " + styles.button__animation}
+						/>
+					</Button>
+				</div>
 			</div>
 		</section>
 	);

@@ -7,7 +7,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@/components/ui/table";
+} from "@/app/components/ui/table";
 
 import { useState, useEffect } from "react";
 
@@ -15,19 +15,12 @@ import Top_Menu from "./Top_menu";
 import Bottom_Menu from "./Bottom_menu";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
-const styles = {
-	section: "flex flex-column justify-center items-baseline flex-wrap",
-	main: "w-full flex flex-col justify-between items-center",
-	h2: "text-center",
-	table: "table-fixed min-w-[50vw] max-w-[90%]",
-	thead__tr: "flex justify-around",
-	tbody__td: "w-[50%] __border_color  text-right",
-} as const;
+
 
 export default function Pagination() {
 	const supabase = createClientComponentClient();
 	const [start, setStart] = useState<boolean>(false);
-	const [rand, setRand] = useState<any>({});
+
 	const [dataTS, setDataTS] = useState<any>([]);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [wordsPerPage, setPostsPerPage] = useState<number>(10);
@@ -97,18 +90,18 @@ export default function Pagination() {
 	};
 
 	return (
-		<section className={styles.section}>
+		<section className="flex flex-column justify-center items-baseline flex-wrap">
 			<Top_Menu
 				myNumb={myNumb}
 				setMyNumb={setMyNumb}
 				setCurrentPage={setCurrentPage}
 			/>
 
-			<main className={styles.main}>
+			<main className="w-full flex flex-col justify-between items-center">
 				<Table>
 					<TableCaption>Select a page</TableCaption>
 					<TableHeader>
-						<TableRow>
+						<TableRow className="hover:bg-indigo-800/40">
 							<TableHead className="xl:w-[100px]">Nr.</TableHead>
 							<TableHead className="text-center">English</TableHead>
 
@@ -116,18 +109,18 @@ export default function Pagination() {
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{currentPosts.map(
-							(item: { [key: string]: string }, index: number) => {
-								return (
-									<TableRow>
-										<TableCell className="font-medium">{index + 1}</TableCell>
-										<TableCell>{item.sentence}</TableCell>
-										<TableCell>{item.cz_sentence}</TableCell>
-
-									</TableRow>
-								);
-							}
-						)}
+						{start &&
+							currentPosts.map(
+								(item: { [key: string]: string }, index: number) => {
+									return (
+										<TableRow className="hover:even:bg-indigo-800/40 hover:odd:bg-pink-800/20">
+											<TableCell className="font-medium">{index + 1}</TableCell>
+											<TableCell>{item.sentence}</TableCell>
+											<TableCell>{item.cz_sentence}</TableCell>
+										</TableRow>
+									);
+								}
+							)}
 					</TableBody>
 				</Table>
 			</main>
