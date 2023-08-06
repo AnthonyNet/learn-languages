@@ -109,8 +109,7 @@ export default function Memory({lang}: Props) {
 
 	/* --------------------------------------------------- */
 	//       FIRST SETUP
-	//       +
-	//     Check DATA/WORDS change - MENU    */
+	//
 	/* --------------------------------------------------- */
 
 	useEffect(() => {
@@ -162,17 +161,18 @@ export default function Memory({lang}: Props) {
 	/* --------------------------------------------------- */
 	//  check if the current card matches the previous card
 	/* --------------------------------------------------- */
-	function handleClick(id: number, select: number) {
+	function handleClick(cardId: number, selectId: number) {
+		cards[cardId].click = true;
 
 		if (prev === -1) {
-			setPrev(id);
+			setPrev(cardId);
 			return;
 		} else {
-
-			cards.map((card: Item) => (card.click = false));
-			setCards([...cards]);
-
-			check(id);
+			if (prev === cardId) {
+				return;
+			} else {
+				check(cardId);
+			}
 		}
 	}
 

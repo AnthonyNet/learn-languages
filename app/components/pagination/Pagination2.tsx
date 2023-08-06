@@ -114,7 +114,8 @@ export default function Pagination() {
 								(item: { [key: string]: string }, index: number) => {
 									return (
 										<TableRow className="hover:even:bg-indigo-800/40 hover:odd:bg-pink-800/20">
-											<TableCell className="font-medium">{index + 1}</TableCell>
+											<TableCell className="font-medium">{index + 1}
+											</TableCell>
 											<TableCell>{item.sentence}</TableCell>
 											<TableCell>{item.cz_sentence}</TableCell>
 										</TableRow>

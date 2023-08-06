@@ -84,7 +84,7 @@ async function createRandoms(): Promise<void> {
 				<Accordion
 					type="single"
 					collapsible
-					className="rounded-lg p-8 flex flex-col justify-center items-center grow ">
+					className="rounded-lg pt-8 px-8 flex flex-col justify-center items-center grow ">
 					<AccordionItem value="item-1">
 						<AccordionTrigger>
 							{start && dataTS[rand.number1].sentence}
@@ -105,7 +105,7 @@ async function createRandoms(): Promise<void> {
 						</AccordionItem>
 					)}
 
-					{selectValue === "3" && (
+					{start && selectValue === "3" && (
 						<>
 							<AccordionItem value="item-2">
 								<AccordionTrigger>
