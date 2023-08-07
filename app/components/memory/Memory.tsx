@@ -23,10 +23,12 @@ interface Data {
 const styles = {
 	section:
 		"w-full  flex flex-col items-center justify-center pt-[50px] sm:pt-[80px] .h-100-dvh",
-	section__div: "w-[200px] flex justify-between p-2 font-bold  ",
+	section__div: "w-[400px] flex justify-between p-2 font-bold  ",
 	h2: "text-lg sm:text-2xl",
 	navItem: "__nav-item",
-	article_cover:
+	progress__container: "w-[300px] border-[1px] __border_color rounded-full ",
+	progress: " h-2.5 rounded-full dark:bg-transparent  transition-all duration-700 ease-in-out __gradient",
+	article__cover:
 		" w-full max-h-[800px] h-full grid items-center ",
 	article:
 		"w-full h-full grid grid-cols-2 sm:grid-cols-4 grid-rows-8 sm:grid-rows-3 gap-2 sm:gap-4 grid-flow-row p-4 sm:p-2 ",
@@ -37,9 +39,11 @@ type Props = {
 	lang: string;
 }
 export default function Memory({lang}: Props) {
+	const supabase = createClientComponentClient();
 	const [start, setStart] = useState<boolean>(false);
 	const [english, setEnglish] = useState<any>([]);
 	const [german, setGerman] = useState<any>([]);
+	const [phrasal, setPhrasal] = useState<any>([]);
 	const [dataTS, setDataTS] = useState<any>([]);
 
 	const [restartCounter, setRestartCounter] = useState<number>(0);
@@ -47,7 +51,8 @@ export default function Memory({lang}: Props) {
 	const [cards, setCards] = useState<Item[]>([]);
 	const [store, setStore] = useState<number[]>([]);
 	const [prev, setPrev] = useState<number>(-1);
-	const supabase = createClientComponentClient();
+	const [progress, setProgress] = useState<number>(0);
+
 
 	const getData = async (): Promise<void> => {
 		try {
@@ -57,10 +62,14 @@ export default function Memory({lang}: Props) {
 			const { data: irregular_eng } = await supabase
 				.from("irregular_eng")
 				.select();
+			const {data: phrasal_verbs } = await supabase
+				.from("phrasal_verbs")
+				.select();
 
 			if (irregular_ger && irregular_eng) {
 				setEnglish(irregular_eng);
 				setGerman(irregular_ger);
+				setPhrasal(phrasal_verbs);
 				setStart(true);
 				if (lang === "ger") {
 					setDataTS(irregular_ger);
@@ -127,6 +136,7 @@ export default function Memory({lang}: Props) {
 			createData(dataTS);
 			cards.map((card: Item) =>
 				setTimeout(() => {
+					setProgress(0);
 					card.check = false;
 					card.click = false;
 					// setCards([...cards]);
@@ -142,6 +152,7 @@ export default function Memory({lang}: Props) {
 	function check(current: number) {
 		if (cards[prev].select === cards[current].select) {
 			setScore(score + 1);
+			setProgress(progress + 16.667);
 			setRestartCounter(restartCounter + 1);
 			setStore([...store, cards[prev].select]);
 			setCards(
@@ -162,9 +173,10 @@ export default function Memory({lang}: Props) {
 	//  check if the current card matches the previous card
 	/* --------------------------------------------------- */
 	function handleClick(cardId: number, selectId: number) {
-		cards[cardId].click = true;
+
 
 		if (prev === -1) {
+			/*cards[cardId].click = true;*/
 			setPrev(cardId);
 			return;
 		} else {
@@ -180,15 +192,22 @@ export default function Memory({lang}: Props) {
 		<section className={styles.section}>
 			<div className={styles.section__div}>
 				<button onClick={() => createData(english)} className={styles.navItem}>
-					English
+					Angličtina
+				</button>
+				<button onClick={() => createData(phrasal)} className={styles.navItem}>
+					Frázová slovesa
 				</button>
 				<button onClick={() => createData(german)} className={styles.navItem}>
-					Deutsch
+					Němčina
 				</button>
 			</div>
-			<h2 className={styles.h2}>Score: {score}</h2>
-
-			<div className={styles.article_cover}>
+			<h2 className={styles.h2}>Skóre: {score}</h2>
+			<div className={styles.progress__container}>
+				<div
+					className={styles.progress}
+					style={{ width: progress + "%" }}></div>
+			</div>
+			<div className={styles.article__cover}>
 				{start && (
 					<article className={styles.article}>
 						{cards.map((item: Item, index: number) => {

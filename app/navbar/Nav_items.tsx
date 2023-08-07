@@ -25,38 +25,38 @@ export default function NavItems({navData} : {navData: NavData}) {
 	return (
 		<article className={styles.article}>
 			<Link href="/" className={styles.homeBtn}>
-				Home
+				Domů
 			</Link>
 
 			<div className={styles.container}>
 				<a href="#" className={styles.main__a}>
-					English
+					Angličtina
 				</a>
 				<div className={styles.cover}>
 					<ul className={styles.ul}>
 						<li className={styles.ul__li}>
 							<Link href="/irregular/eng">
-								Irregular verbs ({navData.irregularEng}){" "}
+								Nepravidelná slovesa ({navData.irregularEng}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/memory/eng">
-								Memory game ({navData.irregularEng}){" "}
+								Dvojice ({navData.irregularEng}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/search/eng">
-								Search irregular ({navData.irregularEng}){" "}
+								Najdi sloveso ({navData.irregularEng}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/oxford">Oxford B2 ({navData.oxfordB2}) </Link>
+							<Link href="/oxford">Akordeon cvičení B2 ({navData.oxfordB2}) </Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/oxford-flip">Oxford B2-2 ({navData.oxfordB2}) </Link>
+							<Link href="/oxford-flip">Karta cvičení B2 ({navData.oxfordB2}) </Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/pagination">Pagination ({navData.oxfordB2}) </Link>
+							<Link href="/pagination">Seznam slov ({navData.oxfordB2}) </Link>
 						</li>
 					</ul>
 				</div>
@@ -64,24 +64,24 @@ export default function NavItems({navData} : {navData: NavData}) {
 
 			<div className={styles.container}>
 				<a href="#" className={styles.main__a}>
-					German
+					Němčina
 				</a>
 
 				<div className={styles.cover}>
 					<ul className={styles.ul}>
 						<li className={styles.ul__li}>
 							<Link href="/irregular/ger">
-								Irregular verbs ({navData.irregularGer}){" "}
+								Nepravidelná slovesa ({navData.irregularGer}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/memory/ger">
-								Memory game ({navData.irregularGer}){" "}
+								Dvojice ({navData.irregularGer}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/search/ger">
-								Seach irregular ({navData.irregularGer}){" "}
+								Najdi sloveso ({navData.irregularGer}){" "}
 							</Link>
 						</li>
 					</ul>

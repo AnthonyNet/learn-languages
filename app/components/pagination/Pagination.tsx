@@ -1,4 +1,13 @@
 "use client";
+import {
+	Table,
+	TableBody,
+	TableCaption,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@/app/components/ui/table";
 
 import { useState, useEffect } from "react";
 
@@ -6,39 +15,50 @@ import Top_Menu from "./Top_menu";
 import Bottom_Menu from "./Bottom_menu";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
-const styles = {
-	section: "flex flex-column justify-center items-baseline flex-wrap",
-	main: "w-full flex flex-col justify-between items-center",
-	h2: "text-center",
-	table: "table-fixed min-w-[50vw] max-w-[90%]",
-	thead__tr: "flex justify-around",
-	tbody__td: "w-[50%] __border_color  text-right",
-} as const;
+interface Data{
+	id: string;
+	base?: string;
+	cz?: string;
+	word?: string;
+	sentence?: string;
+	cz_sentence?: string;
+}
 
 export default function Pagination() {
 	const supabase = createClientComponentClient();
 	const [start, setStart] = useState<boolean>(false);
-	const [rand, setRand] = useState<any>({});
-	const [dataTS, setDataTS] = useState<any>([]);
+
+	const [dataTS, setDataTS] = useState<[] | Data[]>([]);
+	const [oxfordB2, setOxfordB2] = useState<[] | Data[]>([]);
+	const [phrasalVerbs, setPhrasalVerbs] = useState<[] | Data[]>([]);
 	const [currentPage, setCurrentPage] = useState<number>(1);
-	const [wordsPerPage, setPostsPerPage] = useState<number>(20);
+	const [wordsPerPage, setPostsPerPage] = useState<number>(10);
+	const [myNumb, setMyNumb] = useState(1);
 
-
-const getData = async (): Promise<void> => {
-	try {
-		const { data: oxford_b2 } = await supabase.from("oxford_b2").select();
-		if (oxford_b2) {
-			setDataTS(oxford_b2);
-			setStart(true);
+	const getData = async (): Promise<void> => {
+		try {
+			const { data: oxford_b2 } = await supabase.from("oxford_b2").select();
+			const { data: phrasal_verbs } = await supabase
+				.from("phrasal_verbs")
+				.select();
+			if (oxford_b2 && phrasal_verbs) {
+				setDataTS(oxford_b2);
+				setOxfordB2(oxford_b2);
+				setPhrasalVerbs(phrasal_verbs);
+				setStart(true);
+			}
+		} catch (error) {
+			console.error("Error in getData:", error);
+			throw error;
 		}
-	} catch (error) {
-		console.error("Error in getData:", error);
-		throw error;
-	}
-};
-useEffect(() => {
-	getData();
-}, [supabase, setDataTS]);
+	};
+	useEffect(() => {
+		getData();
+	}, [supabase, setDataTS]);
+
+	/* Pagination SETUP */
+	/* This can potentially be a problem */
+	/* Need to find out a better way to do this */
 
 	//  20                    1             20
 	const lastWordIndex: number = currentPage * wordsPerPage;
@@ -68,60 +88,63 @@ useEffect(() => {
 			setCurrentPage((page) => page + 1);
 		}
 	};
-
-	const [myNumb, setMyNumb] = useState(0);
+	/* -------------------
+Watch the value that is set up in Top_menu
+------------------- */
 
 	useEffect(() => {
 		if (myNumb == 0) {
-			setDataTS(dataTS);
+			setDataTS(phrasalVerbs);
 		} else if (myNumb == 1) {
-			setDataTS(dataTS);
-		} else if (myNumb == 2) {
-			setDataTS(dataTS);
+			setDataTS(oxfordB2);
 		} else {
 			setDataTS(dataTS);
 		}
 	}, [myNumb]);
-
+	/* ---------------
+	CAPITALIZE FIRST LETTER
+-----------------*/
 	const capitalizeFirst = (word: any) => {
 		const capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1);
 		return capitalizedWord;
 	};
 
 	return (
-		<section className={styles.section}>
+		<section className="flex flex-column justify-center items-baseline flex-wrap">
 			<Top_Menu
 				myNumb={myNumb}
 				setMyNumb={setMyNumb}
 				setCurrentPage={setCurrentPage}
 			/>
 
-			<main className={styles.main}>
+			<main className="w-full flex flex-col justify-between items-center">
+				<Table>
+					<TableCaption>Vyber stránku</TableCaption>
+					<TableHeader>
+						<TableRow className="hover:bg-indigo-800/40">
+							<TableHead className="xl:w-[100px]">Nr.</TableHead>
+							<TableHead className="text-center">English</TableHead>
 
-				<table className={styles.table}>
-					<thead>
-						<tr className={styles.thead__tr}>
-							<th>English</th>
-							<th>Czech</th>
-						</tr>
-					</thead>
-					<tbody>
-						{currentPosts.map((item: {[key:string]:string }, index:number) => {
-							return (
-								<tr
-									key={index}
-									className="border-b-2 border-dotted __border_color flex  flex-nowrap cursor-pointer __nav-item">
-										<td className="w-[50%] text-left">
-											{capitalizeFirst(item.sentence)}
-										</td>
-									<td className={styles.tbody__td}>
-										{capitalizeFirst(item.cz_sentence)}
-									</td>
-								</tr>
-							);
-						})}
-					</tbody>
-				</table>
+							<TableHead className="text-center">Czech</TableHead>
+						</TableRow>
+					</TableHeader>
+					<TableBody className={myNumb == 0 ? "text-center" : ""}>
+						{start &&
+							currentPosts.map((item: Data, index: number) => {
+								return (
+									<TableRow className="hover:even:bg-indigo-800/40 hover:odd:bg-pink-800/20">
+										<TableCell className="font-medium">{index + 1}</TableCell>
+										<TableCell>
+											{myNumb == 1 ? item.sentence : item.base}
+										</TableCell>
+										<TableCell>
+											{myNumb == 1 ? item.cz_sentence : item.cz}
+										</TableCell>
+									</TableRow>
+								);
+							})}
+					</TableBody>
+				</Table>
 			</main>
 
 			<Bottom_Menu

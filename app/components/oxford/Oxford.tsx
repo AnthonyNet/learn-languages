@@ -7,17 +7,11 @@ import {
 	SelectValue,
 } from "@/app/components/ui/select";
 
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "@/app/components/ui/accordion";
-
 import { useState, useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Button from "../button/Button";
 import { RxArrowRight } from "react-icons/rx";
+import Items_oxford from './Items_oxford';
 
 const styles = {
 	card__btn__container:
@@ -32,17 +26,22 @@ const styles = {
 export default function Oxford() {
 	const supabase = createClientComponentClient();
 	const [start, setStart] = useState<boolean>(false);
-	const [rand, setRand] = useState<any>({});
-	const [dataTS, setDataTS] = useState<any>([]);
+	const [dataTS, setDataTS] = useState<[]|DataTS[]>([]);
+	const [propsData, setPropsData] = useState<[]|DataTS[]>([]);
 	const [selectValue, setSelectValue] = useState<string>("3");
 
-async function createRandoms(): Promise<void> {
-	const data = await dataTS;
-	setRand({
-		number1: Math.floor(Math.random() * data.length),
-		number2: Math.floor(Math.random() * data.length),
-		number3: Math.floor(Math.random() * data.length),
-	});
+	interface DataTS{
+		readonly id: string,
+		readonly word: string,
+		readonly sentence: string,
+		readonly cz_sentence: string
+	}
+ function createRandoms(dataTS:DataTS[]):void{
+	setPropsData([
+		dataTS[Math.floor(Math.random() * dataTS.length)],
+		dataTS[Math.floor(Math.random() * dataTS.length)],
+		dataTS[Math.floor(Math.random() * dataTS.length)],
+	]);
 }
 	const getData = async (): Promise<void> => {
 		try {
@@ -51,7 +50,7 @@ async function createRandoms(): Promise<void> {
 				.select();
 			if (oxford_b2) {
 				setDataTS(oxford_b2);
-				createRandoms()
+				createRandoms(oxford_b2);
 				setStart(true);
 			}
 		} catch (error) {
@@ -72,62 +71,25 @@ async function createRandoms(): Promise<void> {
 			<div className="w-[400px] h-[450px] border-4 border-double flex flex-col justify-around rounded-3xl __border_color relative">
 				<Select onValueChange={handleSelectChange}>
 					<SelectTrigger className="absolute top-2 right-2 w-[180px] border-2 __border_color">
-						<SelectValue placeholder="Items number" />
+						<SelectValue placeholder="Počet vět" />
 					</SelectTrigger>
-					<SelectContent className="__background __text_color __border_color">
-						<SelectItem value="1">1 per card</SelectItem>
-						<SelectItem value="2">2 per card</SelectItem>
-						<SelectItem value="3">3 per card</SelectItem>
+					<SelectContent className={"__background __text_color __border_color"}>
+						<SelectItem value="1">1 / karta</SelectItem>
+						<SelectItem value="2">2 / karta</SelectItem>
+						<SelectItem value="3">3 / karta</SelectItem>
 					</SelectContent>
 				</Select>
 
-				<Accordion
-					type="single"
-					collapsible
-					className="rounded-lg pt-8 px-8 flex flex-col justify-center items-center grow ">
-					<AccordionItem value="item-1">
-						<AccordionTrigger>
-							{start && dataTS[rand.number1].sentence}
-						</AccordionTrigger>
-						<AccordionContent className="text-center">
-							{start && dataTS[rand.number1].cz_sentence}
-						</AccordionContent>
-					</AccordionItem>
+				{start && (
+					<Items_oxford
+						start={start}
+						propsData={propsData}
+						selectValue={selectValue}
+					/>
+				)}
 
-					{selectValue === "2" && (
-						<AccordionItem value="item-2">
-							<AccordionTrigger>
-								{start && dataTS[rand.number2].sentence}
-							</AccordionTrigger>
-							<AccordionContent className="text-center">
-								{start && dataTS[rand.number2].cz_sentence}
-							</AccordionContent>
-						</AccordionItem>
-					)}
-
-					{start && selectValue === "3" && (
-						<>
-							<AccordionItem value="item-2">
-								<AccordionTrigger>
-									{start && dataTS[rand.number2].sentence}
-								</AccordionTrigger>
-								<AccordionContent className="text-center">
-									{start && dataTS[rand.number2].cz_sentence}
-								</AccordionContent>
-							</AccordionItem>
-							<AccordionItem value="item-3">
-								<AccordionTrigger>
-									{start && dataTS[rand.number3].sentence}
-								</AccordionTrigger>
-								<AccordionContent className="text-center">
-									{start && dataTS[rand.number3].cz_sentence}
-								</AccordionContent>
-							</AccordionItem>
-						</>
-					)}
-				</Accordion>
 				<div className={styles.card__btn__container}>
-					<Button onClick={createRandoms}>
+					<Button onClick={() => createRandoms(dataTS)}>
 						<RxArrowRight
 							className={styles.button + " " + styles.button__animation}
 						/>

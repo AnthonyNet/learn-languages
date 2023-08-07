@@ -16,7 +16,7 @@ const styles = {
 		"w-full h-auto  min-h-[800px] xl:min-h-[85vh] xl:h-[80%] max-w-xl mx-auto rounded-lg shadow-lg py-8 sm:py-0  __my_grid sm:mt-[10vh]",
 	image_cover: "relative __background __my_grid_item rounded-[30px]",
 	image:
-		"border-4 border-double rounded-[30px] border-blue-700 hover:scale-[102%] transition-all duration-500 ease-in-out",
+		"border-4 border-double rounded-[30px] border-blue-700 hover:scale-[102%] transition-all duration-500 ease-in-out bg-black",
 };
 
 export default function Section2() {
@@ -32,14 +32,15 @@ export default function Section2() {
 					ease: "easeOut",
 				}}>
 				<div className={styles.div_left}>
-					<h2 className="text-4xl font-bold">Welcome to Learning languages</h2>
-					<p className="mt-4 text-xl">
-						Welcome to our Learn Languages app, your gateway to mastering
-						English and German for FREE!
+					<h2 className="text-4xl font-bold">Vítej na Learn Languages</h2>
+					<p className="text-xl">Objevte moc slovní zásoby</p>
+					<p className="text-xl">
+						Rychle a snadno se naučte nová slovíčka
+						prostřednictvím jednoduché a interaktivní platformy
 					</p>
 					<p className="mt-4">
-						Immerse yourself in a world of language learning, where interactive
-						lessons, engaging exercises, and real-life scenarios await you...
+						Čekají na vás lekce, poutavá cvičení a spousta dalšího materiálu.
+						Začněte svou jazykovou cestu ještě dnes bez registrace a zcela ZDARMA!
 					</p>
 				</div>
 			</motion.div>

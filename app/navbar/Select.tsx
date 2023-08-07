@@ -34,12 +34,12 @@ export default function Select() {
 			name="colors"
 			id="colors"
 			onChange={handleChange}>
-			<option value="blue">Blue</option>
-			<option value="green">Green</option>
-			<option value="violet">Violet</option>
-			<option value="pink">Pink</option>
-			<option value="yellow">Yellow</option>
-			<option value="light">Light</option>
+			<option value="blue">Modrý</option>
+			<option value="green">Zelený</option>
+			<option value="violet">Fialový</option>
+			<option value="pink">Růžový</option>
+			<option value="yellow">Žlutý</option>
+			<option value="light">Světlý</option>
 		</select>
 	);
 }

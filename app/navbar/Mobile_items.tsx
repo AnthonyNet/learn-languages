@@ -111,7 +111,14 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 								<Link href="/oxford">Oxford B2({navData.oxfordB2}) </Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
-								<Link href="/oxford-flip">Oxford B2-2({navData.oxfordB2}) </Link>
+								<Link href="/oxford-flip">
+									Oxford B2-2({navData.oxfordB2}){" "}
+								</Link>
+							</li>
+							<li onClick={handleNav} className={styles.section.ul__li__open}>
+								<Link href="/pagination">
+									Pagination({navData.oxfordB2}){" "}
+								</Link>
 							</li>
 						</>
 					)}

@@ -1,4 +1,4 @@
-import Pagination from '../components/pagination/Pagination2';
+import Pagination from '../components/pagination/Pagination';
 
 export default function Page(){
 	return <Pagination />
