@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import DarkModeBtn from "./Select";
 import { useState } from "react";
-import { menuData } from "./data-nav";
 
 const styles = {
 	main: "flex flex-col z-20",
@@ -86,7 +85,7 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 						➤
 					</span>
 					<h3 onClick={handleEnglish} className={styles.section.h3}>
-						English
+						Angličtina
 					</h3>
 				</div>
 				<ul className={english ? styles.section.ul__open : " text-transparent"}>
@@ -94,30 +93,32 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 						<>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/irregular/eng">
-									Irregular verbs({navData.irregularEng}){" "}
+									Nepravidelná slovesa ({navData.irregularEng}){" "}
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/memory/eng">
-									Memory game({navData.irregularEng}){" "}
+									Dvojice ({navData.irregularEng}){" "}
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/search/eng">
-									Search irregular({navData.irregularEng}){" "}
+									Najdi sloveso ({navData.irregularEng}){" "}
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
-								<Link href="/oxford">Oxford B2({navData.oxfordB2}) </Link>
+								<Link href="/oxford">
+									Akordeon cvičení B2 ({navData.oxfordB2}){" "}
+								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/oxford-flip">
-									Oxford B2-2({navData.oxfordB2}){" "}
+									Karta cvičení B2 ({navData.oxfordB2}){" "}
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/pagination">
-									Pagination({navData.oxfordB2}){" "}
+									Seznam slov ({navData.oxfordB2}){" "}
 								</Link>
 							</li>
 						</>
@@ -131,7 +132,7 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 						➤
 					</span>
 					<h3 onClick={handleGerman} className={styles.section.h3}>
-						German
+						Němčina
 					</h3>
 				</div>
 				<ul className={german ? styles.section.ul__open : " text-transparent "}>
@@ -139,17 +140,17 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 						<>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/irregular/ger">
-									Irregular verbs({navData.irregularGer}){" "}
+									Nepravidelná slovesa ({navData.irregularGer}){" "}
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/memory/ger">
-									Memory game({navData.irregularGer}){" "}
+									Dvojice ({navData.irregularGer}){" "}
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/search/ger">
-									Seach irregular({navData.irregularGer}){" "}
+									Najdi sloveso ({navData.irregularGer}){" "}
 								</Link>
 							</li>
 						</>

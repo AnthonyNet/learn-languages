@@ -4,10 +4,10 @@ import { CgClose } from "react-icons/cg";
 import Mobile_items from "./Mobile_items";
 
 const styles = {
-	main__open: "snap-x z-10  fixed left-0 top-0 w-full h-screen bg-black/70",
+	main__open: "snap-x z-10  fixed left-0 top-0 w-full h-screen  bg-black/70",
 	main__close: "z-0",
 	main__div__open:
-		"responsiveMenu fixed left-0 top-0 w-[85%] sm:w-[60%] md:w-[45%] h-screen mobile__Nav p-4 sm:p-8 ease-in duration-700",
+		"responsiveMenu fixed left-0 top-0 w-[85%] sm:w-[60%] md:w-[45%] h-screen mobile__Nav p-4 sm:p-8 ease-in duration-700 overflow-y-scroll scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-blue-200 border-r-2 __border_color",
 	main__div__close:
 		"fixed top-10 left-[-100%] ease-in duration-500 mobile__Nav",
 	main__header: "flex justify-between items-center",

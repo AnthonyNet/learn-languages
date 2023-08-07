@@ -20,7 +20,7 @@ const styles = {
 		"relative rounded  w-[90px] h-14 text-2xl font-extrabold  opacity-100 cursor-pointer __button_color  __text_color2",
 	button:
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
-	button__animation: " hover:translate-x-[20px] ",
+	button__animation: " lg:hover:translate-x-[20px] ",
 };
 
 export default function Oxford() {
@@ -67,10 +67,10 @@ export default function Oxford() {
 
 
 	return (
-		<section className="w-screen h-screen flex items-center justify-center ">
-			<div className="w-[400px] h-[450px] border-4 border-double flex flex-col justify-around rounded-3xl __border_color relative">
+		<section className="mt-[50px] md:mt-[70px]  w-screen flex items-center justify-center __responsiveSection">
+			<div className="w-[400px] h-full lg:h-[450px] lg:border-4 border-double flex flex-col justify-center lg:justify-around rounded-3xl __border_color relative">
 				<Select onValueChange={handleSelectChange}>
-					<SelectTrigger className="absolute top-2 right-2 w-[180px] border-2 __border_color">
+					<SelectTrigger className="flex lg:absolute top-2 right-2 w-[180px] border-2 __border_color">
 						<SelectValue placeholder="Počet vět" />
 					</SelectTrigger>
 					<SelectContent className={"__background __text_color __border_color"}>

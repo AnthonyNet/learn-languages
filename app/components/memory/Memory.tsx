@@ -23,7 +23,7 @@ interface Data {
 const styles = {
 	section:
 		"w-full  flex flex-col items-center justify-center pt-[50px] sm:pt-[80px] .h-100-dvh",
-	section__div: "w-[400px] flex justify-between p-2 font-bold  ",
+	section__div: "w-full lg:w-[400px] flex justify-between p-2 font-bold  ",
 	h2: "text-lg sm:text-2xl",
 	navItem: "__nav-item",
 	progress__container: "w-[300px] border-[1px] __border_color rounded-full ",

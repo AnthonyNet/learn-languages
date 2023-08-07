@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 
 import Input from "./Card_Input";
-import CardButton from "./Card_Button";
 import CardHint from "./Card_Hint";
 
 import Score from "./Score";
@@ -15,7 +14,7 @@ import { RxArrowRight } from "react-icons/rx";
 
 const styles = {
 	section:
-		"section_Responsive flex justify-center items-center responsiveSection",
+		"mt-[50px] md:mt-[70px] h-auto min-h-screen w-screen flex justify-center items-center",
 	section__container:
 		"max-w-sm card my-8 xl:my-0 rounded-3xl text-center border-4 border-double __border_color",
 	score__container: "py-3 px-6 ",
@@ -124,11 +123,7 @@ HIDE HINTS
 							Object.values(dataTS[rand])
 								.slice(2)
 								.map((value, index) => {
-									const array = [
-										"Present Simple",
-										"Past Simple",
-										"Past Participle",
-									];
+									const array = ["Infinitiv", "Minulý čas", "Příčestí minulé"];
 									return (
 										<Input
 											word={value}

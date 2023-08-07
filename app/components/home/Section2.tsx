@@ -2,10 +2,10 @@
 import "./Home.css";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Irregular from "@/myData/images/irregular.gif";
-import Memory from "@/myData/images/memory-x.gif";
-import Search from "@/myData/images/search.gif";
-import Pagination from "@/myData/images/pagination.gif";
+import Irregular from "@/images/irregular.gif";
+import Memory from "@/images/memory-x.gif";
+import Search from "@/images/search.gif";
+import Pagination from "@/images/pagination.gif";
 
 const styles = {
 	section:

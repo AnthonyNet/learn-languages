@@ -187,7 +187,24 @@ body,
 .__oxford_card_background { background: var(--black); }
 strong { font-weight: var(--font-weight)}
 
+/* ------------------
+RESPONSIVE SECTION
+----------------------*/
 
+.__responsiveSection{
+	height: calc(100dvh - 70px);
+}
+@media (max-width: 768px) {
+	.__responsiveSection{
+		height: calc(100dvh - 50px);
+	}
+}
+@media (max-height: 400px) {
+	.__responsiveSection{
+		height: auto;
+		min-height: calc(100dvh - 70px);
+	}
+}
 
 /* ------------------
 Animations
