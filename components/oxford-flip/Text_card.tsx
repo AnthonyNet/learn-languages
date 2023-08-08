@@ -1,7 +1,7 @@
 import React from "react";
 
 const styles = {
-	card__text__cover: "w-full  xl:font-bold  flex flex-col justify-center grow ",
+	card__text__cover: "pt-[25px] w-full  xl:font-bold  flex flex-col justify-center grow ",
 	h3: "py-2 md:py-4  text-center   w-auto mx-auto __border_color",
 };
 

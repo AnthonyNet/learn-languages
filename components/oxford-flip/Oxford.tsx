@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { TbZoomQuestion } from "react-icons/tb";
 import { RxArrowRight } from "react-icons/rx";
-import Button from "@/app/components/button/Button";
+import Button from "@/components/button/Button";
 import { motion } from "framer-motion";
 //FLAGS images
 import czFlag from "@/images/cz.png";
@@ -20,19 +20,19 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 const styles = {
 	section:
-		"relative mt-[50px] md:mt-[70px]  w-screen  flex justify-center items-center p-2 sm:p-0 __responsiveSection",
+		"relative pt-[50px] md:pt-[70px]  w-screen  flex justify-center items-center __responsiveOxfordFlip",
 	card__container:
-		"w-full max-w-[600px] h-full lg:h-[400px] lg:border-8  border-double px-4  rounded-lg  preserve-3d group my-rotate-y-180 duration-1000 flex flex-col  __border_color __css_small_height_index_container",
+		"w-full max-w-[600px] h-full  md:max-h-[400px] lg:border-8  border-double px-4  rounded-lg  preserve-3d group my-rotate-y-180 duration-1000 flex flex-col  __border_color",
 	card__btn__container:
 		"flex justify-around w-full h-[70px] items-center text-center md:border-t-2 __border_color",
 	h3: "py-2 md:py-4  text-center border-b  w-auto mx-auto __border_color",
 	button__cover:
-		"relative rounded  w-[90px] h-14 text-2xl font-extrabold  opacity-100 cursor-pointer __button_color  __text_color2",
+		"relative rounded  w-[90px] h-14 text-2xl font-extrabold  opacity-100 cursor-pointer __button_color  __text_color2 border-2",
 	button:
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 	button__animation: " hover:translate-x-[20px] ",
 	flag__icon:
-		"hover:rotate-90 transition ease-in-out duration-700 fixed top-2 left-2  ring-2 rounded-full  drop-shadow-sm __background __gradient",
+		"hover:rotate-90 transition ease-in-out duration-700 fixed  md:top-2 left-2  ring-2 rounded-full  drop-shadow-sm __background __gradient",
 };
 
 interface Props  {

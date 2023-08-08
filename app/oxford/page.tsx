@@ -1,4 +1,4 @@
-import Oxford from '../components/oxford/Oxford';
+import Oxford from '@/components/oxford/Oxford';
 
 export default function Page() {
 	return (

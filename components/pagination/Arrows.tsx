@@ -1,14 +1,15 @@
 "use client";
+import { useState, useEffect } from "react";
 
 export function LeftArrow() {
 	return (
-		<div className="__nav-item">
+		<div>
 			<svg
 				aria-hidden="true"
 				focusable="false"
 				data-prefix="far"
 				data-icon="arrow-alt-circle-left"
-				className="w-7 h-7"
+				className="w-7 h-7 __pulse"
 				role="img"
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 512 512">
@@ -21,14 +22,19 @@ export function LeftArrow() {
 }
 
 export function RightArrow() {
+	 const [isClicked, setIsClicked] = useState(false);
+
+		const handleClick = () => {
+			setIsClicked(!isClicked);
+		};
 	return (
-		<div className="__nav-item">
+		<div>
 			<svg
 				aria-hidden="true"
 				focusable="false"
 				data-prefix="far"
 				data-icon="arrow-alt-circle-right"
-				className="w-7 h-7"
+				className="w-7 h-7 __pulse"
 				role="img"
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 512 512">

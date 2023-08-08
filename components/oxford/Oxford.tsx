@@ -5,7 +5,7 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/app/components/ui/select";
+} from "@/components/ui/select";
 
 import { useState, useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
@@ -15,7 +15,7 @@ import Items_oxford from './Items_oxford';
 
 const styles = {
 	card__btn__container:
-		"flex justify-around w-full h-[70px] items-center text-center  __border_color",
+		"flex justify-around w-full h-[70px] items-center text-center  __border_color ",
 	button__cover:
 		"relative rounded  w-[90px] h-14 text-2xl font-extrabold  opacity-100 cursor-pointer __button_color  __text_color2",
 	button:
@@ -67,8 +67,8 @@ export default function Oxford() {
 
 
 	return (
-		<section className="mt-[50px] md:mt-[70px]  w-screen flex items-center justify-center __responsiveSection">
-			<div className="w-[400px] h-full lg:h-[450px] lg:border-4 border-double flex flex-col justify-center lg:justify-around rounded-3xl __border_color relative">
+		<section className="w-screen flex flex-col items-center justify-center pt-[50px] md:pt-[70px] __small_screen_  __accordion">
+			<div className="w-full h-full md:w-auto  md:max-h-[400px] lg:border-4 border-double flex flex-col justify-center lg:justify-around rounded-3xl __border_color relative">
 				<Select onValueChange={handleSelectChange}>
 					<SelectTrigger className="flex lg:absolute top-2 right-2 w-[180px] border-2 __border_color">
 						<SelectValue placeholder="Počet vět" />

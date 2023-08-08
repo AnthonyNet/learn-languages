@@ -3,7 +3,7 @@ import {
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
-} from "@/app/components/ui/accordion";
+} from "@/components/ui/accordion";
 
 export default function Items_oxford({selectValue, propsData}:any) {
 
@@ -12,22 +12,18 @@ export default function Items_oxford({selectValue, propsData}:any) {
 		<Accordion
 			type="single"
 			collapsible
-			className="rounded-lg pt-8 px-8 flex flex-col justify-center items-center grow ">
+			className="rounded-lg px-2 md:px-8 flex flex-col justify-center items-center grow md:text-[140%] xl:text-[120%]">
 			<AccordionItem value="item-1">
-				<AccordionTrigger>
-					{propsData[0].sentence}
-				</AccordionTrigger>
-				<AccordionContent className="text-center">
+				<AccordionTrigger>{propsData[0].sentence}</AccordionTrigger>
+				<AccordionContent className="text-center md:text-[80%]">
 					{propsData[0].cz_sentence}
 				</AccordionContent>
 			</AccordionItem>
 
 			{selectValue === "2" && (
 				<AccordionItem value="item-2">
-					<AccordionTrigger>
-						{propsData[1].sentence}
-					</AccordionTrigger>
-					<AccordionContent className="text-center">
+					<AccordionTrigger>{propsData[1].sentence}</AccordionTrigger>
+					<AccordionContent className="text-center md:text-[80%]">
 						{propsData[1].cz_sentence}
 					</AccordionContent>
 				</AccordionItem>
@@ -36,14 +32,14 @@ export default function Items_oxford({selectValue, propsData}:any) {
 			{selectValue === "3" && (
 				<>
 					<AccordionItem value="item-2">
-						<AccordionTrigger>{propsData[2].sentence}</AccordionTrigger>
-						<AccordionContent className="text-center">
-							{propsData[2].cz_sentence}
+						<AccordionTrigger>{propsData[1].sentence}</AccordionTrigger>
+						<AccordionContent className="text-center md:text-[80%]">
+							{propsData[1].cz_sentence}
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="item-3">
 						<AccordionTrigger>{propsData[2].sentence}</AccordionTrigger>
-						<AccordionContent className="text-center">
+						<AccordionContent className="text-center md:text-[80%]">
 							{propsData[2].cz_sentence}
 						</AccordionContent>
 					</AccordionItem>

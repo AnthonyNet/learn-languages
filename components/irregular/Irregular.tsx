@@ -8,18 +8,20 @@ import CardHint from "./Card_Hint";
 import Score from "./Score";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import Button from "@/app/components/button/Button";
+import Button from "@/components/button/Button";
 import { TbZoomQuestion } from "react-icons/tb";
 import { RxArrowRight } from "react-icons/rx";
 
 const styles = {
 	section:
-		"mt-[50px] md:mt-[70px] h-auto min-h-screen w-screen flex justify-center items-center",
+		"mt-[50px] md:mt-[70px] py-4  w-screen  flex flex-col md:justify-center   items-center __responsiveSection __small_screen_h-auto",
 	section__container:
-		"max-w-sm card my-8 xl:my-0 rounded-3xl text-center border-4 border-double __border_color",
+		" mt-[20px] md:text-[150%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center   rounded-t-3xl text-center md:border-x-4 md:border-t-4 border-double __border_color",
 	score__container: "py-3 px-6 ",
+	hint__section:
+		"h-auto w-full max-w-[300px] md:max-w-[400px] md:pb-2 flex flex-col md:border-x-4 md:border-b-4 border-double rounded-b-3xl __border_color",
 	buttons__container:
-		"flex justify-around w-full h-[70px] items-center text-center  __border_color",
+		"flex justify-around md:justify-center  gap-x-16 w-full  items-center text-center  __border_color ",
 	button:
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 	button__animation: " hover:translate-x-[20px] ",
@@ -117,7 +119,7 @@ HIDE HINTS
 				<Score score={stars} />
 
 				<div className="px-6 inputs">
-					<h5 className={styles.h5}>{dataTS ? dataTS[rand].cz : "no data"}</h5>
+					<h5 className={styles.h5}>{dataTS ? dataTS[rand].cz : "...loading"}</h5>
 					<ul className={styles.ul} id={dataTS && dataTS[rand].id}>
 						{dataTS &&
 							Object.values(dataTS[rand])
@@ -138,6 +140,19 @@ HIDE HINTS
 								})}
 					</ul>
 				</div>
+			</div>
+
+			<section className={styles.hint__section}>
+				{/* IF HINT == TRUE SHOW ANSWERS */}
+				<div className={styles.buttons__container + "h-[40px]"}>
+					{hint && (
+						<CardHint
+							base={dataTS[rand].base}
+							pastSimple={dataTS[rand].past_simple}
+							pastParticiple={dataTS[rand].past_participle}
+						/>
+					)}
+				</div>
 
 				<div className={styles.buttons__container}>
 					{/* TOGGLE HINT !HINT */}
@@ -152,18 +167,7 @@ HIDE HINTS
 						/>
 					</Button>
 				</div>
-
-				{/* IF HINT == TRUE SHOW ANSWERS */}
-				{hint ? (
-					<div className={styles.buttons__container}>
-						<CardHint
-							base={dataTS[rand].base}
-							pastSimple={dataTS[rand].past_simple}
-							pastParticiple={dataTS[rand].past_participle}
-						/>
-					</div>
-				) : null}
-			</div>
+			</section>
 		</section>
 	);
 }

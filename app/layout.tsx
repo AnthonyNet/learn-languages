@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
 		<html lang="en">
 			<body>
-				<main className="min-h-screen bg-background flex flex-col items-center">
+				<main className="bg-background flex flex-col items-center">
 					<Providers>
 						{" "}
 						<Navbar /> {children}{" "}

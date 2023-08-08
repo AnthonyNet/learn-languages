@@ -79,3 +79,8 @@
     filter: brightness(130%);
   }
 }
+
+
+.__pulse{
+ animation: flameAnimation 3s ease-in-out infinite;
+}

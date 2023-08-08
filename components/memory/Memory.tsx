@@ -23,7 +23,7 @@ interface Data {
 const styles = {
 	section:
 		"w-full  flex flex-col items-center justify-center pt-[50px] sm:pt-[80px] .h-100-dvh",
-	section__div: "w-full lg:w-[400px] flex justify-between p-2 font-bold  ",
+	menutop__container: "w-full md:max-w-[400px] flex justify-between p-2 font-bold  ",
 	h2: "text-lg sm:text-2xl",
 	navItem: "__nav-item",
 	progress__container: "w-[300px] border-[1px] __border_color rounded-full ",
@@ -89,7 +89,7 @@ export default function Memory({lang}: Props) {
 			english && createData(english);
 		});*/
 		getData();
-		createData(english);
+
 	}, [supabase, setDataTS]);
 
 	const createData = async (dataLanguage: Data[]) => {
@@ -122,7 +122,7 @@ export default function Memory({lang}: Props) {
 	/* --------------------------------------------------- */
 
 	useEffect(() => {
-		createData(english);
+		lang === "eng" ? createData(english) : createData(german);
 	}, [start]);
 
 	/* -------------------------------------------------------- */
@@ -190,14 +190,14 @@ export default function Memory({lang}: Props) {
 
 	return (
 		<section className={styles.section}>
-			<div className={styles.section__div}>
-				<button onClick={() => createData(english)} className={styles.navItem}>
+			<div className={styles.menutop__container}>
+				<button onClick={() => {createData(english); setDataTS(english)}} className={styles.navItem}>
 					Angličtina
 				</button>
-				<button onClick={() => createData(phrasal)} className={styles.navItem}>
+				<button onClick={() => {createData(phrasal); setDataTS(phrasal)}} className={styles.navItem}>
 					Frázová slovesa
 				</button>
-				<button onClick={() => createData(german)} className={styles.navItem}>
+				<button onClick={() => {createData(german); setDataTS(german)}} className={styles.navItem}>
 					Němčina
 				</button>
 			</div>

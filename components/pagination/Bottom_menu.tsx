@@ -21,7 +21,7 @@ export default function Bottom_Menu({
 
 	return (
 		<article className="flex flex-row  w-auto  justify-center">
-			<ul className="flex flex-row  items-center justify-center border-4 __border_color">
+			<ul className="w-screen max-w-[500px] flex flex-row  items-center justify-around md:border-t-4 __border_color">
 				{/* ----------------------
          PREVIOUS PAGE BUTTON
       ---------------------------*/}

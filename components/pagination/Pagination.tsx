@@ -7,7 +7,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@/app/components/ui/table";
+} from "@/components/ui/table";
 
 import { useState, useEffect } from "react";
 

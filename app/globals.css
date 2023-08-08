@@ -199,11 +199,18 @@ RESPONSIVE SECTION
 		height: calc(100dvh - 50px);
 	}
 }
-@media (max-height: 400px) {
-	.__responsiveSection{
-		height: auto;
+@media (max-height: 430px) {
+	.__responsiveSection,
+	.__accordion{
 		min-height: calc(100dvh - 70px);
 	}
+	.__accordion,
+	.__small_screen_h-auto{
+		height: auto;
+	}
+.__nav_li, .__accordion{font-size: 15px !important;}
+.__responsiveSection div{font-size: 100%; max-width: 300px;}
+.__responsiveSection section{max-width: 300px;}
 }
 
 /* ------------------

@@ -13,7 +13,7 @@ const styles = {
 	cardBack__answersCover:
 		"w-full h-full flex flex-col justify-center md:p-4 grow",
 	cardBack__btnCover:
-		"w-full h-[70px] flex justify-center  border-t-2 __border_color __text_shadow ",
+		"w-full h-[70px] flex justify-center  xl:border-t-2 __border_color __text_shadow ",
 };
 
 interface Props {

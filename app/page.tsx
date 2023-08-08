@@ -3,9 +3,9 @@
 
 import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
-import CloudDown from "../app/components/icons/CloudDown";
-import Section2 from "./components/home/Section2";
-import './components/home/Home.css';
+import CloudDown from "@/components/icons/CloudDown";
+import Section2 from "@/components/home/Section2";
+import '@/components/home/Home.css';
 
 const styles = {
 	section: "grid grid-rows-8 w-full  h-100-dvh items-center justify-center",
@@ -42,10 +42,11 @@ export default function MainPage() {
 					<Typewriter
 						options={{
 							strings: [
-								"React",
 								"Next.js",
-								"Tailwind CSS",
 								"TypeScript",
+								"Supabase",
+								"React",
+								"Tailwind CSS",
 								"HTML5",
 								"CSS3",
 							],
