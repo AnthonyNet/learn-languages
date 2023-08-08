@@ -98,7 +98,7 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/memory/eng">
-									Dvojice ({navData.irregularEng}){" "}
+									Slovní pexeso ({navData.irregularEng}){" "}
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
@@ -145,7 +145,7 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/memory/ger">
-									Dvojice ({navData.irregularGer}){" "}
+									Slovní pexeso ({navData.irregularGer}){" "}
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>

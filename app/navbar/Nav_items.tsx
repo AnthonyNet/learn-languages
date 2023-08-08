@@ -41,7 +41,7 @@ export default function NavItems({navData} : {navData: NavData}) {
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/memory/eng">
-								Dvojice ({navData.irregularEng}){" "}
+								Slovní pexeso ({navData.irregularEng}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
@@ -76,7 +76,7 @@ export default function NavItems({navData} : {navData: NavData}) {
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/memory/ger">
-								Dvojice ({navData.irregularGer}){" "}
+								Slovní pexeso ({navData.irregularGer}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
