@@ -8,7 +8,7 @@ const styles = {
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 
 	cardBack:
-		"absolute top-0 left-0 my-rotate-y-180 backface-hidden  w-full h-full xl:font-bold __oxford_card_background",
+		"absolute top-0 left-0 my-rotate-y-180 backface-hidden  w-full h-full  __oxford_card_background",
 	cardBack__div: "h-full text-center flex flex-col  ",
 	cardBack__answersCover:
 		"w-full h-full flex flex-col justify-center md:p-4 grow",
@@ -43,13 +43,13 @@ export default function Card_Back({props}:Props){
 			<div className={styles.cardBack__div}>
 				{switchLanguage ? (
 					<div className={styles.cardBack__answersCover}>
-						<h3 className={styles.h3 + " text-2xl"}>{word}</h3>
+						<h3 className={styles.h3 + " font-bold text-[120%]"}>{word}</h3>
 						<h3 className={styles.h3}>{sentence}</h3>
 						<h3 className={styles.h3}>{cz_sentence}</h3>
 					</div>
 				) : (
 					<div className={styles.cardBack__answersCover}>
-						<h3 className={styles.h3 + " text-2xl"}>{word}</h3>
+						<h3 className={styles.h3 + " font-bold text-[120%]"}>{word}</h3>
 						<h3 className={styles.h3}>{sentence}</h3>
 						<h3 className={styles.h3}>{cz_sentence}</h3>
 					</div>

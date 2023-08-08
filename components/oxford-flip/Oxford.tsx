@@ -20,14 +20,13 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 const styles = {
 	section:
-		"relative pt-[50px] md:pt-[70px]  w-screen  flex justify-center items-center __responsiveOxfordFlip",
+		"relative pt-[50px] md:pt-[70px] md:text-[130%]  w-screen  flex justify-center items-center  __responsiveOxfordFlip",
 	card__container:
 		"w-full max-w-[600px] h-full  md:max-h-[400px] lg:border-8  border-double px-4  rounded-lg  preserve-3d group my-rotate-y-180 duration-1000 flex flex-col  __border_color",
 	card__btn__container:
 		"flex justify-around w-full h-[70px] items-center text-center md:border-t-2 __border_color",
 	h3: "py-2 md:py-4  text-center border-b  w-auto mx-auto __border_color",
-	button__cover:
-		"relative rounded  w-[90px] h-14 text-2xl font-extrabold  opacity-100 cursor-pointer __button_color  __text_color2 border-2",
+
 	button:
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 	button__animation: " hover:translate-x-[20px] ",
