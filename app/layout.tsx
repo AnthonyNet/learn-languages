@@ -2,7 +2,7 @@
 import './globals.css'
 /*import '@/components/navbar/Navbar.css'*/
 import Providers from "./Providers";
-import Navbar from "./navbar/Navbar";
+import Navbar from "@/components/navbar/Navbar";
 
 export const metadata = {
   title: 'Learn languages',

@@ -20,7 +20,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 const styles = {
 	section:
-		"relative pt-[50px] md:pt-[70px] md:text-[130%]  w-screen  flex justify-center items-center  __responsiveOxfordFlip",
+		"relative pt-[50px] md:pt-[70px] md:text-[130%]  w-screen  flex justify-center items-center  h-100-dvh",
 	card__container:
 		"w-full max-w-[600px] h-full  md:max-h-[400px] lg:border-8  border-double px-4  rounded-lg  preserve-3d group my-rotate-y-180 duration-1000 flex flex-col  __border_color",
 	card__btn__container:
@@ -37,11 +37,17 @@ const styles = {
 interface Props  {
 	id: string;
 }
+
+interface Data {
+	readonly word: string;
+	readonly sentence: string;
+	readonly cz_sentence: string;
+}
 const Card = () => {
 	const supabase = createClientComponentClient();
 	const [start, setStart] = useState<boolean>(false);
-	const [rand, setRand] = useState<any>({});
-	const [dataTS, setDataTS] = useState<any>([]);
+	const [rand, setRand] = useState<number>(0);
+	const [dataTS, setDataTS] = useState<Data[]|[]>([]);
 	const [switchSide, setSwitchSide] = useState<boolean>(true);
 	const [switchLanguage, setSwitchLanguage] = useState<boolean>(true);
 

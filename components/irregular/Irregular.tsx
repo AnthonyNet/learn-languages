@@ -16,17 +16,17 @@ const styles = {
 	section:
 		"mt-[50px] md:mt-[70px] py-4  w-screen  flex flex-col md:justify-center   items-center __responsiveSection __small_screen_h-auto",
 	section__container:
-		" mt-[20px] md:text-[150%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center   rounded-t-3xl text-center md:border-x-4 md:border-t-4 border-double __border_color",
-	score__container: "py-3 px-6 ",
+		"mt-[25px] md:text-[140%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center   rounded-t-3xl text-center lg:border-x-4 lg:border-t-4 border-double __border_color",
+	score__container: "py-2 px-6 ",
 	hint__section:
-		"h-auto w-full max-w-[300px] md:max-w-[400px] md:pb-2 flex flex-col md:border-x-4 md:border-b-4 border-double rounded-b-3xl __border_color",
+		"h-auto w-full max-w-[300px] md:max-w-[400px] md:pb-2 flex flex-col lg:border-x-4 lg:border-b-4 border-double rounded-b-3xl __border_color",
 	buttons__container:
 		"flex justify-around md:justify-center  gap-x-16 w-full  items-center text-center  __border_color ",
 	button:
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 	button__animation: " hover:translate-x-[20px] ",
 
-	h5: "text-3xl dark:bg-black font-medium p-4",
+	h5: "text-3xl dark:bg-black font-medium p-2",
 	ul: "flex flex-col justify-around text-center mb-2",
 } as const;
 
@@ -144,7 +144,7 @@ HIDE HINTS
 
 			<section className={styles.hint__section}>
 				{/* IF HINT == TRUE SHOW ANSWERS */}
-				<div className={styles.buttons__container + "h-[40px]"}>
+				<div className={styles.buttons__container + "h-[30px]"}>
 					{hint && (
 						<CardHint
 							base={dataTS[rand].base}

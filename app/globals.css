@@ -170,7 +170,8 @@ body,
 }
 
 .h-90-dvh{height: 90dvh;}
-.h-100-dvh, section{height: 100dvh;}
+.h-100-dvh{height: 100dvh;}
+
 
 .__text_color { color: var(--color-main);}
 .__text_color2 { color: var(--btn-text-color);}
@@ -204,7 +205,6 @@ RESPONSIVE SECTION
 	.__accordion{
 		min-height: calc(100dvh - 70px);
 	}
-	.__accordion,
 	.__small_screen_h-auto{
 		height: auto;
 	}

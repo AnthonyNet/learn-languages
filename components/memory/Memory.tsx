@@ -12,38 +12,36 @@ interface Item {
 	click: boolean;
 }
 
-interface Data {
-	readonly cz: string;
-	readonly base: string;
-	readonly pastSimple: string;
-	readonly pastParticiple: string;
-	readonly pastParticiple2?: string;
-}
-
 const styles = {
 	section:
-		"w-full  flex flex-col items-center justify-center pt-[50px] sm:pt-[80px] .h-100-dvh",
+		"w-full  flex flex-col items-center justify-center pt-[50px] sm:pt-[80px] h-screen",
 	menutop__container: "w-full md:max-w-[400px] flex justify-between p-2 font-bold  ",
 	h2: "text-lg sm:text-2xl",
 	navItem: "__nav-item",
 	progress__container: "w-[300px] border-[1px] __border_color rounded-full ",
 	progress: " h-2.5 rounded-full dark:bg-transparent  transition-all duration-700 ease-in-out __gradient",
 	article__cover:
-		" w-full max-h-[800px] h-full grid items-center ",
+		"m-auto w-full max-h-[700px] h-full grid items-center grow ",
 	article:
-		"w-full h-full grid grid-cols-2 sm:grid-cols-4 grid-rows-8 sm:grid-rows-3 gap-2 sm:gap-4 grid-flow-row p-4 sm:p-2 ",
+		"w-full h-full grid grid-cols-2 sm:grid-cols-4 grid-rows-8 sm:grid-rows-3 gap-2 sm:gap-4 grid-flow-row p-2 ",
 };
 
 //write simple function which return result of 1+1
 type Props = {
 	lang: string;
 }
+interface Data {
+readonly cz: string;
+readonly base: string;
+readonly past_simple: string;
+readonly past_participle: string;
+}
+
 export default function Memory({lang}: Props) {
 	const supabase = createClientComponentClient();
 	const [start, setStart] = useState<boolean>(false);
-	const [english, setEnglish] = useState<any>([]);
-	const [german, setGerman] = useState<any>([]);
-	const [phrasal, setPhrasal] = useState<any>([]);
+	const [english, setEnglish] = useState<Data[]>([]);
+	const [german, setGerman] = useState<Data[]>([]);
 	const [dataTS, setDataTS] = useState<any>([]);
 
 	const [restartCounter, setRestartCounter] = useState<number>(0);
@@ -69,7 +67,7 @@ export default function Memory({lang}: Props) {
 			if (irregular_ger && irregular_eng) {
 				setEnglish(irregular_eng);
 				setGerman(irregular_ger);
-				setPhrasal(phrasal_verbs);
+
 				setStart(true);
 				if (lang === "ger") {
 					setDataTS(irregular_ger);
@@ -194,9 +192,7 @@ export default function Memory({lang}: Props) {
 				<button onClick={() => {createData(english); setDataTS(english)}} className={styles.navItem}>
 					Angličtina
 				</button>
-				<button onClick={() => {createData(phrasal); setDataTS(phrasal)}} className={styles.navItem}>
-					Frázová slovesa
-				</button>
+
 				<button onClick={() => {createData(german); setDataTS(german)}} className={styles.navItem}>
 					Němčina
 				</button>
