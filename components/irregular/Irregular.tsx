@@ -24,7 +24,7 @@ const styles = {
 		"flex justify-around md:justify-center  gap-x-16 w-full  items-center text-center  __border_color ",
 	button:
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
-	button__animation: " hover:translate-x-[20px] ",
+	button__animation: " lg:hover:translate-x-[20px] ",
 
 	h5: "text-3xl dark:bg-black font-medium p-2",
 	ul: "flex flex-col justify-around text-center mb-2",

@@ -29,7 +29,7 @@ const styles = {
 
 	button:
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
-	button__animation: " hover:translate-x-[20px] ",
+	button__animation: " lg:hover:translate-x-[20px] ",
 	flag__icon:
 		"hover:rotate-90 transition ease-in-out duration-700 fixed  md:top-2 left-2  ring-2 rounded-full  drop-shadow-sm __background __gradient",
 };
