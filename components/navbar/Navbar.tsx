@@ -10,45 +10,30 @@ import "./Navbar.css";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
-
-const styles = {
-	nav: "flex justify-center items-center w-full  h-[50px] md:h-[70px] shadow-xl z-[400] px-4 fixed max-w-[1280px] __background",
-	nav__div: "w-full h-full flex items-center relative md:text-xl xl:text-3xl ",
-	aside:
-		"logo w-auto md:w-[35vw] lg:w-1/3 transition ease-in-out   __nav-item",
-	article: "justify-around items-start w-full h-full hidden md:flex",
-	container:
-		"relative inline-block tooltip hover:text-white transition ease-in-out duration-700 font-extrabold",
-	main__a:
-		"transition ease-in-out duration-700 px-2 py-1 font-medium transform hover:-translate-y-6 ", //ulAnimation
-	cover:
-		"flex flex-col p-4 bg-white w-60 h-auto rounded-md z-20 absolute right-0 invisible tooltip-item ",
-	ul: "list-disc space-y-2 ",
-	ul__li: "flex items-start",
-	ul__li__a:
-		"font-bold text-sm text-gray-500 hover:text-sky-600 transition duration-700 ease-in-out transform",
-} as const;
-
 interface NavData {
 	irregularEng: number;
 	irregularGer: number;
 	oxfordB2: number;
+	phrasal: number;
 }
 
 export default function Navbar() {
 	const [navData, setNavData] = useState<null|NavData>(null);
-	const [nav, setNav] = useState(false);
+	const [nav, setNav] = useState<boolean>(false);
 	const supabase = createClientComponentClient();
 
 	useEffect(() => {
 		const getData = async () => {
 			const { data: irregular_eng } = await supabase.from("irregular_eng").select();
 			const { data: irregular_ger } = await supabase.from("irregular_ger").select();
+			const { data: phrasal_verbs } = await supabase
+				.from("irregular_ger")
+				.select();
 			const { data: oxford_b2 } = await supabase
 				.from("oxford_b2")
 				.select();
-			if(irregular_eng && irregular_ger && oxford_b2){
-				setNavData({irregularEng:irregular_eng.length, irregularGer:irregular_ger.length, oxfordB2:oxford_b2.length});
+			if(irregular_eng && irregular_ger && oxford_b2 && phrasal_verbs) {
+				setNavData({irregularEng:irregular_eng.length, irregularGer:irregular_ger.length, phrasal: phrasal_verbs.length, oxfordB2:oxford_b2.length});
 			}
 		}
 		getData();
@@ -59,9 +44,9 @@ export default function Navbar() {
 	};
 
 	return (
-		<nav className={styles.nav}>
-			<div className={styles.nav__div}>
-				<aside className={styles.aside}>
+		<nav className="flex justify-center items-center w-full  h-[50px] md:h-[70px] shadow-xl z-[400] px-4 fixed max-w-[1280px] __background">
+			<div className="w-full h-full flex items-center relative md:text-xl xl:text-3xl ">
+				<aside className="logo w-auto md:w-[35vw] lg:w-1/3 transition ease-in-out   __nav-item">
 					<Link
 						href="/"
 						className="text-2xl sm:text-3xl md:text-xl xl:text-3xl logo">

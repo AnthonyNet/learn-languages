@@ -21,9 +21,10 @@ interface Mobile {
 	nav: boolean;
 	handleNav: () => void;
 	navData: null | {
-		irregularEng: number;
-		irregularGer: number;
-		oxfordB2: number;
+		readonly irregularEng: number;
+		readonly irregularGer: number;
+		readonly oxfordB2: number;
+		readonly phrasal: number;
 	};
 }
 

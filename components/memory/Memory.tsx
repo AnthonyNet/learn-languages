@@ -42,7 +42,7 @@ export default function Memory({lang}: Props) {
 	const [start, setStart] = useState<boolean>(false);
 	const [english, setEnglish] = useState<Data[]>([]);
 	const [german, setGerman] = useState<Data[]>([]);
-	const [dataTS, setDataTS] = useState<any>([]);
+	const [dataTS, setDataTS] = useState<Data[]>([]);
 
 	const [restartCounter, setRestartCounter] = useState<number>(0);
 	const [score, setScore] = useState<number>(0);
@@ -201,7 +201,8 @@ export default function Memory({lang}: Props) {
 			<div className={styles.progress__container}>
 				<div
 					className={styles.progress}
-					style={{ width: progress + "%" }}></div>
+					style={{ width: progress + "%" }}>
+				</div>
 			</div>
 			<div className={styles.article__cover}>
 				{start && (

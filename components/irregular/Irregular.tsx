@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import Irregular from "@/interface/Irregular";
 import Input from "./Card_Input";
 import CardHint from "./Card_Hint";
 
@@ -16,7 +16,7 @@ const styles = {
 	section:
 		"mt-[50px] md:mt-[70px] py-4  w-screen  flex flex-col md:justify-center   items-center __responsiveSection __small_screen_h-auto",
 	section__container:
-		"mt-[25px] md:text-[140%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center   rounded-t-3xl text-center lg:border-x-4 lg:border-t-4 border-double __border_color",
+		"mt-[25px] md:text-[140%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center   rounded-t-3xl text-center lg:border-x-4 lg:border-t-4 border-double __border_color ",
 	score__container: "py-2 px-6 ",
 	hint__section:
 		"h-auto w-full max-w-[300px] md:max-w-[400px] md:pb-2 flex flex-col lg:border-x-4 lg:border-b-4 border-double rounded-b-3xl __border_color",
@@ -34,16 +34,17 @@ type Props = {
 	lang: string;
 }
 export default function Irregular({lang}: Props) {
+	const [start, setStart] = useState<boolean>(false);
 	const [score, setScore] = useState<number>(0);
 	const [stars, setStars] = useState<number>(0);
 	const [hint, setHint] = useState<boolean>(false);
 	const [rand, setRand] = useState<number>(0);
 	const [defaultInput, setDefaultInput] = useState<boolean>(false);
 
-	const [totalScore, setTotalScore] = useState<number | any>([]);
+	const [totalScore, setTotalScore] = useState<number | any>(null);
 
 	const [dataLength, setDataLength] = useState<number>(136);
-	const [dataTS, setDataTS] = useState<any>(null);
+	const [dataTS, setDataTS] = useState<Irregular[]|[]>([]);
 	const supabase = createClientComponentClient();
 
 	useEffect(() => {
@@ -55,13 +56,16 @@ export default function Irregular({lang}: Props) {
 			if (irregular_ger && lang === "ger") {
 				setDataLength(irregular_ger.length);
 				setDataTS(irregular_ger);
+				setStart(true);
 			}
 			if (irregular_eng && lang === "eng") {
 				setDataLength(irregular_eng.length);
 				setDataTS(irregular_eng);
+				setStart(true);
+				console.log(dataTS);
+
 			}
 		};
-
 		getData();
 	}, [supabase, setDataTS]);
 
@@ -119,9 +123,9 @@ HIDE HINTS
 				<Score score={stars} />
 
 				<div className="px-6 inputs">
-					<h5 className={styles.h5}>{dataTS ? dataTS[rand].cz : "...loading"}</h5>
-					<ul className={styles.ul} id={dataTS && dataTS[rand].id}>
-						{dataTS &&
+					<h5 className={styles.h5}>{start ? dataTS[rand].cz : "...loading"}</h5>
+					<ul className={styles.ul}>
+						{start &&
 							Object.values(dataTS[rand])
 								.slice(2)
 								.map((value, index) => {
@@ -145,13 +149,13 @@ HIDE HINTS
 			<section className={styles.hint__section}>
 				{/* IF HINT == TRUE SHOW ANSWERS */}
 				<div className={styles.buttons__container + "h-[30px]"}>
-					{hint && (
+					{hint && start ? (
 						<CardHint
 							base={dataTS[rand].base}
 							pastSimple={dataTS[rand].past_simple}
 							pastParticiple={dataTS[rand].past_participle}
 						/>
-					)}
+					):null}
 				</div>
 
 				<div className={styles.buttons__container}>

@@ -204,12 +204,7 @@ RESPONSIVE SECTION
 	}
 }
 @media (max-height: 430px) {
-	.__responsiveSection,
-	.__accordion{
-		height: auto;
-		min-height: calc(100dvh - 70px);
-	}
-	.__small_screen_h-auto{
+	.__responsive_irregular{
 		height: auto;
 	}
 .__nav_li, .__accordion{font-size: 15px !important;}

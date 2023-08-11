@@ -67,7 +67,7 @@ export default function Oxford() {
 
 
 	return (
-		<section className="w-screen flex flex-col items-center justify-center pt-[50px] md:pt-[70px] h-100-dvh   __accordion">
+		<section className="w-screen flex flex-col items-center justify-center pt-[50px] md:pt-[70px] h-100-dvh  min-h-[330px] ">
 			<div className="w-full h-full md:w-auto  md:max-h-[400px] lg:border-4 border-double flex flex-col justify-center lg:justify-around rounded-3xl __border_color relative">
 				<Select onValueChange={handleSelectChange}>
 					<SelectTrigger className="fixed top-2 left-2 ml-2 lg:absolute w-[180px] border-2 __border_color">

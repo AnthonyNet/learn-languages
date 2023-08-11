@@ -1,7 +1,7 @@
 
 import { BsFillStarFill } from "react-icons/bs";
 interface Score{
-  score:number;
+ readonly score:number;
 }
 
 const Score = ({score}:Score) => {

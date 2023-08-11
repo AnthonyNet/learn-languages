@@ -110,7 +110,7 @@ Watch the value that is set up in Top_menu
 	};
 
 	return (
-		<section className="flex flex-column justify-center items-baseline flex-wrap">
+		<section className="h-100-dvh flex flex-column justify-center items-baseline flex-wrap">
 			<Top_Menu
 				myNumb={myNumb}
 				setMyNumb={setMyNumb}
@@ -119,7 +119,7 @@ Watch the value that is set up in Top_menu
 
 			<main className="w-full flex flex-col justify-between items-center">
 				<Table>
-					<TableCaption>Vyber stránku</TableCaption>
+					<TableCaption className="hidden lg:visible">Vyber stránku</TableCaption>
 					<TableHeader>
 						<TableRow className="hover:bg-indigo-800/40">
 							<TableHead className="xl:w-[100px]">Nr.</TableHead>

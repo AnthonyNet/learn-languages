@@ -1,5 +1,4 @@
 "use client";
-import { useState, useEffect } from "react";
 
 export function LeftArrow() {
 	return (
@@ -22,11 +21,7 @@ export function LeftArrow() {
 }
 
 export function RightArrow() {
-	 const [isClicked, setIsClicked] = useState(false);
 
-		const handleClick = () => {
-			setIsClicked(!isClicked);
-		};
 	return (
 		<div>
 			<svg

@@ -15,9 +15,10 @@ const styles = {
 } as const;
 
 interface NavData {
-	irregularEng: number;
-	irregularGer: number;
-	oxfordB2: number;
+	readonly irregularEng: number;
+	readonly irregularGer: number;
+	readonly oxfordB2: number;
+	readonly phrasal: number;
 }
 
 export default function NavItems({navData} : {navData: NavData}) {
@@ -45,15 +46,24 @@ export default function NavItems({navData} : {navData: NavData}) {
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
+							<Link href="/phrasal">
+								Frázový kvíz ({navData.phrasal}){" "}
+							</Link>
+						</li>
+						<li className={styles.ul__li}>
 							<Link href="/search/eng">
 								Najdi sloveso ({navData.irregularEng}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/oxford">Akordeon cvičení B2 ({navData.oxfordB2}) </Link>
+							<Link href="/oxford">
+								Akordeon cvičení B2 ({navData.oxfordB2}){" "}
+							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/oxford-flip">Karta cvičení B2 ({navData.oxfordB2}) </Link>
+							<Link href="/oxford-flip">
+								Karta cvičení B2 ({navData.oxfordB2}){" "}
+							</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/pagination">Seznam slov ({navData.oxfordB2}) </Link>

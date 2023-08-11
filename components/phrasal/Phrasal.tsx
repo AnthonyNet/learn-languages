@@ -2,12 +2,14 @@
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState, useEffect } from "react";
-import "./phrasal.css";
+interface Data  {
+	readonly [key:string]:string,
+}
 export default function Phrasal() {
 	const supabase = createClientComponentClient();
-	const [phrasalVerbs, setPhrasalVerbs] = useState<any>([]);
+	const [phrasalVerbs, setPhrasalVerbs] = useState<Data[]>([]);
 	const [verb, setVerb] = useState<any>([]);
-	const [wrongChoices, setWrongChoices] = useState<any>([]);
+	const [wrongChoices, setWrongChoices] = useState<Data[]>([]);
 	const [start, setStart] = useState<boolean>(false);
 	const [answerColor, setAnswerColor] = useState<string>("");
 	const [score, setScore] = useState<number>(0);
@@ -24,7 +26,6 @@ export default function Phrasal() {
 				data[randomNum()],
 				data[randomNum()],
 			];
-
 			return all;
 		};
 		const allAnswers = addBoolean();
@@ -54,7 +55,7 @@ export default function Phrasal() {
 		getData();
 	}, [supabase]);
 
-	const checkAnswer = (choice: any, index: number): void => {
+	const checkAnswer = (choice: Data, index: number): void => {
 
 		if (choice.id === verb.id) {
 			setScore(score + 1);
@@ -68,7 +69,6 @@ export default function Phrasal() {
 		}
 	};
 
-
 	return (
 		<section className="w-screen h-100-dvh ">
 			<div className="flex flex-col w-full max-w-[600px] min-h-[400px] m-auto h-full justify-center p-6">
@@ -77,7 +77,6 @@ export default function Phrasal() {
 				<div className="flex flex-col space-y-2">
 					{start &&
 						wrongChoices.map((choice: any, index: number) => {
-
 							return (
 								<button
 									key={index}

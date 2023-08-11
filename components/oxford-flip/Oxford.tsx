@@ -12,11 +12,6 @@ import enFlag from "@/images/eng.png";
 import Text_Card from "./Text_card";
 import Card_Back from "./Card_back";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-{
-	/*
-  This Card component is used in OXford B1, B2, C1 & Göethe
-  */
-}
 
 const styles = {
 	section:
@@ -33,10 +28,6 @@ const styles = {
 	flag__icon:
 		"hover:rotate-90 transition ease-in-out duration-700 fixed  md:top-2 left-2  ring-2 rounded-full  drop-shadow-sm __background __gradient",
 };
-
-interface Props  {
-	id: string;
-}
 
 interface Data {
 	readonly word: string;

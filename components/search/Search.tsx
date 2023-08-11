@@ -19,18 +19,18 @@ const style = {
 } as const;
 
 type Props = {
-	lang: string;
+	readonly lang: string;
 }
 
 type Data = {
-	cz: string;
-	base: string;
-	past_simple: string;
-	past_participle: string;
+	readonly cz: string;
+	readonly base: string;
+	readonly past_simple: string;
+	readonly past_participle: string;
 }
 export default function SearchIrregular({lang}: Props) {
 	const [start, setStart] = useState<boolean>(false);
-	const [dataTS, setDataTS] = useState<any>([]);
+	const [dataTS, setDataTS] = useState<Data[]>([]);
 
 	const [search, setSearch] = useState("");
 		const supabase = createClientComponentClient();

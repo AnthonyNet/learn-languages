@@ -26,7 +26,8 @@ type Mobile = {
 	navData:{
 		irregularEng:number,
 		irregularGer:number,
-		oxfordB2:number
+		oxfordB2:number,
+		phrasal:number
 	}
 };
 
@@ -99,6 +100,11 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/memory/eng">
 									Slovní pexeso ({navData.irregularEng}){" "}
+								</Link>
+							</li>
+							<li onClick={handleNav} className={styles.section.ul__li__open}>
+								<Link href="/memory/eng">
+									Frázový kvíz ({navData.phrasal}){" "}
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
