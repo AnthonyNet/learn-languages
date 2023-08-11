@@ -110,7 +110,7 @@ Watch the value that is set up in Top_menu
 	};
 
 	return (
-		<section className="h-100-dvh flex flex-column justify-center items-baseline flex-wrap">
+		<section className="min-h-screen pt-[50px] md:pt-[70px] flex flex-column justify-center items-baseline flex-wrap">
 			<Top_Menu
 				myNumb={myNumb}
 				setMyNumb={setMyNumb}

@@ -103,7 +103,7 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
-								<Link href="/memory/eng">
+								<Link href="/phrasal">
 									Frázový kvíz ({navData.phrasal}){" "}
 								</Link>
 							</li>

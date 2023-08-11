@@ -5,7 +5,7 @@ interface Props {
 }
 
 const styles = {
-	nav: " w-full h-auto mt-[70px]",
+	nav: " w-full h-auto",
 	ul: "flex flex-row justify-around sm:w-[400px] m-auto flex-wrap border-y-2 __border_color",
 	li__active: "border-b-4 border-red-600",
 };
