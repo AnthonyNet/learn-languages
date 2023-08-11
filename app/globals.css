@@ -89,6 +89,7 @@
 	--color-dark:  #4e0f8c;
 	--color-blue: #0f4c75;
 	--color-green: rgb(0, 128, 0);
+	--color-red: rgb(201, 5, 5);
 
 	--font-weight: 850;
 	--shadow: 0px;
@@ -187,7 +188,9 @@ body,
 .__memory_border_green, .__memory_border_click:focus { border-color: var(--memory-border-active) }
 .__oxford_card_background { background: var(--black); }
 strong { font-weight: var(--font-weight)}
-
+/* PHRASAL */
+.__green_focus:focus { background: var(--memory-border-active); }
+.__red_focus:focus { background: var(--color-red); }
 /* ------------------
 RESPONSIVE SECTION
 ----------------------*/
