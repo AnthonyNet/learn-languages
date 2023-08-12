@@ -191,6 +191,8 @@ strong { font-weight: var(--font-weight)}
 /* PHRASAL */
 .__green_focus:focus { background: var(--memory-border-active); }
 .__red_focus:focus { background: var(--color-red); }
+.__bg_green{background: var(--color-green);}
+.__bg_red{background: var(--color-red);}
 /* ------------------
 RESPONSIVE SECTION
 ----------------------*/

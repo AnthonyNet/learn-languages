@@ -18,9 +18,7 @@ export default function Phrasal() {
 	const [verb, setVerb] = useState<any>([]);
 	const [wrongChoices, setWrongChoices] = useState<Data[]>([]);
 	const [start, setStart] = useState<boolean>(false);
-	const [answerColor, setAnswerColor] = useState<{ [key: number]: string }>(
-		backgroundColor
-	);
+	const [answerColor, setAnswerColor] = useState<{ [key: number]: string }>(backgroundColor);
 	const [score, setScore] = useState<number>(0);
 
 	const createData = (data: any): void => {
@@ -67,7 +65,7 @@ export default function Phrasal() {
 	const checkAnswer = (choice: Data, index: number): void => {
 		if (choice.id === verb.id) {
 			setScore(score + 1);
-			setAnswerColor((prev) => ({ ...prev, [index]: "__bg_green" }));
+			setAnswerColor((prev)=>({...prev, [index]: "__bg_green"}));
 			setTimeout(() => {
 				setAnswerColor(backgroundColor);
 				createData(phrasalVerbs);
