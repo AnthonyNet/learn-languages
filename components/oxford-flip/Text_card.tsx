@@ -10,6 +10,7 @@ interface Props {
 	switchLanguage: boolean;
 	word: string;
 	sentence: string;
+	cz_word: string;
 	cz_sentence: string;
 }
 const Text_Card = ({ switchLanguage, word, sentence, cz_sentence }: Props) => {

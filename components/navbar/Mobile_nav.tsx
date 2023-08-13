@@ -23,8 +23,9 @@ interface Mobile {
 	navData: null | {
 		readonly irregularEng: number;
 		readonly irregularGer: number;
-		readonly oxfordB2: number;
+		readonly oxfordC1: number;
 		readonly phrasal: number;
+		readonly ger_verbs: number;
 	};
 }
 

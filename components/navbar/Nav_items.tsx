@@ -17,8 +17,9 @@ const styles = {
 interface NavData {
 	readonly irregularEng: number;
 	readonly irregularGer: number;
-	readonly oxfordB2: number;
+	readonly oxfordC1: number;
 	readonly phrasal: number;
+	readonly ger_verbs: number;
 }
 
 export default function NavItems({navData} : {navData: NavData}) {
@@ -46,9 +47,7 @@ export default function NavItems({navData} : {navData: NavData}) {
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/phrasal">
-								Frázový kvíz ({navData.phrasal}){" "}
-							</Link>
+							<Link href="/quiz">Frázový kvíz ({navData.phrasal}) </Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/search/eng">
@@ -56,17 +55,17 @@ export default function NavItems({navData} : {navData: NavData}) {
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/oxford">
-								Akordeon cvičení B2 ({navData.oxfordB2}){" "}
+							<Link href="/oxford-flip/eng">
+								Slovní zásoba C1 ({navData.oxfordC1}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/oxford-flip">
-								Karta cvičení B2 ({navData.oxfordB2}){" "}
+							<Link href="/oxford/eng">
+								Překládej věty C1 ({navData.oxfordC1}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/pagination">Seznam slov ({navData.oxfordB2}) </Link>
+							<Link href="/pagination">Seznam slov ({navData.oxfordC1}) </Link>
 						</li>
 					</ul>
 				</div>
@@ -87,6 +86,16 @@ export default function NavItems({navData} : {navData: NavData}) {
 						<li className={styles.ul__li}>
 							<Link href="/memory/ger">
 								Slovní pexeso ({navData.irregularGer}){" "}
+							</Link>
+						</li>
+						<li className={styles.ul__li}>
+							<Link href="/oxford-flip/ger">
+								Slovní zásoba B2 ({navData.irregularGer}){" "}
+							</Link>
+						</li>
+						<li className={styles.ul__li}>
+							<Link href="/oxford/ger">
+								Překládej věty B2 ({navData.irregularGer}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>

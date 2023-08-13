@@ -101,7 +101,7 @@ module.exports = {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
 				"spin-slow": "spin 13s linear infinite",
-				"ping-slow": "bounce 1s linear infinite",
+				"ping-slow": "bounce 2s linear infinite",
 				"ping-slower": "bounce 3s linear infinite",
 			},
 		},

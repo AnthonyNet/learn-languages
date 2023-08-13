@@ -13,8 +13,9 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 interface NavData {
 	irregularEng: number;
 	irregularGer: number;
-	oxfordB2: number;
+	oxfordC1: number;
 	phrasal: number;
+	ger_verbs: number;
 }
 
 export default function Navbar() {
@@ -26,14 +27,11 @@ export default function Navbar() {
 		const getData = async () => {
 			const { data: irregular_eng } = await supabase.from("irregular_eng").select();
 			const { data: irregular_ger } = await supabase.from("irregular_ger").select();
-			const { data: phrasal_verbs } = await supabase
-				.from("irregular_ger")
-				.select();
-			const { data: oxford_b2 } = await supabase
-				.from("oxford_b2")
-				.select();
-			if(irregular_eng && irregular_ger && oxford_b2 && phrasal_verbs) {
-				setNavData({irregularEng:irregular_eng.length, irregularGer:irregular_ger.length, phrasal: phrasal_verbs.length, oxfordB2:oxford_b2.length});
+			const { data: phrasal_verbs } = await supabase.from("phrasal_verbs").select();
+			const { data: ger_verbs } = await supabase.from("ger_verbs").select();
+			const { data: oxford_c1 } = await supabase.from("oxford_c1").select();
+			if(irregular_eng && irregular_ger && oxford_c1 && phrasal_verbs && ger_verbs) {
+				setNavData({irregularEng:irregular_eng.length, irregularGer:irregular_ger.length, phrasal: phrasal_verbs.length, ger_verbs:ger_verbs.length, oxfordC1:oxford_c1.length});
 			}
 		}
 		getData();

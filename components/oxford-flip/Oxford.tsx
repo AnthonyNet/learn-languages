@@ -17,11 +17,10 @@ const styles = {
 	section:
 		"relative pt-[50px] md:pt-[70px] md:text-[130%]  w-screen  flex justify-center items-center  h-100-dvh",
 	card__container:
-		"w-full max-w-[600px] h-full  md:max-h-[400px] lg:border-8  border-double px-4  rounded-lg  preserve-3d group my-rotate-y-180 duration-1000 flex flex-col  __border_color",
+		"w-full max-w-[600px] h-full  md:max-h-[400px] lg:border-4  border-double px-4  rounded-lg  preserve-3d group my-rotate-y-180 duration-1000 flex flex-col  __border_color",
 	card__btn__container:
 		"flex justify-around w-full h-[70px] items-center text-center md:border-t-2 __border_color",
 	h3: "py-2 md:py-4  text-center border-b  w-auto mx-auto __border_color",
-
 	button:
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 	button__animation: " lg:hover:translate-x-[20px] ",
@@ -32,12 +31,13 @@ const styles = {
 interface Data {
 	readonly word: string;
 	readonly sentence: string;
+	readonly cz_word: string;
 	readonly cz_sentence: string;
 }
-const Card = () => {
+export default function Oxford ({lang}: {lang: string}) {
 	const supabase = createClientComponentClient();
 	const [start, setStart] = useState<boolean>(false);
-	const [rand, setRand] = useState<number>(0);
+	const [rand, setRand] = useState<number>(Math.floor(Math.random() * 50));
 	const [dataTS, setDataTS] = useState<Data[]|[]>([]);
 	const [switchSide, setSwitchSide] = useState<boolean>(true);
 	const [switchLanguage, setSwitchLanguage] = useState<boolean>(true);
@@ -48,9 +48,10 @@ async function createRandoms(): Promise<void> {
 }
 const getData = async (): Promise<void> => {
 	try {
-		const { data: oxford_b2 } = await supabase.from("oxford_b2").select();
-		if (oxford_b2) {
-			setDataTS(oxford_b2);
+		const { data: oxford_c1 } = await supabase.from("oxford_c1").select();
+		const { data: ger_verbs } = await supabase.from("ger_verbs").select();
+		if (oxford_c1&&ger_verbs) {
+			setDataTS(lang==="eng"?oxford_c1:ger_verbs);
 			createRandoms();
 			setStart(true);
 		}
@@ -93,6 +94,7 @@ useEffect(() => {
 						switchLanguage={switchLanguage}
 						word={dataTS[rand].word}
 						sentence={dataTS[rand].sentence}
+						cz_word={dataTS[rand].cz_word}
 						cz_sentence={dataTS[rand].cz_sentence}
 					/>
 				)}
@@ -121,6 +123,7 @@ useEffect(() => {
 							switchLanguage,
 							word: dataTS[rand].word,
 							sentence: dataTS[rand].sentence,
+							cz_word: dataTS[rand].cz_word,
 							cz_sentence: dataTS[rand].cz_sentence,
 							stylesProp: styles.button + " " + styles.button__animation,
 						}}
@@ -130,5 +133,3 @@ useEffect(() => {
 		</motion.section>
 	);
 };
-
-export default Card;

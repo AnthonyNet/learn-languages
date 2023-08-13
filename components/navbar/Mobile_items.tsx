@@ -13,8 +13,11 @@ const styles = {
 		div: "flex flex-row",
 		div__div: "mottoCover border-b border-gray-300 my-4 text-sm sm:text-lg",
 		icon: "transition duration-700 ease-in-out mr-2",
-		icon__open: "rotate-90 transition duration-700 ease-in-out mr-2",
-		h3: "text-xl mb-2 cursor-pointer",
+		icon__open:
+			"rotate-90 transition duration-700 ease-in-out mr-2",
+		h3: "text-xl mb-2 cursor-pointer transition-all duration-700 ease-in-out",
+		h3__open:
+			"text-xl mb-2 cursor-pointer  border-b-2 transition-all duration-700 ease-in-out font-bold __border_color",
 		ul__open:
 			"cursor-pointer transition  duration-100 ease-in-out font-bold ulAnimation",
 		ul__li__open: "transition ease-in-out duration-700 ml-[30px]",
@@ -24,10 +27,11 @@ const styles = {
 type Mobile = {
 	handleNav: () => void;
 	navData:{
-		irregularEng:number,
-		irregularGer:number,
-		oxfordB2:number,
-		phrasal:number
+		readonly irregularEng:number,
+		readonly irregularGer:number,
+		readonly oxfordC1:number,
+		readonly phrasal:number,
+		readonly ger_verbs:number
 	}
 };
 
@@ -85,7 +89,9 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 						}>
 						➤
 					</span>
-					<h3 onClick={handleEnglish} className={styles.section.h3}>
+					<h3
+						onClick={handleEnglish}
+						className={!english ? styles.section.h3 : styles.section.h3__open}>
 						Angličtina
 					</h3>
 				</div>
@@ -103,9 +109,7 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
-								<Link href="/phrasal">
-									Frázový kvíz ({navData.phrasal}){" "}
-								</Link>
+								<Link href="/quiz">Frázový kvíz ({navData.phrasal}) </Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/search/eng">
@@ -113,18 +117,18 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
-								<Link href="/oxford">
-									Akordeon cvičení B2 ({navData.oxfordB2}){" "}
+								<Link href="/oxford-flip/eng">
+									Slovní zásoba C1 ({navData.oxfordC1}){" "}
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
-								<Link href="/oxford-flip">
-									Karta cvičení B2 ({navData.oxfordB2}){" "}
+								<Link href="/oxford/eng">
+									Překládej věty C1 ({navData.oxfordC1}){" "}
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/pagination">
-									Seznam slov ({navData.oxfordB2}){" "}
+									Seznam slov ({navData.oxfordC1}){" "}
 								</Link>
 							</li>
 						</>
@@ -137,7 +141,9 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 						}>
 						➤
 					</span>
-					<h3 onClick={handleGerman} className={styles.section.h3}>
+					<h3
+						onClick={handleGerman}
+						className={!german ? styles.section.h3 : styles.section.h3__open}>
 						Němčina
 					</h3>
 				</div>
@@ -152,6 +158,16 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 							<li onClick={handleNav} className={styles.section.ul__li__open}>
 								<Link href="/memory/ger">
 									Slovní pexeso ({navData.irregularGer}){" "}
+								</Link>
+							</li>
+							<li onClick={handleNav} className={styles.section.ul__li__open}>
+								<Link href="/oxford-flip/ger">
+									Slovní zásoba B2 ({navData.oxfordC1}){" "}
+								</Link>
+							</li>
+							<li onClick={handleNav} className={styles.section.ul__li__open}>
+								<Link href="/oxford/ger">
+									Překládej věty B2 ({navData.oxfordC1}){" "}
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.section.ul__li__open}>

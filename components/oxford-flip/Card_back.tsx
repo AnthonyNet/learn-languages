@@ -3,7 +3,7 @@ import Button from "../button/Button";
 import { RxArrowRight } from "react-icons/rx";
 
 const styles = {
-	h3: "py-2 md:py-4  text-center  w-auto mx-auto __border_color",
+	h3: "py-1  text-center  w-auto mx-auto __border_color",
 	button:
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 
@@ -23,6 +23,7 @@ interface Props {
 		switchLanguage: boolean;
 		sentenceExample?: string;
 		word: string;
+		cz_word: string;
 		sentence: string;
 		cz_sentence: string;
 		stylesProp: string;
@@ -36,6 +37,7 @@ export default function Card_Back({props}:Props){
 		switchLanguage,
 		word,
 		sentence,
+		cz_word,
 		cz_sentence,
 	} = props;
 	return (
@@ -45,12 +47,14 @@ export default function Card_Back({props}:Props){
 					<div className={styles.cardBack__answersCover}>
 						<h3 className={styles.h3 + " font-bold text-[120%]"}>{word}</h3>
 						<h3 className={styles.h3}>{sentence}</h3>
+						<h3 className={styles.h3 + " font-bold text-[120%]"}>{cz_word}</h3>
 						<h3 className={styles.h3}>{cz_sentence}</h3>
 					</div>
 				) : (
 					<div className={styles.cardBack__answersCover}>
 						<h3 className={styles.h3 + " font-bold text-[120%]"}>{word}</h3>
 						<h3 className={styles.h3}>{sentence}</h3>
+						<h3 className={styles.h3 + " font-bold text-[120%]"}>{cz_word}</h3>
 						<h3 className={styles.h3}>{cz_sentence}</h3>
 					</div>
 				)}

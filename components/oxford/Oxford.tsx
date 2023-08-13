@@ -23,7 +23,7 @@ const styles = {
 	button__animation: " lg:hover:translate-x-[20px] ",
 };
 
-export default function Oxford() {
+export default function Oxford({ lang }: { lang: string }) {
 	const supabase = createClientComponentClient();
 	const [start, setStart] = useState<boolean>(false);
 	const [dataTS, setDataTS] = useState<[]|DataTS[]>([]);
@@ -45,12 +45,14 @@ export default function Oxford() {
 }
 	const getData = async (): Promise<void> => {
 		try {
-			const { data: oxford_b2} = await supabase
-				.from("oxford_b2")
+			const { data: oxford_c1} = await supabase
+				.from("oxford_c1")
 				.select();
-			if (oxford_b2) {
-				setDataTS(oxford_b2);
-				createRandoms(oxford_b2);
+				const { data: ger_verbs } = await supabase.from("ger_verbs").select();
+			if (oxford_c1&&ger_verbs) {
+				const data = lang === "eng" ? oxford_c1 : ger_verbs;
+				setDataTS(data);
+				createRandoms(data);
 				setStart(true);
 			}
 		} catch (error) {

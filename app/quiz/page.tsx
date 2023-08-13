@@ -1,4 +1,4 @@
-import Phrasal from "@/components/phrasal/Phrasal";
+import Phrasal from "@/components/quiz/Quiz";
 
 export default function Page() {
 	return <Phrasal />;
