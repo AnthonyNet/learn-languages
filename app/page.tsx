@@ -6,17 +6,20 @@ import CloudDown from "@/components/icons/CloudDown";
 import Section2 from "@/components/home/Section2";
 import "@/components/home/Home.css";
 import SnowAnimation from "./SnowAnimation";
+import Image from "next/image";
+import Earth from "@/images/planet-earth.png";
 
 const styles = {
 	section:
 		"relative grid grid-rows-8 w-full h-100-dvh items-center justify-center ",
 	h1__cover:
-		"absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 py-8 border-2 cursor-pointer __gradient __text_shadow rounded-tl-3xl rounded-br-3xl -skew-x-12 pr-2 __logo_main",
+		"absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 py-8 border-4 border-double cursor-pointer __gradient  rounded-tl-3xl rounded-tr-md rounded-bl-md rounded-br-3xl -skew-x-12 pr-2 __logo_main opacity-50 __border_color",
 	h1: "text-[35px] md:text-[60px] xl:text-[120px] flex w-full h-full flex items-center justify-center", // Center text
 	bottom__container:
 		"absolute bottom-10 w-full flex flex-col justify-center items-center text-base text-center md:text-2xl p-8", // Added padding
 	h2: "text-sm md:text-2xl",
-	icon__cover: "absolute -bottom-2 w-14 h-14 md:w-20 md:h-20  flex justify-center items-end animate-ping-slow", // Added padding
+	icon__cover:
+		"absolute -bottom-2 w-14 h-14 md:w-20 md:h-20  flex justify-center items-end animate-ping-slow", // Added padding
 } as const;
 
 export default function MainPage() {
@@ -35,6 +38,20 @@ export default function MainPage() {
 					className={styles.h1__cover}>
 					<h1 className={styles.h1}>
 						Learn <strong className="pl-2">languages</strong>
+						<span className="w-[600px] md:w-[1200px] lg:w-[1600px] z-[-1] absolute top-1/2 left-1/2 __logo-icon-container">
+							<span className="logo-icon opacity-30">
+								<Image
+									src={Earth}
+									alt="Picture of the earth"
+									sizes="70vw"
+									loading="lazy"
+									style={{
+										width: "30%",
+										height: "auto",
+									}}
+								/>
+							</span>
+						</span>
 					</h1>
 				</motion.div>
 			</section>

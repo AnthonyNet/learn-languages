@@ -99,7 +99,7 @@
 	--hover-nav-items: rgb(255, 255, 255);
 	--memory-border-active: var(--color-green);
 
-	--gradient: linear-gradient(132deg, var(--white) 0%, var(--color-main) 100%);
+	--gradient: linear-gradient(132deg, var(--black) 0%, var(--color-main) 100%);
 
 	--btn-background: var(--color-main);
 	--btn-text-color: var(--black);
@@ -272,4 +272,22 @@ nav {
 
 .ulAnimation li:nth-child(8) {
 	transition-delay: 1.6s;
+}
+/* ------------------
+Logo
+--------------------- */
+
+.__logo-icon-container {
+  animation: orbit 26s linear infinite;
+  transform-origin: 80% 50%;
+}
+
+
+@keyframes orbit {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
