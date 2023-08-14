@@ -7,7 +7,7 @@ const styles = {
 	container: "relative inline-block tooltip text-xl xl:text-3xl",
 	main__a: "px-2 py-1 font-medium   __nav-item", //ulAnimation
 	cover:
-		"flex flex-col p-4 w-60 md:w-[320px] h-auto rounded-md z-20 absolute right-0 invisible tooltip-item border-2 tooltip-item __nav_cover",
+		"flex flex-col p-4 w-60 md:w-[320px] lg:w-[350px] h-auto md:h-auto rounded-md z-20 absolute right-0 invisible tooltip-item border-2 tooltip-item __nav_cover",
 	ul: "list-disc space-y-2 style-",
 
 	ul__li:
