@@ -38,17 +38,14 @@ export default function MainPage() {
 					className={styles.h1__cover}>
 					<h1 className={styles.h1}>
 						Learn <strong className="pl-2">languages</strong>
-						<span className="w-[600px] md:w-[1200px] lg:w-[1600px] z-[-1] absolute top-1/2 left-1/2 __logo-icon-container">
+						<span className="w-[750px] md:w-[1100px] xl:w-[1250px] 2xl:w-[1500px] z-[-1] absolute top-1/2 left-1/2 __logo-icon-container animate-orbit xl:animate-orbit-slower  transform origin-[80%] [50%]">
 							<span className="logo-icon opacity-30">
 								<Image
 									src={Earth}
 									alt="Picture of the earth"
 									sizes="70vw"
 									loading="lazy"
-									style={{
-										width: "30%",
-										height: "auto",
-									}}
+									className="w-[70vw] md:w-[40vw] xl:w-[30vw] 2xl:w-[15vw]"
 								/>
 							</span>
 						</span>

@@ -276,12 +276,12 @@ nav {
 /* ------------------
 Logo
 --------------------- */
-
+/*
 .__logo-icon-container {
-  animation: orbit 26s linear infinite;
+  animation: orbit 46s linear infinite;
   transform-origin: 80% 50%;
 }
-
+*/
 
 @keyframes orbit {
   0% {
