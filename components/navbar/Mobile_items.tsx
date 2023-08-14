@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import DarkModeBtn from "./Select";
+import Select from "./Select";
 import { useState } from "react";
 import { NavData } from "@/interface/navdata";
 const styles = {
@@ -67,11 +67,9 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 	return (
 		<section className={styles.section}>
 			<div className={styles.main__div}>
-				<Link className={styles.main__link} href="/" onClick={handleNav}>
-					Home
-				</Link>
+
 				<span className={styles.main__div__span}>
-					<DarkModeBtn />
+					<Select />
 				</span>
 			</div>
 

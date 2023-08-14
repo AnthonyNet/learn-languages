@@ -33,14 +33,14 @@ export default function Section2() {
 				}}>
 				<div className={styles.div_left}>
 					<h2 className="text-4xl font-bold">Vítej na Learn Languages</h2>
-					<p className="text-xl">Objevte moc slovní zásoby</p>
+					<p className="text-xl">Objev moc slovní zásoby</p>
 					<p className="text-xl">
-						Rychle a snadno se naučte nová slovíčka
+						Rychle a snadno se nauč nová slovíčka
 						prostřednictvím jednoduché a interaktivní platformy
 					</p>
 					<p className="mt-4">
-						Čekají na vás lekce, poutavá cvičení a spousta dalšího materiálu.
-						Začněte svou jazykovou cestu ještě dnes bez registrace a zcela ZDARMA!
+						Čekají na tebe lekce, poutavá cvičení a spousta dalšího materiálu.
+						Začni svou jazykovou cestu ještě dnes bez registrace a zcela ZDARMA!
 					</p>
 				</div>
 			</motion.div>

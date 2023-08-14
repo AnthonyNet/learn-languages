@@ -18,9 +18,6 @@ export default function NavItems({navData} : {navData: NavData}) {
 
 	return (
 		<article className={styles.article}>
-			<Link href="/" className={styles.homeBtn}>
-				Domů
-			</Link>
 
 			<div className={styles.container}>
 				<a href="#" className={styles.main__a}>

@@ -39,7 +39,7 @@ export default function Select() {
 			<option value="violet">Fialový</option>
 			<option value="pink">Růžový</option>
 			<option value="yellow">Žlutý</option>
-			<option value="light">Světlý</option>
+
 		</select>
 	);
 }

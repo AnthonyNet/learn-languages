@@ -100,6 +100,7 @@
 	--memory-border-active: var(--color-green);
 
 	--gradient: linear-gradient(132deg, var(--black) 0%, var(--color-main) 100%);
+	--gradient2: linear-gradient(132deg, var(--black), var(--color-main), var(--black));
 
 	--btn-background: var(--color-main);
 	--btn-text-color: var(--black);
@@ -193,6 +194,9 @@ strong { font-weight: var(--font-weight)}
 .__red_focus:focus { background: var(--color-red); }
 .__bg_green{background: var(--color-green);}
 .__bg_red{background: var(--color-red);}
+.__h1{background: -webkit-linear-gradient( var(--color-main), var(--white), var(--color-main));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;}
 /* ------------------
 RESPONSIVE SECTION
 ----------------------*/
@@ -286,6 +290,7 @@ Logo
 @keyframes orbit {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
+
   }
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
