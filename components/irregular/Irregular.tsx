@@ -13,27 +13,39 @@ import { TbZoomQuestion } from "react-icons/tb";
 import { RxArrowRight } from "react-icons/rx";
 
 const styles = {
-	section:
-		"mt-[50px] md:mt-[70px] py-4  w-screen  flex flex-col md:justify-center   items-center __responsiveSection __small_screen_h-auto",
-	section__container:
-		"mt-[25px] md:text-[140%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center   rounded-t-3xl text-center lg:border-x-4 lg:border-t-4 border-double __border_color ",
-	score__container: "py-2 px-6 ",
-	hint__section:
-		"h-auto w-full max-w-[300px] md:max-w-[400px] md:pb-2 flex flex-col lg:border-x-4 lg:border-b-4 border-double rounded-b-3xl __border_color",
-	buttons__container:
-		"flex justify-around md:justify-center  gap-x-16 w-full  items-center text-center  __border_color ",
-	button:
-		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
-	button__animation: " lg:hover:translate-x-[20px] ",
-
-	h5: "text-3xl dark:bg-black font-medium p-2",
-	ul: "flex flex-col justify-around text-center mb-2",
+	section: `
+ mt-[50px] md:mt-[70px] py-4 w-screen flex flex-col md:justify-center items-center __responsiveSection __small_screen_h-auto
+  `,
+	section__container: `
+    mt-[25px] md:text-[140%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center rounded-t-3xl text-center lg:border-x-4 lg:border-t-4 border-double __border_color
+  `,
+	score__container: `
+    py-2 px-6
+  `,
+	hint__section: `
+    h-auto w-full max-w-[300px] md:max-w-[400px] md:pb-2 flex flex-col lg:border-x-4 lg:border-b-4 border-double rounded-b-3xl __border_color
+  `,
+	buttons__container: `
+    flex justify-around md:justify-center gap-x-16 w-full items-center text-center __border_color
+  `,
+	button: `
+    flex items-center justify-center h-full w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000
+  `,
+	button__animation: `
+    lg:hover:translate-x-[20px]
+  `,
+	h5: `
+    text-3xl dark:bg-black font-medium p-2
+  `,
+	ul: `
+    flex flex-col justify-around text-center mb-2
+  `,
 } as const;
 
 type Props = {
 	lang: string;
-}
-export default function Irregular({lang}: Props) {
+};
+export default function Irregular({ lang }: Props) {
 	const [start, setStart] = useState<boolean>(false);
 	const [score, setScore] = useState<number>(0);
 	const [stars, setStars] = useState<number>(0);
@@ -44,14 +56,17 @@ export default function Irregular({lang}: Props) {
 	const [totalScore, setTotalScore] = useState<number | any>(null);
 
 	const [dataLength, setDataLength] = useState<number>(136);
-	const [dataTS, setDataTS] = useState<Irregular[]|[]>([]);
+	const [dataTS, setDataTS] = useState<Irregular[] | []>([]);
 	const supabase = createClientComponentClient();
 
 	useEffect(() => {
 		const getData = async () => {
-			const { data: irregular_ger } = await supabase.from("irregular_ger").select();
-			const { data: irregular_eng } = await supabase.from("irregular_eng").select();
-
+			const { data: irregular_ger } = await supabase
+				.from("irregular_ger")
+				.select();
+			const { data: irregular_eng } = await supabase
+				.from("irregular_eng")
+				.select();
 
 			if (irregular_ger && lang === "ger") {
 				setDataLength(irregular_ger.length);
@@ -62,8 +77,6 @@ export default function Irregular({lang}: Props) {
 				setDataLength(irregular_eng.length);
 				setDataTS(irregular_eng);
 				setStart(true);
-				console.log(dataTS);
-
 			}
 		};
 		getData();
@@ -112,7 +125,7 @@ HIDE HINTS
 
 	return (
 		<section className={styles.section}>
-			<div className={styles.section__container}>
+			<main className={styles.section__container}>
 				<div className={styles.score__container}>
 					Celkové skóre: <span>{totalScore}</span>
 				</div>
@@ -123,15 +136,18 @@ HIDE HINTS
 				<Score score={stars} />
 
 				<div className="px-6 inputs">
-					<h5 className={styles.h5}>{start ? dataTS[rand].cz : "...loading"}</h5>
+					<h5 className={styles.h5}>
+						{start ? dataTS[rand]?.cz || "...loading" : ""}
+					</h5>
 					<ul className={styles.ul}>
 						{start &&
-							Object.values(dataTS[rand])
+							Object.values(dataTS[rand] || {})
 								.slice(2)
 								.map((value, index) => {
 									const array = ["Infinitiv", "Minulý čas", "Příčestí minulé"];
 									return (
 										<Input
+											key={index}
 											word={value}
 											setTotalScore={setTotalScore}
 											setScore={setScore}
@@ -144,34 +160,31 @@ HIDE HINTS
 								})}
 					</ul>
 				</div>
-			</div>
+			</main>
 
-			<section className={styles.hint__section}>
-				{/* IF HINT == TRUE SHOW ANSWERS */}
-				<div className={styles.buttons__container + "h-[30px]"}>
+			<footer className={styles.hint__section}>
+				<div className={styles.buttons__container + " h-[30px]"}>
 					{hint && start ? (
 						<CardHint
-							base={dataTS[rand].base}
-							pastSimple={dataTS[rand].past_simple}
-							pastParticiple={dataTS[rand].past_participle}
+							base={dataTS[rand]?.base}
+							pastSimple={dataTS[rand]?.past_simple}
+							pastParticiple={dataTS[rand]?.past_participle}
 						/>
-					):null}
+					) : null}
 				</div>
 
 				<div className={styles.buttons__container}>
-					{/* TOGGLE HINT !HINT */}
-
 					<Button onClick={() => setHint(!hint)}>
 						<TbZoomQuestion className={styles.button} />
 					</Button>
 
-					<Button onClick={() => randomWord()}>
+					<Button onClick={randomWord}>
 						<RxArrowRight
-							className={styles.button + " " + styles.button__animation}
+							className={`${styles.button} ${styles.button__animation}`}
 						/>
 					</Button>
 				</div>
-			</section>
+			</footer>
 		</section>
 	);
 }

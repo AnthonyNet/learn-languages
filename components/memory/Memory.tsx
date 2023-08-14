@@ -14,14 +14,14 @@ interface Item {
 
 const styles = {
 	section:
-		"w-full  flex flex-col items-center justify-center pt-[50px] sm:pt-[80px] h-screen",
-	menutop__container: "w-full md:max-w-[400px] flex justify-between p-2 font-bold  ",
+		"w-screen  flex flex-col items-center justify-center pt-[50px] sm:pt-[80px] h-screen",
+	menutop__container: "w-full max-w-[400px] flex justify-between p-2 font-bold  ",
 	h2: "text-lg sm:text-2xl",
 	navItem: "__nav-item",
 	progress__container: "w-[300px] border-[1px] __border_color rounded-full ",
 	progress: " h-2.5 rounded-full dark:bg-transparent  transition-all duration-700 ease-in-out __gradient",
 	article__cover:
-		"m-auto w-full max-h-[700px] h-full grid items-center grow ",
+		"m-auto w-full max-w-[1000px] max-h-[700px] h-full grid items-center grow ",
 	article:
 		"w-full h-full grid grid-cols-2 sm:grid-cols-4 grid-rows-8 sm:grid-rows-3 gap-2 sm:gap-4 grid-flow-row p-2 ",
 };
@@ -188,7 +188,7 @@ export default function Memory({lang}: Props) {
 
 	return (
 		<section className={styles.section}>
-			<div className={styles.menutop__container}>
+			<header className={styles.menutop__container}>
 				<button onClick={() => {createData(english); setDataTS(english)}} className={styles.navItem}>
 					Angličtina
 				</button>
@@ -196,7 +196,7 @@ export default function Memory({lang}: Props) {
 				<button onClick={() => {createData(german); setDataTS(german)}} className={styles.navItem}>
 					Němčina
 				</button>
-			</div>
+			</header>
 			<h2 className={styles.h2}>Skóre: {score}</h2>
 			<div className={styles.progress__container}>
 				<div

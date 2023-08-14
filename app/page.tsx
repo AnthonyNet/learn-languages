@@ -11,7 +11,7 @@ const styles = {
 	section:
 		"relative grid grid-rows-8 w-full h-100-dvh items-center justify-center ",
 	h1__cover:
-		"absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 py-8 cursor-pointer __gradient __text_shadow rounded-tl-3xl rounded-br-3xl -skew-x-12 pr-2",
+		"absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 py-8 border-2 cursor-pointer __gradient __text_shadow rounded-tl-3xl rounded-br-3xl -skew-x-12 pr-2 __logo_main",
 	h1: "text-[35px] md:text-[60px] xl:text-[120px] flex w-full h-full flex items-center justify-center", // Center text
 	bottom__container:
 		"absolute bottom-10 w-full flex flex-col justify-center items-center text-base text-center md:text-2xl p-8", // Added padding

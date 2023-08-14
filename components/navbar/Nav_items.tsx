@@ -1,6 +1,6 @@
 
 import Link from "next/link";
-
+import { NavData } from "@/interface/navdata";
 const styles = {
 	article: "justify-around items-center w-[90%] h-full hidden md:flex",
 	homeBtn: "font-bold hover:text-indigo-800 __nav-item",
@@ -13,14 +13,6 @@ const styles = {
 	ul__li:
 		"flex items-start text-sm md:text-xl font-extrabold  transition duration-700 ease-in-out transform __nav_li",
 } as const;
-
-interface NavData {
-	readonly irregularEng: number;
-	readonly irregularGer: number;
-	readonly oxfordC1: number;
-	readonly phrasal: number;
-	readonly ger_verbs: number;
-}
 
 export default function NavItems({navData} : {navData: NavData}) {
 
@@ -65,7 +57,9 @@ export default function NavItems({navData} : {navData: NavData}) {
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/pagination">Seznam slov ({navData.oxfordC1}) </Link>
+							<Link href="/pagination">
+								Seznam slov B2({navData.oxfordB2}){" "}
+							</Link>
 						</li>
 					</ul>
 				</div>
@@ -89,18 +83,16 @@ export default function NavItems({navData} : {navData: NavData}) {
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/quiz/ger">
-								Slovesa kvíz ({navData.irregularGer}){" "}
-							</Link>
+							<Link href="/quiz/ger">Slovesa kvíz ({navData.ger_verbs}) </Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/oxford-flip/ger">
-								Slovní zásoba B2 ({navData.irregularGer}){" "}
+								Slovní zásoba B2 ({navData.ger_verbs}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/oxford/ger">
-								Překládej věty B2 ({navData.irregularGer}){" "}
+								Překládej věty B2 ({navData.ger_verbs}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>

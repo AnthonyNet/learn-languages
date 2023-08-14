@@ -206,7 +206,8 @@ RESPONSIVE SECTION
 	}
 }
 @media (max-height: 430px) {
-	.__responsive_irregular{
+	.__logo_main{padding: 5px 0px; margin-top: -10px;}
+	.__small_screen_h-auto{
 		height: auto;
 	}
 .__nav_li, .__accordion{font-size: 15px !important;}
