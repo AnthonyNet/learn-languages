@@ -12,7 +12,7 @@ const backgroundColor = {
 	2: "__gradient",
 	3: "__gradient",
 };
-export default function Phrasal() {
+export default function Quiz({ lang }: { lang: string }) {
 	const supabase = createClientComponentClient();
 	const [phrasalVerbs, setPhrasalVerbs] = useState<Data[]>([]);
 	const [verb, setVerb] = useState<any>([]);
@@ -47,11 +47,14 @@ export default function Phrasal() {
 			const { data: phrasal_verbs } = await supabase
 				.from("phrasal_verbs")
 				.select();
+				const { data: ger_verbs } = await supabase
+					.from("ger_verbs")
+					.select();
 
-			if (phrasal_verbs && phrasal_verbs.length > 0) {
+			if (phrasal_verbs && ger_verbs && phrasal_verbs.length > 0) {
 				// Make sure phrasal_verbs is not empty
-				createData(phrasal_verbs);
-				setPhrasalVerbs(phrasal_verbs);
+				createData(lang === "eng" ? phrasal_verbs : ger_verbs);
+				setPhrasalVerbs(lang === "eng" ? phrasal_verbs : ger_verbs);
 				setStart(true);
 			}
 		} catch (error) {
@@ -82,7 +85,7 @@ export default function Phrasal() {
 			<div className="flex flex-col w-full max-w-[600px] min-h-[400px] m-auto h-full justify-center p-6">
 				<p className="text-center">Skóre: {score}</p>
 				<p className="text-lg font-semibold my-4 text-center">
-					{start && verb.cz}
+					{start && verb.cz || verb.cz_word}
 				</p>
 				<div className="flex flex-col space-y-2">
 					{start &&
@@ -95,7 +98,7 @@ export default function Phrasal() {
 										"text-white py-2 rounded-md shadow-md font-bold duration-300  __text_color2  " +
 										answerColor[index]
 									}>
-									{choice.base}
+									{choice.base || choice.word}
 								</button>
 							);
 						})}

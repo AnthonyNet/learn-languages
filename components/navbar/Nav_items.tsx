@@ -47,7 +47,7 @@ export default function NavItems({navData} : {navData: NavData}) {
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/quiz">Frázový kvíz ({navData.phrasal}) </Link>
+							<Link href="/quiz/eng">Frázový kvíz ({navData.phrasal}) </Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/search/eng">
@@ -86,6 +86,11 @@ export default function NavItems({navData} : {navData: NavData}) {
 						<li className={styles.ul__li}>
 							<Link href="/memory/ger">
 								Slovní pexeso ({navData.irregularGer}){" "}
+							</Link>
+						</li>
+						<li className={styles.ul__li}>
+							<Link href="/quiz/ger">
+								Slovesa kvíz ({navData.irregularGer}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
