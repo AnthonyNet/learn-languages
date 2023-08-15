@@ -99,8 +99,9 @@
 	--hover-nav-items: rgb(255, 255, 255);
 	--memory-border-active: var(--color-green);
 
-	--gradient: linear-gradient(132deg, var(--black) 0%, var(--color-main) 100%);
-	--gradient2: linear-gradient(132deg, var(--black), var(--color-main), var(--black));
+	--gradient: linear-gradient(130deg, var(--black) 0%, var(--color-main) 100%);
+	--gradient2: linear-gradient(130deg, var(--black), var(--color-main), var(--black));
+	--gradient3: linear-gradient(130deg, var(--white), var(--color-main),  var(--white));
 
 	--btn-background: var(--color-main);
 	--btn-text-color: var(--black);
@@ -185,7 +186,7 @@ body,
 .__gradient { background: var(--gradient); }
 
 .__text_shadow { text-shadow: var(--text-shadow); }
-.__button_color { background: var(--gradient); }
+.__button_color { background: var(--gradient3); }
 .__memory_border_green, .__memory_border_click:focus { border-color: var(--memory-border-active) }
 .__oxford_card_background { background: var(--black); }
 strong { font-weight: var(--font-weight)}
@@ -289,10 +290,36 @@ Logo
 
 @keyframes orbit {
   0% {
-    transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-150%, -80%) rotate(0deg);
+  }
+  50% {
+    transform: translate(150%, -150%) rotate(90deg);
+  }
+  51%{
+	display: none;
+  }
 
+  100% {
+	opacity: 0;
+	display: none;
+    transform: translate(-150%, -80%) rotate(90deg);
+  }
+}
+
+@keyframes orbit-reverse {
+  0% {
+    animation-delay: 15s;
+    transform: translate(150%, 80%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-150%, 150%) rotate(70deg);
+  }
+  51% {
+    display: none;
   }
   100% {
-    transform: translate(-50%, -50%) rotate(360deg);
+    opacity: 0;
+    display: none;
+    transform: translate(150%, -80%) rotate(90deg);
   }
 }

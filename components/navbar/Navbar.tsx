@@ -41,14 +41,14 @@ export default function Navbar() {
 				<aside className="logo w-auto md:w-[35vw] lg:w-1/3 transition ease-in-out   __nav-item">
 					<Link
 						href="/"
-						className="text-2xl sm:text-3xl md:text-xl xl:text-3xl logo">
+						className="text-2xl sm:text-3xl md:text-xl xl:text-3xl ">
 						Learn <strong className="">languages</strong>
 					</Link>
 				</aside>
 				{navData && <Nav_Items navData={navData} />}
 
 				<span className="hidden md:flex bottom-2 right-4 text-3xl">
-					<Select />
+					{navData && <Select />}
 				</span>
 
 				<div className="text-4xl md:hidden ml-auto">

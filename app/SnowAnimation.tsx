@@ -8,6 +8,7 @@ interface Snowflake {
 }
 
 const SnowfallAnimation: React.FC = () => {
+
 	const canvasRef = useRef<HTMLCanvasElement | any>(null);
 	const snowflakes: Snowflake[] = [];
 
@@ -23,13 +24,17 @@ const SnowfallAnimation: React.FC = () => {
 				x: Math.random() * canvas.width,
 				y: 0,
 				size: Math.random() * 4 + 2,
-				speed: Math.random() * 3 + 1,
+				speed: Math.random() * 1 + 1,
 			};
 		}
 
 		function drawSnowflakes() {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			ctx.fillStyle = "#e6e5e3";
+			 const snowflakeColor = getComputedStyle(
+					document.documentElement
+				).getPropertyValue("--color-main");
+
+				ctx.fillStyle = snowflakeColor;
 
 			snowflakes.forEach((snowflake) => {
 				ctx.beginPath();
@@ -68,7 +73,7 @@ const SnowfallAnimation: React.FC = () => {
 		};
 	}, []);
 
-	return <canvas ref={canvasRef} style={{ display: "block", width: "100%" }} />;
+	return <canvas ref={canvasRef} style={{ display: "block", width: "100%", opacity: 0.3, zIndex: -50}} />;
 };
 
 export default SnowfallAnimation;
