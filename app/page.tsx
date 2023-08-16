@@ -1,102 +1,119 @@
-"use client"
+"use client";
 
-import Typewriter from "typewriter-effect";
-import { motion } from "framer-motion";
-import CloudDown from "@/components/icons/CloudDown";
-import Section2 from "@/components/home/Section2";
 import "@/components/home/Home.css";
 import SnowAnimation from "./SnowAnimation";
+import Flying_objects from "@/components/home/Flying_objects";
+import { useState} from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import engFlag from "../images/eng-flag.png";
-import gerFlag from "../images/ger-flag.png";
-import {useState, useEffect} from "react";
+import Irregular from "@/images/irregular.gif";
+import Memory from "@/images/memory-x.gif";
+import Search from "@/images/search.gif";
+import Pagination from "@/images/pagination.gif";
+import Arrow_down from "@/components/home/Arrow_down";
+
 
 const styles = {
 	section:
-		"relative grid grid-rows-8 w-full h-100-dvh items-center justify-center ",
-	h1__cover:
-		"absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 py-8 border-4 border-double  __gradient  rounded-tl-3xl rounded-tr-md rounded-bl-md rounded-br-3xl -skew-x-12 px-2 __logo_main opacity-50 __border_color cursor-pointer",
-	h1: "text-[35px] md:text-[60px] xl:text-[120px] flex w-full h-full flex items-center justify-center __h1", // Center text
-	bottom__container:
-		"absolute bottom-10 w-auto h-auto flex flex-col justify-center items-center text-base text-center md:text-2xl p-8 bg-black/40 rounded-full", // Added padding
-	h2: "text-sm md:text-2xl",
-	icon__cover:
-		"absolute -bottom-2 w-14 h-14 md:w-20 md:h-20  flex justify-center items-end animate-ping-slow", // Added padding
-} as const;
+		"bg-transparent w-full h-100-dvh min-h-[90vh] h-auto xl:h-90-dvh pt-4  flex flex-col xl:flex-row items-center justify-center overflow-y-hidden relative",
+	div_left:
+		"h-full max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 px-8 xl:p-0 border-2 relative",
+	div_right:
+		"w-full h-auto  min-h-[800px] xl:min-h-[85vh] xl:h-[80%] max-w-xl mx-auto rounded-lg shadow-lg py-8 sm:py-0  __my_grid sm:mt-[10vh] ",
+	image_cover: "relative __background __my_grid_item rounded-[30px]",
+	image:
+		"border-4 border-double rounded-[30px] border-blue-700 hover:scale-[102%] transition-all duration-500 ease-in-out bg-black",
+};
 
 export default function MainPage() {
-const [showMe, setShowMe] = useState(false);
+	const [showMe, setShowMe] = useState(false);
 
 	return (
 		<>
-			<section className={styles.section}>
+			<main className="w-full h-screen  border-2">
 				{showMe && <SnowAnimation />}
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{
-						delay: 1,
-						duration: 3,
-						ease: "easeOut",
-					}}
-					className={styles.h1__cover}
-					onClick={()=>{setShowMe(!showMe)}}
-					>
-					<h1 className={styles.h1}>
-						Learn <strong className="pl-2">languages</strong>
-						{showMe && (
-							<>
-								<span className="w-[80vw] md:w-[60vw] lg:w-[50vw] z-[-1] absolute top-1/2 left-1/2 __logo-icon-container animate-orbit   transform origin-[80%] [50%] ">
-									<span className="logo-icon opacity-30">
-										<Image
-											src={engFlag}
-											alt="Picture of the earth"
-											sizes="70vw"
-											loading="lazy"
-											className="w-[45vw] md:w-[30vw] lg:w-[10vw]"
-										/>
-									</span>
-								</span>
-								<span className="w-[100vw] md:w-[70vw] z-[-1] absolute top-1/2 left-1/2 __logo-icon-container animate-orbit-reverse  transform origin-[80%] [50%] ">
-									<span className="logo-icon opacity-30">
-										<Image
-											src={gerFlag}
-											alt="Picture of the earth"
-											sizes="70vw"
-											loading="lazy"
-											className="w-[70vw] md:w-[40vw] lg:w-[20vw] 2xl:w-[15vw]"
-										/>
-									</span>
-								</span>
-							</>
-						)}
-					</h1>
-				</motion.div>
-			</section>
-			<div className={styles.bottom__container}>
-				<h2 className={styles.h2}>Working in progress...</h2>
-				<Typewriter
-					options={{
-						strings: [
-							"Next.js",
-							"TypeScript",
-							"Supabase",
-							"React",
-							"Tailwind CSS",
-							"HTML5",
-							"CSS3",
-						],
-						autoStart: true,
-						loop: true,
-					}}
-				/>
-			</div>
-			<div className={styles.icon__cover}>
-				<a href="#section-2">
-					<CloudDown />
-				</a>
-			</div>
-			<Section2 />
+
+				<Flying_objects />
+
+				<section className="bg-transparent w-full h-100-dvh min-h-[90vh] h-auto xl:h-90-dvh pt-4  flex flex-col xl:flex-row items-center justify-center overflow-y-hidden relative">
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						className="h-screen sm:h-full"
+						transition={{
+							delay: 1,
+							duration: 3,
+							ease: "easeOut",
+						}}>
+						<div className="h-full max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 px-8 xl:p-0 border-2 relative">
+							<h2 className="text-4xl font-bold">Vítej na Learn Languages</h2>
+							<p className="text-xl">Objev moc slovní zásoby</p>
+							<p className="text-xl">
+								Rychle a snadno se nauč nová slovíčka prostřednictvím jednoduché
+								a interaktivní platformy
+							</p>
+							<p className="mt-4">
+								Čekají na tebe lekce, poutavá cvičení a spousta dalšího
+								materiálu. Začni svou jazykovou cestu ještě dnes bez registrace
+								a zcela ZDARMA!
+							</p>
+							<Arrow_down />
+						</div>
+					</motion.div>
+					<div className={styles.div_right}>
+						<div
+							className={
+								styles.image_cover +
+								" sm:row-span-6 sm:col-span-6 sm:row-start-4 sm:row-end-10 sm:col-start-7 sm:col-end-13 sm:z-30  overflow-hidden hover:scale-[102%] transition-all duration-500 ease-in-out"
+							}>
+							<Image
+								src={Irregular}
+								alt="irregular-gif"
+								fill={true}
+								className={
+									"border-4 border-double rounded-[30px] border-blue-700  transition-all duration-500 ease-in-out scale-y-[115%] scale-x-[118%] pr-1 h-20"
+								}
+							/>
+						</div>
+						<div
+							className={
+								styles.image_cover +
+								" row-start-3 row-end-7 col-start-1 col-end-9  z-20"
+							}>
+							<Image
+								src={Memory}
+								alt="memory-gif"
+								fill={true}
+								className={styles.image + " rounded-[30px] p-2"}
+							/>
+						</div>
+						<div
+							className={
+								styles.image_cover +
+								" row-span-5  row-start-7 row-end-13 col-start-1 col-end-12  z-10 sm:mt-[5vh]"
+							}>
+							<Image
+								src={Pagination}
+								alt="pagination-gif"
+								fill={true}
+								className={styles.image + " sm:rounded-bl-[120px]"}
+							/>
+						</div>
+						<div
+							className={
+								styles.image_cover +
+								" row-span-4 row-start-1 row-end-5 col-start-5 col-end-13  sm:rounded-br-[500px] sm:mr-8"
+							}>
+							<Image
+								src={Search}
+								alt="irregular-gif"
+								fill={true}
+								className={styles.image + " sm:rounded-tr-[120px]"}
+							/>
+						</div>
+					</div>
+				</section>
+			</main>
 		</>
 	);
 }

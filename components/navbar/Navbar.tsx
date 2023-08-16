@@ -1,11 +1,10 @@
 "use client"
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
+import {motion} from "framer-motion";
 import { TiThMenu } from "react-icons/ti";
 import Mobile__Nav from "./Mobile_nav";
 import Nav_Items from "./Nav_items";
-import Select from "./Select";
 import { NavData } from "@/interface/navdata";
 import "./Navbar.css";
 
@@ -38,18 +37,26 @@ export default function Navbar() {
 	return (
 		<nav className="flex justify-center items-center w-full  h-[50px] md:h-[70px] shadow-xl z-[400] px-4 fixed max-w-[1280px] __background">
 			<div className="w-full h-full flex items-center relative md:text-xl xl:text-3xl ">
-				<aside className="logo w-auto md:w-[35vw] lg:w-1/3 transition ease-in-out   __nav-item">
+				<aside className="w-auto md:w-[35vw] lg:w-1/3 transition ease-in-out">
 					<Link
 						href="/"
 						className="text-2xl sm:text-3xl md:text-xl xl:text-3xl ">
-						Learn <strong className="">languages</strong>
+							<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{
+						delay: 1,
+						duration: 3,
+						ease: "easeOut",
+					}}
+					className=" border-4 border-double  __gradient  rounded-tl-xl rounded-tr-md rounded-bl-md rounded-br-xl -skew-x-12 __logo_main __border_color cursor-pointer opacity-50">
+						<h1 className="flex items-center justify-center py-3 logo __h1  ">
+						Learn <strong className="pl-2">languages</strong>
+						</h1>
+						</motion.div>
 					</Link>
 				</aside>
 				{navData && <Nav_Items navData={navData} />}
-
-				<span className="hidden md:flex bottom-2 right-4 text-3xl">
-					{navData && <Select />}
-				</span>
 
 				<div className="text-4xl md:hidden ml-auto">
 					<TiThMenu onClick={handleNav} />

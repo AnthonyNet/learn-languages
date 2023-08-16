@@ -1,11 +1,12 @@
 
 import Link from "next/link";
 import { NavData } from "@/interface/navdata";
+import Select from "./Select";
 const styles = {
-	article: "justify-around items-center w-[90%] h-full hidden md:flex",
+	article: "justify-end gap-16 items-center w-[90%] h-full hidden md:flex",
 	homeBtn: "font-bold hover:text-indigo-800 __nav-item",
 	container: "relative inline-block tooltip text-xl xl:text-3xl",
-	main__a: "px-2 py-1 font-medium   __nav-item", //ulAnimation
+	main__a: "px-2 py-1 font-semibold uppercase  __nav-item", //ulAnimation
 	cover:
 		"flex flex-col p-4 w-60 md:w-[320px] lg:w-[350px] h-auto md:h-auto rounded-md z-20 absolute right-0 invisible tooltip-item border-2 tooltip-item __nav_cover",
 	ul: "list-disc space-y-2 style-",
@@ -18,7 +19,6 @@ export default function NavItems({navData} : {navData: NavData}) {
 
 	return (
 		<article className={styles.article}>
-
 			<div className={styles.container}>
 				<a href="#" className={styles.main__a}>
 					Angličtina
@@ -100,6 +100,9 @@ export default function NavItems({navData} : {navData: NavData}) {
 					</ul>
 				</div>
 			</div>
+			<span className="hidden md:flex bottom-2 right-4 text-3xl">
+				<Select />
+			</span>
 		</article>
 	);
 }

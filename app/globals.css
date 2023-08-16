@@ -83,7 +83,9 @@
 	--white-logo: rgb(255, 255, 255);
 	--black: rgb(0, 0, 0);
 
-	--color-main: #0043ff;
+	--color-main: hsl(224, 100%, 50%);
+
+
 	--color-light: #9c64ba;
 	--color-light2: #6900c5;
 	--color-dark:  #4e0f8c;
@@ -128,7 +130,7 @@
 	--memory-border-active: blue;
 }
 [data-theme="blue"] {
-	--color-main: #0640fb;
+
 }
 [data-theme="pink"] {
 	--color-main: #da06fb;
