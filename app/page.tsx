@@ -1,7 +1,7 @@
 "use client";
 
 import "@/components/home/Home.css";
-import SnowAnimation from "./SnowAnimation";
+import SnowAnimation from "../components/home/SnowAnimation";
 import Flying_objects from "@/components/home/Flying_objects";
 import { useState} from "react";
 import { motion } from "framer-motion";
@@ -30,34 +30,38 @@ export default function MainPage() {
 
 	return (
 		<>
-			<main className="w-full h-screen  border-2">
+			<main className="w-full h-100-dvh overflow-x-hidden lg:overflow-hidden">
 				{showMe && <SnowAnimation />}
-
 				<Flying_objects />
 
-				<section className="bg-transparent w-full h-100-dvh min-h-[90vh] h-auto xl:h-90-dvh pt-4  flex flex-col xl:flex-row items-center justify-center overflow-y-hidden relative">
+				<section className="bg-transparent w-full  lg:h-100-dvh min-h-[90vh] h-auto xl:h-90-dvh pt-4  flex flex-col xl:flex-row items-center justify-center relative z-20">
 					<motion.div
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
-						className="h-screen sm:h-full"
+						className="h-100-dvh"
 						transition={{
 							delay: 1,
 							duration: 3,
 							ease: "easeOut",
 						}}>
-						<div className="h-full max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 px-8 xl:p-0 border-2 relative">
-							<h2 className="text-4xl font-bold">Vítej na Learn Languages</h2>
-							<p className="text-xl">Objev moc slovní zásoby</p>
-							<p className="text-xl">
-								Rychle a snadno se nauč nová slovíčka prostřednictvím jednoduché
-								a interaktivní platformy
-							</p>
-							<p className="mt-4">
-								Čekají na tebe lekce, poutavá cvičení a spousta dalšího
-								materiálu. Začni svou jazykovou cestu ještě dnes bez registrace
-								a zcela ZDARMA!
-							</p>
-							<Arrow_down />
+						<div className="h-full max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 px-8 xl:p-0 relative">
+							<div className="h-auto flex flex-col p-8 gap-4 bg-slate-950/60 rounded-xl">
+								<h2 className="text-2xl sm:text-4xl font-bold">
+									Vítej na Learn Languages
+								</h2>
+								<p className="text-sm sm:text-xl">Objev moc slovní zásoby</p>
+								<p className="text-sm sm:text-xl">
+									Rychle a snadno se nauč nová slovíčka prostřednictvím
+									jednoduché a interaktivní platformy
+								</p>
+								<p className="mt-4">
+									Čekají na tebe lekce, poutavá cvičení a spousta dalšího
+									materiálu zcela ZDARMA!
+								</p>
+							</div>
+							<div className="absolute bottom-2 left-1/2 transform -translate-x-1/2  flex justify-center items-center ">
+								<Arrow_down />
+							</div>
 						</div>
 					</motion.div>
 					<div className={styles.div_right}>

@@ -23,7 +23,7 @@ const SnowfallAnimation: React.FC = () => {
 			return {
 				x: Math.random() * canvas.width,
 				y: 0,
-				size: Math.random() * 4 + 2,
+				size: Math.random() * 2 + 2,
 				speed: Math.random() * 1 + 1,
 			};
 		}
@@ -73,7 +73,7 @@ const SnowfallAnimation: React.FC = () => {
 		};
 	}, []);
 
-	return <canvas ref={canvasRef} style={{ display: "block", width: "100%", opacity: 0.3, zIndex: -50}} />;
+	return <canvas ref={canvasRef} style={{ display: "block", position: "absolute", width: "100%", opacity: 0.3, zIndex: -50}} />;
 };
 
 export default SnowfallAnimation;
