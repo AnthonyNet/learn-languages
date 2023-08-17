@@ -73,7 +73,7 @@ const SnowfallAnimation: React.FC = () => {
 		};
 	}, []);
 
-	return <canvas ref={canvasRef} style={{ display: "block", position: "absolute", width: "100%", opacity: 0.3, zIndex: -50}} />;
+	return <canvas ref={canvasRef} style={{ display: "block", width: "100%", opacity: 0.3, zIndex: -50}} />;
 };
 
 export default SnowfallAnimation;

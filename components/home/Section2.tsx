@@ -14,9 +14,9 @@ const styles = {
 		"h-screen max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 px-8 xl:p-0 ",
 	div_right:
 		"w-full h-auto  min-h-[800px] xl:min-h-[85vh] xl:h-[80%] max-w-xl mx-auto rounded-lg shadow-lg py-8 sm:py-0  __my_grid sm:mt-[10vh] ",
-	image_cover: "relative __background __my_grid_item rounded-[30px]",
+	image_cover: "relative  __my_grid_item rounded-[30px] ",
 	image:
-		"border-4 border-double rounded-[30px] border-blue-700 hover:scale-[102%] transition-all duration-500 ease-in-out bg-black",
+		"border-4 border-double rounded-[30px] border-blue-700 hover:scale-[102%] transition-all duration-500 ease-in-out bg-black overflow-hidden hue-rotate-[var(--hue-rotate)] brightness-[var(--saturation)]",
 };
 
 export default function Section2() {
@@ -32,11 +32,11 @@ export default function Section2() {
 					ease: "easeOut",
 				}}>
 				<div className={styles.div_left}>
-					<h2 className="text-4xl font-bold">Vítej na Learn Languages</h2>
-					<p className="text-xl">Objev moc slovní zásoby</p>
+					<h2 className="text-4xl font-bold __h1">Vítej na Learn Languages</h2>
+					<p className="text-xl ">Objev moc slovní zásoby</p>
 					<p className="text-xl">
-						Rychle a snadno se nauč nová slovíčka
-						prostřednictvím jednoduché a interaktivní platformy
+						Rychle a snadno se nauč nová slovíčka prostřednictvím jednoduché a
+						interaktivní platformy
 					</p>
 					<p className="mt-4">
 						Čekají na tebe lekce, poutavá cvičení a spousta dalšího materiálu.
@@ -55,7 +55,7 @@ export default function Section2() {
 						alt="irregular-gif"
 						fill={true}
 						className={
-							"border-4 border-double rounded-[30px] border-blue-700  transition-all duration-500 ease-in-out scale-y-[115%] scale-x-[118%] pr-1 h-20"
+							"border-4 border-double rounded-[30px] border-blue-700  transition-all duration-500 ease-in-out scale-y-[115%] scale-x-[118%] pr-1 h-20 hue-rotate-[var(--hue-rotate)] brightness-[var(--saturation)]"
 						}
 					/>
 				</div>

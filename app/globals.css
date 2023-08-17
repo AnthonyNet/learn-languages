@@ -84,8 +84,8 @@
 	--black: rgb(0, 0, 0);
 
 	--color-main: hsl(224, 100%, 50%);
-
-
+	--hue-rotate: 0;
+	--saturation: 100%;
 	--color-light: #9c64ba;
 	--color-light2: #6900c5;
 	--color-dark:  #4e0f8c;
@@ -124,16 +124,20 @@
 /* Theme button light/dark switch */
 [data-theme="violet"] {
 	--color-main: #881df2;
+	--hue-rotate: 30deg;
 }
 [data-theme="green"] {
 	--color-main: #10b310;
 	--memory-border-active: blue;
+	--color-green: rgba(0, 0, 255, 0.568);
+	--hue-rotate: -90deg;
 }
 [data-theme="blue"] {
 
 }
 [data-theme="pink"] {
 	--color-main: #da06fb;
+	--hue-rotate: 50deg;
 }
 
 [data-theme="yellow"] {
@@ -141,6 +145,8 @@
 	--memory-border-active: blue;
 	--text-shadow: 4px 4px 3px rgb(0, 0, 0),
 					0px 0px 3px rgb(0, 0, 0);
+	--hue-rotate: 190deg;
+	--saturation: 200%;
 }
 [data-theme="light"]{
 	--black: white;
@@ -294,36 +300,28 @@ Logo
 
 @keyframes orbit {
   0% {
-    transform: translate(-150%, -80%) rotate(0deg);
+    transform: translate(-100vw, -40vh) rotate(0deg);
   }
   50% {
-    transform: translate(150%, -150%) rotate(90deg);
-  }
-  51%{
-	display: none;
-  }
-
-  100% {
-	opacity: 0;
-	display: none;
-    transform: translate(-150%, -80%) rotate(90deg);
-  }
-}
-
-@keyframes orbit-reverse {
-  0% {
-    animation-delay: 15s;
-    transform: translate(150%, 80%) rotate(0deg);
-  }
-  50% {
-    transform: translate(-150%, 150%) rotate(70deg);
-  }
-  51% {
-    display: none;
+    transform: translate(150%, 150%) rotate(70deg);
   }
   100% {
     opacity: 0;
-    display: none;
-    transform: translate(150%, -80%) rotate(90deg);
+    transform: translate(70vw, 70vh) rotate(70deg);
+  }
+}
+
+
+
+@keyframes orbit-reverse {
+  0% {
+    transform: translate(100vw, 50vh) rotate(0deg);
+  }
+  50% {
+    transform: translate(-150%, -150%) rotate(70deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-100vw, -100vh) rotate(70deg);
   }
 }

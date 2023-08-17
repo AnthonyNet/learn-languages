@@ -103,7 +103,7 @@ module.exports = {
 				"spin-slow": "spin 13s linear infinite",
 				"ping-slow": "bounce 2s linear infinite",
 				"ping-slower": "bounce 3s linear infinite",
-				"orbit": "orbit 13s linear infinite",
+				"orbit": "orbit 7s linear infinite",
 				"orbit-reverse": "orbit-reverse 13s linear infinite",
 			},
 		},
