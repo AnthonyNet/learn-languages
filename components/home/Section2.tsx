@@ -6,12 +6,13 @@ import Irregular from "@/images/irregular.gif";
 import Memory from "@/images/memory-x.gif";
 import Search from "@/images/search.gif";
 import Pagination from "@/images/pagination.gif";
+import ArrowDown from "@/components/home/Arrow_down";
 
 const styles = {
 	section:
-		"bg-transparent w-full min-h-[90vh] h-auto xl:h-90-dvh pt-4  flex flex-col xl:flex-row items-center justify-center",
+		"bg-transparent w-full min-h-[90vh] h-auto xl:h-90-dvh flex flex-col xl:flex-row items-center justify-center",
 	div_left:
-		"h-screen max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 px-8 xl:p-0 ",
+		"h-screen max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 px-8 xl:p-0 mt-[10vh]",
 	div_right:
 		"w-full h-auto  min-h-[800px] xl:min-h-[85vh] xl:h-[80%] max-w-xl mx-auto rounded-lg shadow-lg py-8 sm:py-0  __my_grid sm:mt-[10vh] ",
 	image_cover: "relative  __my_grid_item rounded-[30px] ",
@@ -21,7 +22,7 @@ const styles = {
 
 export default function Section2() {
 	return (
-		<div className={styles.section} id="section-2">
+		<div className={styles.section}>
 			<motion.div
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
@@ -42,6 +43,11 @@ export default function Section2() {
 						Čekají na tebe lekce, poutavá cvičení a spousta dalšího materiálu.
 						Začni svou jazykovou cestu ještě dnes bez registrace a zcela ZDARMA!
 					</p>
+					<div className="mt-8 flex justify-center items-end animate-ping-slow">
+						<a href="#section-2">
+							<ArrowDown />
+						</a>
+					</div>
 				</div>
 			</motion.div>
 			<div className={styles.div_right}>

@@ -5,7 +5,7 @@ import gerFlag from "@/images/ger-flag.png";
 export default function Flying_objects() {
 	return (
 		<div>
-			<span className="w-[40vw] md:w-[60vw] lg:w-[50vw] z-[-1] absolute top-1/2 left-1/2 __logo-icon-container animate-orbit   transform origin-[80%] [50%] ">
+			<span className="w-[40vw] md:w-[60vw] lg:w-[40vw] z-[-1] absolute top-1/2 left-1/2 __logo-icon-container animate-orbit   transform origin-[80%] [50%] ">
 				<span className="logo-icon opacity-30">
 					<Image
 						src={engFlag}

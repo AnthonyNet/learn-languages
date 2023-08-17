@@ -13,7 +13,7 @@ export default function MainPage() {
 		<>
 			{" "}
 			<Flying_objects />
-			<main className="relative grid grid-rows-8 w-full h-100-dvh items-center justify-center">
+			<main className="relative grid grid-rows-8 w-full h-100-dvh items-center justify-center ">
 				<SnowAnimation />
 
 				<motion.div
@@ -27,13 +27,10 @@ export default function MainPage() {
 					className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 py-8  cursor-pointer bg-[var(--color-main-accent)]  rounded-tl-3xl rounded-tr-md rounded-bl-md rounded-br-3xl  h-full w-full">
 					<Section2 />
 				</motion.div>
+
 			</main>
-			<div className="absolute -bottom-2 w-14 h-14 md:w-20 md:h-20  flex justify-center items-end animate-ping-slow">
-				<a href="#section-2">
-					<Arrow_down />
-				</a>
-			</div>
-			<Section2 />
+			<section className="w-screen h-screen flex justify-center items-center" id="section-2"> Sekce2</section>
+
 		</>
 	);
 }
