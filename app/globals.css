@@ -182,6 +182,7 @@ body,
 
 .h-90-dvh{height: 90dvh;}
 .h-100-dvh{height: 100dvh;}
+.__max-h{max-height: 600px !important;}
 
 
 .__text_color { color: var(--color-main);}

@@ -11,11 +11,11 @@ import Typewriter from "typewriter-effect";
 
 const styles = {
 	section:
-		"bg-transparent w-full min-h-[90vh] h-auto xl:h-90-dvh flex flex-col xl:flex-row items-center justify-center",
+		"pt-[50px] bg-transparent w-full flex flex-col xl:flex-row items-center justify-center",
 	div_left:
-		"h-screen max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 px-8 xl:p-0 mt-[10vh]",
+		"h-screen max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 px-8 xl:p-0",
 	div_right:
-		"w-full h-auto  min-h-[800px] xl:min-h-[85vh] xl:h-[80%] max-w-xl mx-auto rounded-lg shadow-lg py-8   __my_grid",
+		"w-full h-auto  min-h-[800px] xl:h-[80%] max-w-xl mx-auto rounded-lg shadow-lg py-8    __my_grid",
 	image_cover: "relative  __my_grid_item rounded-[30px] ",
 	image:
 		"border-4 border-double rounded-[30px] border-blue-700 hover:scale-[102%] transition-all duration-500 ease-in-out bg-black overflow-hidden hue-rotate-[var(--hue-rotate)] brightness-[var(--saturation)]",
@@ -24,15 +24,6 @@ const styles = {
 export default function Section1() {
 	return (
 		<div className={styles.section}>
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				className="h-screen sm:h-full"
-				transition={{
-					delay: 1,
-					duration: 3,
-					ease: "easeOut",
-				}}>
 				<div className={styles.div_left}>
 					<h2 className="text-4xl font-bold __h1">Vítej na Learn Languages</h2>
 					<p className="text-xl ">Objev moc slovní zásoby</p>
@@ -66,7 +57,7 @@ export default function Section1() {
 						</a>
 					</div>
 				</div>
-			</motion.div>
+
 			<div className={styles.div_right}>
 				<div
 					className={
