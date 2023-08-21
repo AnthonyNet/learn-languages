@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import "./Home.css";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -24,39 +24,39 @@ const styles = {
 export default function Section1() {
 	return (
 		<div className={styles.section}>
-				<div className={styles.div_left}>
-					<h2 className="text-4xl font-bold __h1">Vítej na Learn Languages</h2>
-					<p className="text-xl ">Objev moc slovní zásoby</p>
-					<p className="text-xl">
-						Rychle a snadno se nauč nová slovíčka prostřednictvím jednoduché a
-						interaktivní platformy
-					</p>
-					<p className="mt-4">
-						Čekají na tebe lekce, poutavá cvičení a spousta dalšího materiálu.
-						Začni svou jazykovou cestu ještě dnes bez registrace a zcela ZDARMA!
-					</p>
-					<h2 className="text-sm md:text-2xl">Working in progress...</h2>
-					<Typewriter
-						options={{
-							strings: [
-								"Next.js",
-								"TypeScript",
-								"Supabase",
-								"React",
-								"Tailwind CSS",
-								"HTML5",
-								"CSS3",
-							],
-							autoStart: true,
-							loop: true,
-						}}
-					/>
-					<div className="mt-8 flex justify-center items-end animate-ping-slow">
-						<a href="#section-2">
-							<ArrowDown />
-						</a>
-					</div>
+			<div className={styles.div_left}>
+				<h2 className="text-4xl font-bold __h1">Vítej na Learn Languages</h2>
+				<p className="text-xl ">Objev moc slovní zásoby</p>
+				<p className="text-xl">
+					Rychle a snadno se nauč nová slovíčka prostřednictvím jednoduché a
+					interaktivní platformy
+				</p>
+				<p className="mt-4">
+					Čekají na tebe lekce, poutavá cvičení a spousta dalšího materiálu.
+					Začni svou jazykovou cestu ještě dnes bez registrace a zcela ZDARMA!
+				</p>
+				<h2 className="text-sm md:text-2xl">Working in progress...</h2>
+				<Typewriter
+					options={{
+						strings: [
+							"Next.js",
+							"TypeScript",
+							"Supabase",
+							"React",
+							"Tailwind CSS",
+							"HTML5",
+							"CSS3",
+						],
+						autoStart: true,
+						loop: true,
+					}}
+				/>
+				<div className="mt-8 flex justify-center items-end animate-ping-slow">
+					<a href="#section-2">
+						<ArrowDown />
+					</a>
 				</div>
+			</div>
 
 			<div className={styles.div_right}>
 				<div

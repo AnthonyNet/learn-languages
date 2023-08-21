@@ -32,7 +32,7 @@ export default function Select() {
 			className="outline-none border-animation bg-transparent cursor-pointer text-xl xl:text-3xl __background"
 			title="col"
 			name="colors"
-			id="colors"
+
 			onChange={handleChange}>
 			<option value="blue">Modrý</option>
 			<option value="green">Zelený</option>

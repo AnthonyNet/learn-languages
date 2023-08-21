@@ -6,7 +6,6 @@ import Flying_objects from "@/components/home/Flying_objects";
 import { motion } from "framer-motion";
 import Section1 from "@/components/home/Section1";
 
-
 export default function MainPage() {
 	return (
 		<>
@@ -23,13 +22,16 @@ export default function MainPage() {
 						duration: 3,
 						ease: "easeOut",
 					}}
-					className="absolute bg-[var(--color-main-accent)] rounded-tl-3xl rounded-tr-md rounded-bl-md rounded-br-3xl  h-full  max-h-[1024px] w-full">
+					className="absolute bg-[var(--color-main-accent)] rounded-tl-3xl rounded-tr-md rounded-bl-md rounded-br-3xl  h-full   w-full">
 					<Section1 />
 				</motion.div>
-
 			</main>
-			<section className="w-screen h-screen flex justify-center items-center" id="section-2"> Sekce2</section>
-
+			<section
+				className="w-screen h-screen flex justify-center items-center"
+				id="section-2">
+				{" "}
+				Sekce2
+			</section>
 		</>
 	);
 }
