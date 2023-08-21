@@ -120,7 +120,7 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>
 								<Link href="/pagination">
-									Seznam slov ({navData.oxfordB2}){" "}
+									Seznam slov B2 ({navData.oxfordB2}){" "}
 								</Link>
 							</li>
 						</>

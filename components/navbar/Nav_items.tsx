@@ -55,7 +55,7 @@ export default function NavItems({navData} : {navData: NavData}) {
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/pagination">
-								Seznam slov B2({navData.oxfordB2}){" "}
+								Seznam slov B2 ({navData.oxfordB2}){" "}
 							</Link>
 						</li>
 					</ul>
