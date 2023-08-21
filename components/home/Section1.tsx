@@ -7,6 +7,7 @@ import Memory from "@/images/memory-x.gif";
 import Search from "@/images/search.gif";
 import Pagination from "@/images/pagination.gif";
 import ArrowDown from "@/components/home/Arrow_down";
+import Typewriter from "typewriter-effect";
 
 const styles = {
 	section:
@@ -43,6 +44,22 @@ export default function Section1() {
 						Čekají na tebe lekce, poutavá cvičení a spousta dalšího materiálu.
 						Začni svou jazykovou cestu ještě dnes bez registrace a zcela ZDARMA!
 					</p>
+					<h2 className="text-sm md:text-2xl">Working in progress...</h2>
+					<Typewriter
+						options={{
+							strings: [
+								"Next.js",
+								"TypeScript",
+								"Supabase",
+								"React",
+								"Tailwind CSS",
+								"HTML5",
+								"CSS3",
+							],
+							autoStart: true,
+							loop: true,
+						}}
+					/>
 					<div className="mt-8 flex justify-center items-end animate-ping-slow">
 						<a href="#section-2">
 							<ArrowDown />

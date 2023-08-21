@@ -4,7 +4,7 @@ import gerFlag from "@/images/ger-flag.png";
 
 export default function Flying_objects() {
 	return (
-		<div>
+		<div className="w-screen h-screen overflow-hidden absolute">
 			<span className="w-[40vw] md:w-[60vw] lg:w-[40vw] z-[-1] absolute top-1/2 left-1/2 __logo-icon-container animate-orbit   transform origin-[80%] [50%] ">
 				<span className="logo-icon opacity-30">
 					<Image
@@ -12,7 +12,7 @@ export default function Flying_objects() {
 						alt="Picture of the earth"
 						sizes=" 10vw sm:70vw"
 						loading="lazy"
-						className="w-[25vw] md:w-[30vw] lg:w-[12vw] aspect-square"
+						className="w-[25vw] md:w-[20vw] lg:w-[12vw] aspect-square"
 					/>
 				</span>
 			</span>

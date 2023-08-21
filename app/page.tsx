@@ -4,7 +4,6 @@ import "@/components/home/Home.css";
 import SnowAnimation from "../components/home/SnowAnimation";
 import Flying_objects from "@/components/home/Flying_objects";
 import { motion } from "framer-motion";
-import Arrow_down from "@/components/home/Arrow_down";
 import Section1 from "@/components/home/Section1";
 
 

@@ -49,8 +49,8 @@ export default function Navbar() {
 						duration: 3,
 						ease: "easeOut",
 					}}
-					className=" border-4 border-double  __gradient  rounded-tl-xl rounded-tr-md rounded-bl-md rounded-br-xl -skew-x-12 __logo_main __border_color cursor-pointer opacity-50">
-						<h1 className="flex items-center justify-center py-3 logo __h1  ">
+					className=" border-4 border-double  __gradient  rounded-tl-xl rounded-tr-md rounded-bl-md rounded-br-xl -skew-x-12  __border_color cursor-pointer opacity-50">
+						<h1 className="flex items-center justify-center sm:py-3  __h1  ">
 						Learn <strong className="pl-2">languages</strong>
 						</h1>
 						</motion.div>
