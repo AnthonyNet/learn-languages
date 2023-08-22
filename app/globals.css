@@ -83,7 +83,8 @@
 	--white-logo: rgb(255, 255, 255);
 	--black: rgb(0, 0, 0);
 
-	--color-main: hsl(224, 100%, 50%);
+	--color-main: hsl(214, 100%, 50%);
+
 	--hue-rotate: 0;
 	--saturation: 100%;
 	--color-light: #9c64ba;
@@ -123,17 +124,18 @@
 
 /* Theme button light/dark switch */
 [data-theme="violet"] {
-	--color-main: #881df2;
+	--color-main: hsla(272, 84%, 53%, 1);
 	--hue-rotate: 30deg;
 }
 [data-theme="green"] {
-	--color-main: #10b310;
+	 --color-main: hsla(120, 100%, 53%, 1);
 	--memory-border-active: blue;
 	--color-green: rgba(0, 0, 255, 0.568);
 	--hue-rotate: -90deg;
 }
 [data-theme="blue"] {
-
+--hue-rotate: -10deg;
+--color-main-accent: hsl(207, 100%, 50%);
 }
 [data-theme="pink"] {
 	--color-main: #da06fb;
@@ -161,9 +163,11 @@
 	padding: 0;
 	margin: 0;
 	font-family: var(--font-family);
+
 }
 html{
 	scroll-behavior: smooth !important;
+
 }
 html,
 body {

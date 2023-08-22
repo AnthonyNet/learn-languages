@@ -132,7 +132,7 @@ Watch the value that is set up in Top_menu
 						{start &&
 							currentPosts.map((item: Data, index: number) => {
 								return (
-									<TableRow className="hover:even:bg-indigo-800/40 hover:odd:bg-pink-800/20">
+									<TableRow className="hover:even:bg-indigo-800/40 hover:odd:bg-pink-800/20 border-b border-slate-700/80 odd:bg-slate-700/30">
 										<TableCell className="font-medium">{index + 1}</TableCell>
 										<TableCell>
 											{myNumb == 1 ? item.sentence : item.base}

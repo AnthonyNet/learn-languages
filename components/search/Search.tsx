@@ -12,9 +12,9 @@ const style = {
 	main__div: "overflow-x-auto sm:-mx-6 lg:-mx-8",
 	main__div__div: "inline-block min-w-full sm:px-6 lg:px-8",
 	main__div__div__div: "overflow-hidden",
-	table: "w-full text-center",
-	thead: "border-b border-b-slate-700/10 bg-slate-900/70",
-	tr: "border-b-2 hover:even:bg-indigo-800/20 hover:odd:bg-pink-800/20  border-b-slate-700/40 even:bg-slate-700/10 even:border-b-slate-700/10",
+	table: "w-full text-center text-[var(--color-main-accent)]",
+	thead: "border-b border-b-slate-700/30 bg-slate-900/70",
+	tr: "border-b-2 hover:even:bg-indigo-800/20 hover:odd:bg-pink-800/20  border-b-slate-700/40 even:bg-slate-700/40 even:border-b-slate-700/40 even:saturate-200",
 	th: "text-sm font-medium py-2  sm:p-4 max-w-[25vw] sm:max-w-auto",
 } as const;
 
