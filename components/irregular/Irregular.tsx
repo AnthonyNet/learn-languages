@@ -14,19 +14,19 @@ import { RxArrowRight } from "react-icons/rx";
 
 const styles = {
 	section: `
- mt-[50px] md:mt-[70px] py-4 w-screen flex flex-col md:justify-center items-center __responsiveSection __small_screen_h-auto
-  `,
+ mt-[50px] md:mt-[70px]  w-full h-100-dvh flex justify-center items-center  __responsiveSection __small_screen_h-auto
+ `,
 	section__container: `
-    mt-[25px] md:text-[140%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center rounded-t-3xl text-center lg:border-x-4 lg:border-t-4 border-double __border_color
+    mt-[25px] md:text-[140%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center
   `,
 	score__container: `
     py-2 px-6
   `,
-	hint__section: `
-    h-auto w-full max-w-[300px] md:max-w-[400px] md:pb-2 flex flex-col lg:border-x-4 lg:border-b-4 border-double rounded-b-3xl __border_color
+	footer: `
+    h-auto w-full max-w-[300px] md:max-w-[400px] md:pb-2 flex flex-col
   `,
 	buttons__container: `
-    flex justify-around md:justify-center gap-x-16 w-full items-center text-center __border_color
+    flex justify-around md:justify-center w-full  __border_color
   `,
 	button: `
     flex items-center justify-center h-full w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000
@@ -125,66 +125,72 @@ HIDE HINTS
 
 	return (
 		<section className={styles.section}>
-			<main className={styles.section__container}>
-				<div className={styles.score__container}>
-					Celkové skóre: <span>{totalScore}</span>
-				</div>
-				<div className={styles.score__container}>
-					Momentální skóre: <span>{score > 0 ? score : 0}</span>
-				</div>
+			<div className="w-full h-full md:h-auto md:w-auto min-w-[350px] flex flex-col justify-center  items-center md:border-4 border-double __border_color rounded-[50px]  text-center">
+				<main className={styles.section__container}>
+					<div className={styles.score__container}>
+						Celkové skóre: <span>{totalScore}</span>
+					</div>
+					<div className={styles.score__container}>
+						Momentální skóre: <span>{score > 0 ? score : 0}</span>
+					</div>
 
-				<Score score={stars} />
+					<Score score={stars} />
 
-				<div className="px-6 inputs">
-					<h5 className={styles.h5}>
-						{start ? dataTS[rand]?.cz || "...loading" : ""}
-					</h5>
-					<ul className={styles.ul}>
-						{start &&
-							Object.values(dataTS[rand] || {})
-								.slice(2)
-								.map((value, index) => {
-									const array = ["Infinitiv", "Minulý čas", "Příčestí minulé"];
-									return (
-										<Input
-											key={index}
-											word={value}
-											setTotalScore={setTotalScore}
-											setScore={setScore}
-											setStars={setStars}
-											placeholder={array[index]}
-											defaultInput={defaultInput}
-											totalScore={totalScore}
-										/>
-									);
-								})}
-					</ul>
-				</div>
-			</main>
+					<div className="px-6 inputs">
+						<h5 className={styles.h5}>
+							{start ? dataTS[rand]?.cz || "...loading" : ""}
+						</h5>
+						<ul className={styles.ul}>
+							{start &&
+								Object.values(dataTS[rand] || {})
+									.slice(2)
+									.map((value, index) => {
+										const array = [
+											"Infinitiv",
+											"Minulý čas",
+											"Příčestí minulé",
+										];
+										return (
+											<Input
+												key={index}
+												word={value}
+												setTotalScore={setTotalScore}
+												setScore={setScore}
+												setStars={setStars}
+												placeholder={array[index]}
+												defaultInput={defaultInput}
+												totalScore={totalScore}
+											/>
+										);
+									})}
+						</ul>
+					</div>
+				</main>
 
-			<footer className={styles.hint__section}>
-				<div className={styles.buttons__container + " h-[30px]"}>
-					{hint && start ? (
-						<CardHint
-							base={dataTS[rand]?.base}
-							pastSimple={dataTS[rand]?.past_simple}
-							pastParticiple={dataTS[rand]?.past_participle}
-						/>
-					) : null}
-				</div>
+				<footer className={styles.footer}>
+					<div className={styles.buttons__container + " h-[30px]"}>
+						{hint && start ? (
+							<CardHint
+								base={dataTS[rand]?.base}
+								pastSimple={dataTS[rand]?.past_simple}
+								pastParticiple={dataTS[rand]?.past_participle}
+							/>
+						) : null}
+					</div>
 
-				<div className={styles.buttons__container}>
-					<Button onClick={() => setHint(!hint)}>
-						<TbZoomQuestion className={styles.button} />
-					</Button>
+					<div className="flex justify-around">
+						<Button onClick={() => setHint(!hint)}>
+							<TbZoomQuestion className={styles.button} />
+						</Button>
 
-					<Button onClick={randomWord}>
-						<RxArrowRight
-							className={`${styles.button} ${styles.button__animation}`}
-						/>
-					</Button>
-				</div>
-			</footer>
+						<Button onClick={randomWord}>
+							<RxArrowRight
+								className={`${styles.button} ${styles.button__animation}`}
+							/>
+						</Button>
+					</div>
+				</footer>
+			</div>
 		</section>
 	);
 }
