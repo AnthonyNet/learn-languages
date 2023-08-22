@@ -32,8 +32,7 @@ export default function Section1() {
 					interaktivní platformy
 				</p>
 				<p className="mt-4">
-					Čekají na tebe lekce, poutavá cvičení a spousta dalšího materiálu.
-					Začni svou jazykovou cestu ještě dnes bez registrace a zcela ZDARMA!
+					Čekají na tebe lekce, poutavá cvičení bez registrace a zcela ZDARMA!
 				</p>
 				<h2 className="text-sm md:text-2xl">Working in progress...</h2>
 				<Typewriter
@@ -69,7 +68,7 @@ export default function Section1() {
 						alt="irregular-gif"
 						fill={true}
 						className={
-							"border-4 border-double rounded-[30px] border-blue-700  transition-all duration-500 ease-in-out scale-y-[115%] scale-x-[118%] pr-1 h-20 hue-rotate-[var(--hue-rotate)] brightness-[var(--saturation)]"
+							"border-4 border-double  rounded-[30px]   transition-all duration-500 ease-in-out scale-y-[115%] scale-x-[118%] pr-1 h-20 hue-rotate-[var(--hue-rotate)] brightness-150"
 						}
 					/>
 				</div>

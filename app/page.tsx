@@ -22,7 +22,7 @@ export default function MainPage() {
 						duration: 3,
 						ease: "easeOut",
 					}}
-					className="absolute bg-[var(--color-main-accent)] rounded-tl-3xl rounded-tr-md rounded-bl-md rounded-br-3xl  h-full   w-full">
+					className="absolute  rounded-tl-3xl rounded-tr-md rounded-bl-md rounded-br-3xl  h-full   w-full">
 					<Section1 />
 				</motion.div>
 			</main>

@@ -81,8 +81,8 @@ export default function Quiz({ lang }: { lang: string }) {
 	};
 
 	return (
-		<section className="w-screen h-100-dvh ">
-			<div className="flex flex-col w-full max-w-[600px] min-h-[400px] m-auto h-full justify-center p-6">
+		<section className="w-screen h-100-dvh flex justify-center items-center">
+			<div className="flex flex-col w-full h-auto max-w-[600px] min-h-[400px] m-auto justify-center p-6 lg:border-4 border-double rounded-[30px] __border_color">
 				<p className="text-center">Skóre: {score}</p>
 				<p className="text-lg font-semibold my-4 text-center">
 					{start && verb.cz || verb.cz_word}
@@ -95,10 +95,12 @@ export default function Quiz({ lang }: { lang: string }) {
 									key={index}
 									onClick={() => checkAnswer(choice, index)}
 									className={
-										"text-white py-2 rounded-md shadow-md font-bold duration-300  __text_color2  " +
+										"py-2 rounded-md shadow-md font-bold duration-300  " +
 										answerColor[index]
 									}>
-									{choice.base || choice.word}
+									<p className="__text_color2 filter invert">
+										{choice.base || choice.word}
+									</p>
 								</button>
 							);
 						})}

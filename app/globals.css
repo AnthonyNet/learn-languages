@@ -81,7 +81,7 @@
 
 	--white: rgb(255, 255, 255);
 	--white-logo: rgb(255, 255, 255);
-	--black: rgb(0, 0, 0);
+	--black: rgb(10, 10, 10);
 
 	--color-main: hsl(214, 100%, 50%);
 
@@ -125,7 +125,7 @@
 /* Theme button light/dark switch */
 [data-theme="violet"] {
 	--color-main: hsla(272, 84%, 53%, 1);
-	--hue-rotate: 30deg;
+	--hue-rotate: 20deg;
 }
 [data-theme="green"] {
 	 --color-main: hsla(120, 100%, 53%, 1);
@@ -134,7 +134,8 @@
 	--hue-rotate: -90deg;
 }
 [data-theme="blue"] {
---hue-rotate: -10deg;
+--hue-rotate: -20deg;
+
 --color-main-accent: hsl(207, 100%, 50%);
 }
 [data-theme="pink"] {
