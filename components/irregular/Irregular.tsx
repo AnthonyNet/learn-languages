@@ -17,7 +17,7 @@ const styles = {
  mt-[50px] md:mt-[70px]  w-full h-100-dvh flex justify-center items-center  __responsiveSection __small_screen_h-auto
  `,
 	section__container: `
-    mt-[25px] md:text-[140%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center
+    mt-[25px] md:text-[140%] lg:text-[100%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center
   `,
 	score__container: `
     py-2 px-6
