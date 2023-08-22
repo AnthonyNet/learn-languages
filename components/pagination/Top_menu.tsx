@@ -7,7 +7,7 @@ interface Props {
 const styles = {
 	nav: " w-full h-auto",
 	ul: "flex flex-row justify-around sm:w-[400px] m-auto flex-wrap border-y-2 __border_color",
-	li__active: "border-b-4 border-red-600",
+	li__active: "border-b-2 __border_color __box_shadow_color",
 };
 
 export default function Top_Menu({ myNumb, setMyNumb, setCurrentPage }: Props) {
@@ -20,16 +20,15 @@ export default function Top_Menu({ myNumb, setMyNumb, setCurrentPage }: Props) {
 		<nav className={styles.nav}>
 			<ul className={styles.ul}>
 				<li
-					className={myNumb === 0 ? styles.li__active : ""}
+					className={myNumb === 0 ? styles.li__active : "cursor-pointer"}
 					onClick={() => handleClick(0)}>
 					Phrasal verbs
 				</li>
 				<li
-					className={myNumb === 1 ? styles.li__active : ""}
+					className={myNumb === 1 ? styles.li__active : "cursor-pointer"}
 					onClick={() => handleClick(1)}>
 					Oxford B2
 				</li>
-
 			</ul>
 		</nav>
 	);

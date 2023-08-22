@@ -21,7 +21,7 @@ export default function Bottom_Menu({
 
 	return (
 		<article className="flex flex-row  w-auto  justify-center">
-			<ul className="w-screen max-w-[500px] flex flex-row  items-center justify-around md:border-t-4 __border_color">
+			<ul className="w-screen max-w-[500px] flex flex-row  items-center justify-around md:border-t-4 __border_color cursor-pointer">
 				{/* ----------------------
          PREVIOUS PAGE BUTTON
       ---------------------------*/}
@@ -39,7 +39,7 @@ export default function Bottom_Menu({
 						<li
 							className={
 								page == currentPage
-									? "text-xl border-b border-red-400  sm:w-[50px] text-center mt-2 h-[50px]"
+									? "text-xl border-t __border_color rounded-md  sm:w-[50px] text-center mt-2 h-[50px]"
 									: page < currentPage - 3
 									? "hidden"
 									: // : page > currentPage + 4 && currentPage !=1 ? "hidden"
