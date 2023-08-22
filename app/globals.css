@@ -125,7 +125,7 @@
 /* Theme button light/dark switch */
 [data-theme="violet"] {
 	--color-main: hsla(272, 84%, 53%, 1);
-	--hue-rotate: 20deg;
+	--hue-rotate: 40deg;
 }
 [data-theme="green"] {
 	 --color-main: hsla(120, 100%, 53%, 1);
