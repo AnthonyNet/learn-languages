@@ -2,7 +2,6 @@
 
 import MemoryCard from "./MemoryCard";
 import { useState, useEffect } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import TopMenu from "./TopMenu";
 import { Data1, Data2 } from "@/interface/Irregular";
 interface Item {
@@ -30,13 +29,15 @@ const styles = {
 interface Props  {
 	props1: Data1[];
 	props2: Data2[];
+	props3: Data2[];
 }
 
-export default function Memory({props1, props2}: Props) {
+export default function Memory({props1, props2, props3}: Props) {
 	const [start, setStart] = useState<boolean>(false);
 
 	const [data1, setData1] = useState<Data1[]>(props1);
 	const [data2, setData2] = useState<Data2[]>(props2);
+	const [data3, setData3] = useState<Data2[]>(props3);
 	const [dataTS, setDataTS] = useState<Data1[]|Data2[]>(props1);
 
 	const [restartCounter, setRestartCounter] = useState<number>(0);
@@ -158,7 +159,7 @@ export default function Memory({props1, props2}: Props) {
 	return (
 		<section className={styles.section}>
 
-			<TopMenu createData={createData} setDataTS={setDataTS} data1={data1} data2={data2} />
+			<TopMenu createData={createData} setDataTS={setDataTS} data1={data1} data2={data2} data3={data3} />
 
 			<h2 className={styles.h2}>Skóre: {score}</h2>
 			<div className={styles.progress__container}>

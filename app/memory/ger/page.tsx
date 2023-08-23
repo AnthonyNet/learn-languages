@@ -8,13 +8,12 @@ export default async function Page() {
 
 		try {
 			const { data: ger_verbs } = await supabase.from("ger_verbs").select();
-			const { data: irregular_ger } = await supabase
-				.from("irregular_ger")
-				.select();
+			const { data: irregular_ger } = await supabase.from("irregular_ger").select();
+			const { data: german_c1 } = await supabase.from("german_c1").select();
 
 			return (
-				ger_verbs && irregular_ger && (
-					<Memory props1={ger_verbs} props2={irregular_ger} />
+				ger_verbs && irregular_ger && german_c1 && (
+					<Memory props1={ger_verbs} props2={irregular_ger} props3={german_c1} />
 				)
 			);
 		} catch (error) {

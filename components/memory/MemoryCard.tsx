@@ -33,8 +33,7 @@ export default function MemoryCard({ id, item, handleClick }: Card) {
 	return (
 		<motion.button
 			className={
-				styles.container +
-				" " +
+				"relative flex items-center justify-center  cursor-pointer group perspective transition ease-in-out duration-500  __border_color __border_hover __memory_border_click " +
 				(item.click
 					? "border-2 rounded-3xl p-4  __memory_border_green"
 					: "p-4 border-2 rounded-3xl __border_color") +
@@ -44,15 +43,17 @@ export default function MemoryCard({ id, item, handleClick }: Card) {
 			onClick={() => handleClick(id, item.select)}
 			disabled={item.click}>
 			<motion.div
-				className={styles.cover}
+				className="preserve-3d group my-rotate-y-180 w-full h-full "
 				animate={{ rotateY: item.check ? 180 : 0 }}
 				transition={{ duration: 0.5 }}>
-				<motion.div className={styles.cover__div}>
-					<h2 className={styles.h2}>{item.cz ? item.cz : item.eng}</h2>
+				<motion.div className="w-full h-full flex items-center justify-center">
+					<h2 className="text-base font-bold md:text-xl  p-2 sm:p-0">
+						{item.cz ? item.cz : item.eng}
+					</h2>
 				</motion.div>
-				<motion.div className={styles.cardBack}>
-					<div className={styles.cardBack__div}>
-						<h3 className={styles.h3}>👍</h3>
+				<motion.div className="absolute top-0 my-rotate-y-180 backface-hidden overflow-hidden rounded-3xl w-full h-full __background">
+					<div className="w-full h-full flex flex-col items-center justify-center">
+						<h3 className="text-4xl xl:text-6xl">👍</h3>
 					</div>
 				</motion.div>
 			</motion.div>
