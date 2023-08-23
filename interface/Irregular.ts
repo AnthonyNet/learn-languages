@@ -13,3 +13,8 @@ export  interface Data2 {
 	readonly cz_word: string;
 	readonly cz_sentence: string;
 }
+
+export interface Phrasal {
+	readonly word: string;
+	readonly sentence: string;
+}

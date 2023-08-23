@@ -32,11 +32,11 @@ export default function NavItems({navData} : {navData: NavData}) {
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/memory/eng">
-								Slovní pexeso ({navData.irregularEng}){" "}
+								Slovní pexeso
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/quiz/eng">Frázový kvíz ({navData.phrasal}) </Link>
+							<Link href="/quiz/eng">Kvíz</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/search/eng">
@@ -76,11 +76,11 @@ export default function NavItems({navData} : {navData: NavData}) {
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/memory/ger">
-								Slovní pexeso ({navData.irregularGer}){" "}
+								Slovní pexeso
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/quiz/ger">Slovesa kvíz ({navData.ger_verbs}) </Link>
+							<Link href="/quiz/ger">Kvíz</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/oxford-flip/ger">

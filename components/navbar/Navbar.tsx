@@ -19,12 +19,11 @@ export default function Navbar() {
 		const getData = async () => {
 			const { data: irregular_eng } = await supabase.from("irregular_eng").select();
 			const { data: irregular_ger } = await supabase.from("irregular_ger").select();
-			const { data: phrasal_verbs } = await supabase.from("phrasal_verbs").select();
 			const { data: ger_verbs } = await supabase.from("ger_verbs").select();
 			const { data: oxfordB2 } = await supabase.from("oxford_b2").select();
 			const { data: oxford_c1 } = await supabase.from("oxford_c1").select();
-			if(irregular_eng && irregular_ger && oxfordB2 && oxford_c1 && phrasal_verbs && ger_verbs) {
-				setNavData({irregularEng:irregular_eng.length, irregularGer:irregular_ger.length, phrasal: phrasal_verbs.length, ger_verbs:ger_verbs.length,oxfordB2: oxfordB2.length, oxfordC1:oxford_c1.length});
+			if(irregular_eng && irregular_ger && oxfordB2 && oxford_c1 && ger_verbs) {
+				setNavData({irregularEng:irregular_eng.length, irregularGer:irregular_ger.length, ger_verbs:ger_verbs.length,oxfordB2: oxfordB2.length, oxfordC1:oxford_c1.length});
 			}
 		}
 		getData();

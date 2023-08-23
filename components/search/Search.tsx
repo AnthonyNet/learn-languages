@@ -23,8 +23,8 @@ type Props = {
 }
 
 type Data = {
-	readonly cz: string;
-	readonly base: string;
+	readonly cz_word: string;
+	readonly word: string;
 	readonly past_simple: string;
 	readonly past_participle: string;
 }
@@ -112,8 +112,8 @@ export default function SearchIrregular({lang}: Props) {
 										dataTS.filter((item:Data) => {
 											return search.toLowerCase() === ""
 												? item
-												: item.cz.toLowerCase().startsWith(search) ||
-														item.base.toLowerCase().startsWith(search) ||
+												: item.cz_word.toLowerCase().startsWith(search) ||
+														item.word.toLowerCase().startsWith(search) ||
 														item.past_simple.toLowerCase().startsWith(search) ||
 														item.past_participle
 															.toLowerCase()
@@ -124,10 +124,10 @@ export default function SearchIrregular({lang}: Props) {
 													{index + 1}
 												</th>
 												<th scope="col" className={style.th}>
-													{item.cz}
+													{item.cz_word}
 												</th>
 												<th scope="col" className={style.th}>
-													{item.base}
+													{item.word}
 												</th>
 												<th scope="col" className={style.th}>
 													{item.past_simple}

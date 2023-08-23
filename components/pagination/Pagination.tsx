@@ -8,6 +8,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
+import {Data1} from "@/interface/Irregular";
 
 import { useState, useEffect } from "react";
 
@@ -17,9 +18,8 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 interface Data{
 	id: string;
-	base?: string;
-	cz?: string;
-	word?: string;
+	word: string;
+	cz_word: string;
 	sentence?: string;
 	cz_sentence?: string;
 }
@@ -135,10 +135,10 @@ Watch the value that is set up in Top_menu
 									<TableRow className="hover:even:bg-indigo-800/40 hover:odd:bg-pink-800/20 border-b border-slate-700/80 odd:bg-slate-700/30">
 										<TableCell className="font-medium">{index + 1}</TableCell>
 										<TableCell>
-											{myNumb == 1 ? item.sentence : item.base}
+											{myNumb == 1 ? item.sentence : item.word}
 										</TableCell>
 										<TableCell>
-											{myNumb == 1 ? item.cz_sentence : item.cz}
+											{myNumb == 1 ? item.cz_sentence : item.cz_word}
 										</TableCell>
 									</TableRow>
 								);

@@ -3,6 +3,5 @@ export interface NavData {
 	irregularGer: number;
 	oxfordB2: number;
 	oxfordC1: number;
-	phrasal: number;
 	ger_verbs: number;
 }

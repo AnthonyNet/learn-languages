@@ -17,7 +17,7 @@ export default async function Page() {
 
 		return (
 			irregular_eng && oxford_b2 && oxford_c1 &&
-			 <Memory props1={oxford_b2} props2={irregular_eng} props3={oxford_c1} />
+			 <Memory props1={irregular_eng} props2={oxford_b2} props3={oxford_c1} />
 		);
 	} catch(error){
 		console.log("Failed to fetch data from server", error);

@@ -97,11 +97,11 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>
 								<Link href="/memory/eng">
-									Slovní pexeso ({navData.irregularEng}){" "}
+									Slovní pexeso
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>
-								<Link href="/quiz/eng">Frázový kvíz ({navData.phrasal}) </Link>
+								<Link href="/quiz/eng">Kvíz</Link>
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>
 								<Link href="/search/eng">
@@ -149,12 +149,12 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>
 								<Link href="/memory/ger">
-									Slovní pexeso ({navData.irregularGer}){" "}
+									Slovní pexeso
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>
 								<Link href="/quiz/ger">
-									Slovesa kvíz ({navData.ger_verbs}){" "}
+									Kvíz
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>

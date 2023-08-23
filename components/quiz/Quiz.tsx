@@ -1,9 +1,15 @@
 "use client";
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState, useEffect } from "react";
-interface Data {
-	readonly [key: string]: string;
+import { Data1, Data2} from "@/interface/Irregular";
+import TopMenu from "@/components/TopMenu";
+
+
+interface Props {
+	data1?: Data1[];
+	data2: Data2[];
+	data3: Data2[];
+	phrasal?: Data2[];
 }
 
 const backgroundColor = {
@@ -12,17 +18,27 @@ const backgroundColor = {
 	2: "__gradient",
 	3: "__gradient",
 };
-export default function Quiz({ lang }: { lang: string }) {
-	const supabase = createClientComponentClient();
-	const [phrasalVerbs, setPhrasalVerbs] = useState<Data[]>([]);
+export default function Quiz({ data1, data2, data3, phrasal }: Props) {
+	const [dataTS, setDataTS] = useState<Data2[]>(data2);
 	const [verb, setVerb] = useState<any>([]);
-	const [wrongChoices, setWrongChoices] = useState<Data[]>([]);
+	const [wrongChoices, setWrongChoices] = useState<Data1[]>([]);
 	const [start, setStart] = useState<boolean>(false);
 	const [answerColor, setAnswerColor] = useState<{ [key: number]: string }>(
 		backgroundColor
 	);
 	const [score, setScore] = useState<number>(0);
 	const [wrong, setWrong] = useState<number>(0);
+
+		const getData = async (): Promise<void> => {
+			const propsData = phrasal ? await phrasal : await data1;
+			setStart(true);
+			createData(propsData);
+
+		};
+
+		useEffect(() => {
+			getData();
+		}, []);
 
 	const createData = (data: any): void => {
 		function randomNum() {
@@ -36,6 +52,7 @@ export default function Quiz({ lang }: { lang: string }) {
 				data[randomNum()],
 				data[randomNum()],
 			];
+
 			return all;
 		};
 		const allAnswers = addBoolean();
@@ -43,39 +60,16 @@ export default function Quiz({ lang }: { lang: string }) {
 		setWrongChoices(allAnswers.sort(() => Math.random() - 0.5));
 	};
 
-	const getData = async (): Promise<void> => {
-		try {
-			const { data: phrasal_verbs } = await supabase
-				.from("phrasal_verbs")
-				.select();
-				const { data: ger_verbs } = await supabase
-					.from("ger_verbs")
-					.select();
 
-			if (phrasal_verbs && ger_verbs && phrasal_verbs.length > 0) {
-				// Make sure phrasal_verbs is not empty
-				createData(lang === "eng" ? phrasal_verbs : ger_verbs);
-				setPhrasalVerbs(lang === "eng" ? phrasal_verbs : ger_verbs);
-				setStart(true);
-			}
-		} catch (error) {
-			console.error("Error in getData:", error);
-			throw error;
-		}
-	};
-
-	useEffect(() => {
-		getData();
-	}, [supabase]);
-
-	const checkAnswer = (choice: Data, index: number): void => {
+	const checkAnswer = (choice: Data1, index: number): void => {
 		if (choice.id === verb.id) {
 			setScore(score + 1);
 			setAnswerColor((prev) => ({ ...prev, [index]: "__bg_green" }));
 			setTimeout(() => {
 				setAnswerColor(backgroundColor);
-				createData(phrasalVerbs);
+				createData(dataTS);
 			}, 1000);
+
 		} else {
 			setWrong(wrong + 1);
 			setAnswerColor((prev) => ({ ...prev, [index]: "__bg_red" }));
@@ -83,8 +77,9 @@ export default function Quiz({ lang }: { lang: string }) {
 	};
 
 	return (
-		<section className="w-screen h-100-dvh flex justify-center items-center">
-			<div className="flex flex-col w-full h-auto max-w-[600px] min-h-[400px] m-auto justify-center lg:justify-around p-6 lg:border-4 border-double rounded-[30px] __border_color">
+		<section className="w-screen h-100-dvh pt-[50px] md:pt-[70px] flex flex-col justify-center items-center">
+			<TopMenu data1={data1} data2={data2} data3={data3} phrasal={phrasal} createData={createData} setDataTS={setDataTS}/>
+			<div className="flex flex-col w-full h-auto max-w-[600px] min-h-[400px] m-auto justify-center lg:justify-around p-6 lg:border-4 border-double rounded-[30px] __border_color ">
 				<span className="flex justify-around text-[var(--white)] font-bold">
 					<p className="bg-red-500 px-4 py-2 rounded-xl">Špatně: {wrong}</p>
 					<p className="bg-green-500 px-4 py-2 rounded-xl">Správně: {score}</p>
@@ -104,7 +99,7 @@ export default function Quiz({ lang }: { lang: string }) {
 										answerColor[index]
 									}>
 									<p className="__text_color2 filter invert">
-										{choice.base || choice.word}
+										{choice.word}
 									</p>
 								</button>
 							);

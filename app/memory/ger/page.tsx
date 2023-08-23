@@ -13,7 +13,7 @@ export default async function Page() {
 
 			return (
 				ger_verbs && irregular_ger && german_c1 && (
-					<Memory props1={ger_verbs} props2={irregular_ger} props3={german_c1} />
+					<Memory props1={irregular_ger} props2={ger_verbs} props3={german_c1} />
 				)
 			);
 		} catch (error) {
