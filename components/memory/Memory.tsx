@@ -3,7 +3,8 @@
 import MemoryCard from "./MemoryCard";
 import { useState, useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-
+import TopMenu from "./TopMenu";
+import { Data1, Data2 } from "@/interface/Irregular";
 interface Item {
 	readonly cz?: string;
 	readonly eng?: string;
@@ -15,7 +16,6 @@ interface Item {
 const styles = {
 	section:
 		"w-screen  flex flex-col items-center justify-center pt-[50px] sm:pt-[80px] h-screen",
-	menutop__container: "w-full max-w-[400px] flex justify-between p-2 font-bold  ",
 	h2: "text-lg sm:text-2xl",
 	navItem: "__nav-item",
 	progress__container: "w-[300px] border-[1px] __border_color rounded-full ",
@@ -27,22 +27,17 @@ const styles = {
 };
 
 //write simple function which return result of 1+1
-type Props = {
-	lang: string;
-}
-interface Data {
-readonly cz: string;
-readonly base: string;
-readonly past_simple: string;
-readonly past_participle: string;
+interface Props  {
+	props1: Data1[];
+	props2: Data2[];
 }
 
-export default function Memory({lang}: Props) {
-	const supabase = createClientComponentClient();
+export default function Memory({props1, props2}: Props) {
 	const [start, setStart] = useState<boolean>(false);
-	const [english, setEnglish] = useState<Data[]>([]);
-	const [german, setGerman] = useState<Data[]>([]);
-	const [dataTS, setDataTS] = useState<Data[]>([]);
+
+	const [data1, setData1] = useState<Data1[]>(props1);
+	const [data2, setData2] = useState<Data2[]>(props2);
+	const [dataTS, setDataTS] = useState<Data1[]|Data2[]>(props1);
 
 	const [restartCounter, setRestartCounter] = useState<number>(0);
 	const [score, setScore] = useState<number>(0);
@@ -53,58 +48,32 @@ export default function Memory({lang}: Props) {
 
 
 	const getData = async (): Promise<void> => {
-		try {
-			const { data: irregular_ger } = await supabase
-				.from("irregular_ger")
-				.select();
-			const { data: irregular_eng } = await supabase
-				.from("irregular_eng")
-				.select();
-			const {data: oxford_b2 } = await supabase
-				.from("oxford_b2")
-				.select();
 
-			if (irregular_ger && irregular_eng) {
-				setEnglish(irregular_eng);
-				setGerman(irregular_ger);
-
+				const propsData = await props1;
+				setDataTS(propsData);
 				setStart(true);
-				if (lang === "ger") {
-					setDataTS(irregular_ger);
-				}
-				if (lang === "eng") {
-					setDataTS(irregular_eng);
-				}
-			}
-		} catch (error) {
-			console.error("Error in getData:", error);
-			throw error;
-		}
+
 	};
 
 	useEffect(() => {
-	/*	getData().then(() => {
-			english && createData(english);
-		});*/
 		getData();
+	}, []);
 
-	}, [supabase, setDataTS]);
-
-	const createData = async (dataLanguage: Data[]) => {
+	const createData = async (dataLanguage: Data1[] | Data2[] ) => {
 		const data = await dataLanguage;
 
 		const RAW = [...data].sort(() => Math.random() - 0.5).slice(0, 6);
 
 		const randomEnglish = RAW.map((item, index) => ({
 			select: index,
-			eng: item.base,
+			eng:  item.word,
 			check: false,
 			click: false,
 		}));
 
 		const randomCzech = RAW.map((item, index) => ({
 			select: index,
-			cz: item.cz,
+			cz: item.cz_word,
 			check: false,
 			click: false,
 		}));
@@ -120,7 +89,7 @@ export default function Memory({lang}: Props) {
 	/* --------------------------------------------------- */
 
 	useEffect(() => {
-		lang === "eng" ? createData(english) : createData(german);
+		createData(data1)
 	}, [start]);
 
 	/* -------------------------------------------------------- */
@@ -188,15 +157,9 @@ export default function Memory({lang}: Props) {
 
 	return (
 		<section className={styles.section}>
-			<header className={styles.menutop__container}>
-				<button onClick={() => {createData(english); setDataTS(english)}} className={styles.navItem}>
-					Angličtina
-				</button>
 
-				<button onClick={() => {createData(german); setDataTS(german)}} className={styles.navItem}>
-					Němčina
-				</button>
-			</header>
+			<TopMenu createData={createData} setDataTS={setDataTS} data1={data1} data2={data2} />
+
 			<h2 className={styles.h2}>Skóre: {score}</h2>
 			<div className={styles.progress__container}>
 				<div

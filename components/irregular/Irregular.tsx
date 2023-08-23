@@ -110,7 +110,7 @@ HIDE HINTS
 
 					<div className="px-6 inputs">
 						<h5 className="text-3xl dark:bg-black font-medium p-2">
-							{start ? dataTS[rand]?.cz || "...loading" : ""}
+							{start ? dataTS[rand]?.cz_word || "...loading" : ""}
 						</h5>
 						<ul className="flex flex-col justify-around text-center mb-2">
 							{start &&
@@ -143,7 +143,7 @@ HIDE HINTS
 					<div className="flex justify-around h-[30px]">
 						{hint && start ? (
 							<CardHint
-								base={dataTS[rand]?.base}
+								word={dataTS[rand]?.word}
 								pastSimple={dataTS[rand]?.past_simple}
 								pastParticiple={dataTS[rand]?.past_participle}
 							/>
