@@ -22,6 +22,7 @@ export default function Quiz({ lang }: { lang: string }) {
 		backgroundColor
 	);
 	const [score, setScore] = useState<number>(0);
+	const [wrong, setWrong] = useState<number>(0);
 
 	const createData = (data: any): void => {
 		function randomNum() {
@@ -76,16 +77,20 @@ export default function Quiz({ lang }: { lang: string }) {
 				createData(phrasalVerbs);
 			}, 1000);
 		} else {
+			setWrong(wrong + 1);
 			setAnswerColor((prev) => ({ ...prev, [index]: "__bg_red" }));
 		}
 	};
 
 	return (
 		<section className="w-screen h-100-dvh flex justify-center items-center">
-			<div className="flex flex-col w-full h-auto max-w-[600px] min-h-[400px] m-auto justify-center p-6 lg:border-4 border-double rounded-[30px] __border_color">
-				<p className="text-center">Skóre: {score}</p>
+			<div className="flex flex-col w-full h-auto max-w-[600px] min-h-[400px] m-auto justify-center lg:justify-around p-6 lg:border-4 border-double rounded-[30px] __border_color">
+				<span className="flex justify-around text-[var(--white)] font-bold">
+					<p className="bg-red-500 px-4 py-2 rounded-xl">Špatně: {wrong}</p>
+					<p className="bg-green-500 px-4 py-2 rounded-xl">Správně: {score}</p>
+				</span>
 				<p className="text-lg font-semibold my-4 text-center">
-					{start && verb.cz || verb.cz_word}
+					{(start && verb.cz) || verb.cz_word}
 				</p>
 				<div className="flex flex-col space-y-2">
 					{start &&

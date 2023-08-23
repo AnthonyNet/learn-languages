@@ -60,8 +60,8 @@ export default function Memory({lang}: Props) {
 			const { data: irregular_eng } = await supabase
 				.from("irregular_eng")
 				.select();
-			const {data: phrasal_verbs } = await supabase
-				.from("phrasal_verbs")
+			const {data: oxford_b2 } = await supabase
+				.from("oxford_b2")
 				.select();
 
 			if (irregular_ger && irregular_eng) {

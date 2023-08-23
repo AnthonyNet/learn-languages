@@ -12,35 +12,7 @@ import Button from "@/components/button/Button";
 import { TbZoomQuestion } from "react-icons/tb";
 import { RxArrowRight } from "react-icons/rx";
 
-const styles = {
-	section: `
- mt-[50px] md:mt-[70px]  w-full h-100-dvh flex justify-center items-center  __responsiveSection __small_screen_h-auto
- `,
-	section__container: `
-    mt-[25px] md:text-[140%] lg:text-[100%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center
-  `,
-	score__container: `
-    py-2 px-6
-  `,
-	footer: `
-    h-auto w-full max-w-[300px] md:max-w-[400px] md:pb-2 flex flex-col
-  `,
-	buttons__container: `
-    flex justify-around md:justify-center w-full  __border_color
-  `,
-	button: `
-    flex items-center justify-center h-full w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000
-  `,
-	button__animation: `
-    lg:hover:translate-x-[20px]
-  `,
-	h5: `
-    text-3xl dark:bg-black font-medium p-2
-  `,
-	ul: `
-    flex flex-col justify-around text-center mb-2
-  `,
-} as const;
+
 
 type Props = {
 	lang: string;
@@ -124,23 +96,23 @@ HIDE HINTS
 	}
 
 	return (
-		<section className={styles.section}>
-			<div className="w-full h-full md:h-auto md:w-auto min-w-[350px] flex flex-col justify-center  items-center md:border-4 border-double __border_color rounded-[50px]  text-center">
-				<main className={styles.section__container}>
-					<div className={styles.score__container}>
+		<section className="mt-[50px] md:mt-[70px] w-full h-100-dvh flex justify-center items-center __responsiveSection __small_screen_h-auto">
+			<div className="w-full h-full md:h-auto md:w-auto min-w-[350px] flex flex-col justify-center items-center md:border-4 border-double __border_color rounded-[50px] text-center">
+				<main className="mt-[25px] md:text-[140%] lg:text-[100%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center">
+					<div className="py-2 px-6">
 						Celkové skóre: <span>{totalScore}</span>
 					</div>
-					<div className={styles.score__container}>
+					<div className="py-2 px-6">
 						Momentální skóre: <span>{score > 0 ? score : 0}</span>
 					</div>
 
 					<Score score={stars} />
 
 					<div className="px-6 inputs">
-						<h5 className={styles.h5}>
+						<h5 className="text-3xl dark:bg-black font-medium p-2">
 							{start ? dataTS[rand]?.cz || "...loading" : ""}
 						</h5>
-						<ul className={styles.ul}>
+						<ul className="flex flex-col justify-around text-center mb-2">
 							{start &&
 								Object.values(dataTS[rand] || {})
 									.slice(2)
@@ -167,8 +139,8 @@ HIDE HINTS
 					</div>
 				</main>
 
-				<footer className={styles.footer}>
-					<div className={styles.buttons__container + " h-[30px]"}>
+				<footer className="h-auto w-full max-w-[300px] md:max-w-[400px] md:pb-2 flex flex-col">
+					<div className="flex justify-around h-[30px]">
 						{hint && start ? (
 							<CardHint
 								base={dataTS[rand]?.base}
@@ -180,13 +152,11 @@ HIDE HINTS
 
 					<div className="flex justify-around">
 						<Button onClick={() => setHint(!hint)}>
-							<TbZoomQuestion className={styles.button} />
+							<TbZoomQuestion className="flex items-center justify-center h-full w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000" />
 						</Button>
 
 						<Button onClick={randomWord}>
-							<RxArrowRight
-								className={`${styles.button} ${styles.button__animation}`}
-							/>
+							<RxArrowRight className="flex items-center justify-center h-full w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000 lg:hover:translate-x-[20px]" />
 						</Button>
 					</div>
 				</footer>
