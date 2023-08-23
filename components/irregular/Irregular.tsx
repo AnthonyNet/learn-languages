@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Irregular from "@/interface/Irregular";
+import {Data1} from "@/interface/Irregular";
 import Input from "./Card_Input";
 import CardHint from "./Card_Hint";
 
@@ -28,7 +28,7 @@ export default function Irregular({ lang }: Props) {
 	const [totalScore, setTotalScore] = useState<number | any>(null);
 
 	const [dataLength, setDataLength] = useState<number>(136);
-	const [dataTS, setDataTS] = useState<Irregular[] | []>([]);
+	const [dataTS, setDataTS] = useState<Data1[] | []>([]);
 	const supabase = createClientComponentClient();
 
 	useEffect(() => {
