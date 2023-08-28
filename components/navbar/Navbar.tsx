@@ -16,19 +16,26 @@ export default function Navbar() {
 	const supabase = createClientComponentClient();
 
 	useEffect(() => {
-		const getData = async () => {
-			const { data: irregular_eng } = await supabase.from("irregular_eng").select();
-			const { data: irregular_ger } = await supabase.from("irregular_ger").select();
-			const { data: ger_verbs } = await supabase.from("ger_verbs").select();
-			const { data: oxfordB2 } = await supabase.from("oxford_b2").select();
-			const { data: oxford_c1 } = await supabase.from("oxford_c1").select();
-			if(irregular_eng && irregular_ger && oxfordB2 && oxford_c1 && ger_verbs) {
-				setNavData({irregularEng:irregular_eng.length, irregularGer:irregular_ger.length, ger_verbs:ger_verbs.length,oxfordB2: oxfordB2.length, oxfordC1:oxford_c1.length});
-			}
-		}
-		getData();
-	},[supabase, setNavData])
+  const tableNames = [
+		"irregular_eng",
+		"irregular_ger",
+		"ger_verbs",
+		"oxford_b2",
+		"oxford_c1",
+	];
 
+	Promise.all([...tableNames].map((tableName) => supabase.from(tableName).select("*", {count : "exact", head: true}))).then((values) => {
+		setNavData({
+			irregularEng: values[0].count ? values[0].count : 0,
+			irregularGer: values[1].count ? values[1].count : 0,
+			ger_verbs: values[2].count ? values[2].count : 0,
+			oxfordB2: values[3].count ? values[3].count : 0,
+			oxfordC1: values[4].count ? values[4].count : 0
+		});
+
+	})
+
+	},[supabase, setNavData])
 	const handleNav = () => {
 		setNav(!nav);
 	};

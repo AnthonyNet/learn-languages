@@ -134,7 +134,7 @@
 	--hue-rotate: -90deg;
 }
 [data-theme="blue"] {
---hue-rotate: -20deg;
+--hue-rotate: 0deg;
 
 --color-main-accent: hsl(207, 100%, 50%);
 }

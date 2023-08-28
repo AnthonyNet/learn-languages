@@ -17,7 +17,7 @@ const styles = {
 	li: "m-1 p-1 font-bold border-2 rounded-xl focus:mainCardBorder borderShadow __border_color __border_hover",
 	li_green: "p-2 font-bold",
 	input:
-		"w-full text-center text-bold cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent rounded-md p-1  hover:shadow-lg transition ease-in-out duration-500 bg-transparent",
+		"__card_Input w-full text-center text-bold cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent rounded-md p-1  hover:shadow-lg transition ease-in-out duration-500 bg-transparent",
 };
 
 /*------------------------------------------
@@ -91,17 +91,16 @@ setInput => CLEAR VALUE IN INPUT
 
 
   return (
-    <li className={styles.li + " " +  checkStyles}>
-      <input
-        type="text"
-        value={input}
-        className={styles.input + " " + checkMistake}
-        onChange={handleChange}
-        placeholder={placeholder}
-
-      />
-    </li>
-  );
+		<li className={styles.li + " " + checkStyles}>
+			<input
+				type="text"
+				value={input}
+				className={styles.input + " " + checkMistake}
+				onChange={handleChange}
+				placeholder={placeholder}
+			/>
+		</li>
+	);
 };
 
 export default Input;

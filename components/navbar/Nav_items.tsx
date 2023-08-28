@@ -17,6 +17,7 @@ const styles = {
 
 export default function NavItems({navData} : {navData: NavData}) {
 
+
 	return (
 		<article className={styles.article}>
 			<div className={styles.container}>

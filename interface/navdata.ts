@@ -1,5 +1,5 @@
 export interface NavData {
-	irregularEng: number;
+	irregularEng: number | null;
 	irregularGer: number;
 	oxfordB2: number;
 	oxfordC1: number;

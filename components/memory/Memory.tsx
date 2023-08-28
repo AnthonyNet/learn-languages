@@ -58,6 +58,7 @@ export default function Memory({props1, props2, props3}: Props) {
 	const createData = async (dataLanguage: Data1[] | Data2[] ) => {
 		const data = await dataLanguage;
 
+
 		const RAW = [...data].sort(() => Math.random() - 0.5).slice(0, 6);
 
 		const randomEnglish = RAW.map((item, index) => ({
@@ -77,6 +78,7 @@ export default function Memory({props1, props2, props3}: Props) {
 		setCards(
 			[...randomEnglish, ...randomCzech].sort(() => Math.random() - 0.5)
 		);
+
 	};
 
 	/* --------------------------------------------------- */
