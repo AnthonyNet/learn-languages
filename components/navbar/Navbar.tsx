@@ -7,10 +7,14 @@ import Mobile__Nav from "./Mobile_nav";
 import Nav_Items from "./Nav_items";
 import { NavData } from "@/interface/navdata";
 import "./Navbar.css";
+import { notFound } from 'next/navigation'
 
+import { cache } from "react";
+export const revalidate = 3600; // revalidate the data at most every hour
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
-export default function Navbar() {
+export default  function Navbar() {
+
 	const [navData, setNavData] = useState<null|NavData>(null);
 	const [nav, setNav] = useState<boolean>(false);
 	const supabase = createClientComponentClient();
