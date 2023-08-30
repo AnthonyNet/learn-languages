@@ -41,6 +41,9 @@
 		transition: all 0.3s ease-in-out;
 	}
 
+	.__irregular_img{
+		width: 80%;
+	}
 
 	.__my_grid_item:nth-child(1){
 		height: 55dvh;

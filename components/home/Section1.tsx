@@ -50,14 +50,13 @@ export default function Section1() {
 						loop: true,
 					}}
 				/>
-
 			</div>
 
 			<div className={styles.div_right}>
 				<div
 					className={
 						styles.image_cover +
-						" sm:row-span-6 sm:col-span-6 sm:row-start-4 sm:row-end-10 sm:col-start-7 sm:col-end-13 sm:z-30  overflow-hidden hover:scale-[102%] transition-all duration-500 ease-in-out"
+						" sm:row-span-6 sm:col-span-6 sm:row-start-4 sm:row-end-10 sm:col-start-7 sm:col-end-13 sm:z-30  overflow-hidden hover:scale-[102%] transition-all duration-500 ease-in-out __irregular_img"
 					}>
 					<Image
 						src={Irregular}

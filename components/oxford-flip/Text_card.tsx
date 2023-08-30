@@ -13,16 +13,19 @@ interface Props {
 	cz_word: string;
 	cz_sentence: string;
 }
-const Text_Card = ({ switchLanguage, word, sentence, cz_sentence }: Props) => {
+const Text_Card = ({ switchLanguage, word, sentence, cz_word, cz_sentence }: Props) => {
 	return (
 		<article className={styles.card__text__cover}>
 			{switchLanguage ? (
-				<div>
-					<h3 className={styles.h3 +" font-bold text-[120%]"}>{word}</h3>
+				<>
+					<h3 className={styles.h3 + " font-bold text-[120%]"}>{word}</h3>
 					<h3 className={styles.h3}>{sentence}</h3>
-				</div>
+				</>
 			) : (
-				<h3 className={styles.h3}>{cz_sentence}</h3>
+				<>
+					<h3 className={styles.h3 + " font-bold text-[120%]"}>{cz_word}</h3>
+					<h3 className={styles.h3}>{cz_sentence}</h3>
+				</>
 			)}
 		</article>
 	);
