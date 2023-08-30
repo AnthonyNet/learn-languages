@@ -26,12 +26,6 @@ export default function MainPage() {
 					<Section1 />
 				</motion.div>
 			</main>
-			<section
-				className="w-screen h-screen flex justify-center items-center"
-				id="section-2">
-				{" "}
-				Sekce2
-			</section>
 		</>
 	);
 }

@@ -21,7 +21,7 @@
 	}
 	.__my_grid{
 		height: auto;
-		min-height: 150dvh;
+		min-height: 80dvh;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;

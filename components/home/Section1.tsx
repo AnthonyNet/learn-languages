@@ -11,12 +11,12 @@ import Typewriter from "typewriter-effect";
 
 const styles = {
 	section:
-		"pt-[50px] bg-transparent w-full flex flex-col xl:flex-row items-center justify-center",
+		"bg-transparent w-full h-auto lg:min-h-full flex flex-col xl:flex-row items-center justify-center",
 	div_left:
-		"h-screen max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 px-8 xl:p-0",
+		"h-screen max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 pt-[50px] px-8 xl:p-0",
 	div_right:
-		"w-full h-auto  min-h-[800px] xl:h-[80%] max-w-xl mx-auto rounded-lg shadow-lg py-8    __my_grid",
-	image_cover: "relative  __my_grid_item rounded-[30px] ",
+		"w-full  max-w-xl  rounded-lg shadow-lg h-[700px] __my_grid lg:pt-[70px] ",
+	image_cover: "relative  __my_grid_item rounded-[30px]",
 	image:
 		"border-4 border-double rounded-[30px] border-blue-700 hover:scale-[102%] transition-all duration-500 ease-in-out bg-black overflow-hidden hue-rotate-[var(--hue-rotate)] brightness-[var(--saturation)]",
 };
@@ -50,11 +50,7 @@ export default function Section1() {
 						loop: true,
 					}}
 				/>
-				<div className="mt-8 flex justify-center items-end animate-ping-slow">
-					<a href="#section-2">
-						<ArrowDown />
-					</a>
-				</div>
+
 			</div>
 
 			<div className={styles.div_right}>
