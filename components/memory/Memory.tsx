@@ -3,7 +3,7 @@
 import MemoryCard from "./MemoryCard";
 import { useState, useEffect } from "react";
 import TopMenu from "../TopMenu";
-import { Data1, Data2 } from "@/interface/Irregular";
+import { Data1, Data2, Irregular } from "@/interface/Irregular";
 interface Item {
 	readonly cz?: string;
 	readonly eng?: string;
@@ -27,9 +27,9 @@ const styles = {
 
 //write simple function which return result of 1+1
 interface Props  {
-	props1: Data1[];
-	props2: Data2[];
-	props3: Data2[];
+	props1: Irregular[] | any;
+	props2: Data2[] | any;
+	props3: Data2[] |any;
 }
 
 export default function Memory({props1, props2, props3}: Props) {

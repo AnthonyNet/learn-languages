@@ -1,15 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Data1, Data2} from "@/interface/Irregular";
+import { Data1, Data2, Phrasal} from "@/interface/Irregular";
 import TopMenu from "@/components/TopMenu";
 
 
 interface Props {
-	data1?: Data1[];
-	data2: Data2[];
-	data3: Data2[];
-	phrasal?: Data2[];
+	data1?: Data1[] | null;
+	data2: Data2[] | null;
+	data3: Data2[] | null;
+	phrasal?: Phrasal[] | null;
 }
 
 const backgroundColor = {
@@ -19,7 +19,7 @@ const backgroundColor = {
 	3: "__gradient",
 };
 export default function Quiz({ data1, data2, data3, phrasal }: Props) {
-	const [dataTS, setDataTS] = useState<Data2[]>(data2);
+	const [dataTS, setDataTS] = useState<Data2[] | null>(data2);
 	const [verb, setVerb] = useState<any>([]);
 	const [wrongChoices, setWrongChoices] = useState<Data1[]>([]);
 	const [start, setStart] = useState<boolean>(false);
@@ -78,7 +78,16 @@ export default function Quiz({ data1, data2, data3, phrasal }: Props) {
 
 	return (
 		<section className="w-screen h-100-dvh pt-[50px] md:pt-[70px] flex flex-col justify-center items-center">
-			<TopMenu data1={data1} data2={data2} data3={data3} phrasal={phrasal} createData={createData} setDataTS={setDataTS}/>
+			{dataTS && (
+				<TopMenu
+					data1={data1}
+					data2={data2}
+					data3={data3}
+					phrasal={phrasal}
+					createData={createData}
+					setDataTS={setDataTS}
+				/>
+			)}
 			<div className="flex flex-col w-full h-auto max-w-[600px] min-h-[400px] m-auto justify-center lg:justify-around p-6 lg:border-4 border-double rounded-[30px] __border_color ">
 				<span className="flex justify-around text-[var(--white)] font-bold">
 					<p className="bg-red-500 px-4 py-2 rounded-xl">Špatně: {wrong}</p>
@@ -98,9 +107,7 @@ export default function Quiz({ data1, data2, data3, phrasal }: Props) {
 										"py-2 rounded-md shadow-md font-bold duration-300  " +
 										answerColor[index]
 									}>
-									<p className="__text_color2 filter invert">
-										{choice.word}
-									</p>
+									<p className="__text_color2 filter invert">{choice.word}</p>
 								</button>
 							);
 						})}

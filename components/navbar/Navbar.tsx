@@ -8,10 +8,10 @@ import Nav_Items from "./Nav_items";
 import { NavData } from "@/interface/navdata";
 import "./Navbar.css";
 import { notFound } from 'next/navigation'
-
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cache } from "react";
 export const revalidate = 3600; // revalidate the data at most every hour
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+
 
 export default  function Navbar() {
 
@@ -28,7 +28,7 @@ export default  function Navbar() {
 		"oxford_c1",
 	];
 
-	Promise.all([...tableNames].map((tableName) => supabase.from(tableName).select("*", {count : "exact", head: true}))).then((values) => {
+	Promise.all([...tableNames].map((tableName) => supabase.from(tableName).select("id", {count : "exact", head: true}))).then((values) => {
 		setNavData({
 			irregularEng: values[0].count ? values[0].count : 0,
 			irregularGer: values[1].count ? values[1].count : 0,

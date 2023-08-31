@@ -1,24 +1,19 @@
 import Quiz from "@/components/quiz/Quiz";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-
+import { fetchDataGER } from "@/utils/get-data";
+export const revalidate = 3600;
 export default async function Page() {
-	const supabase = createServerComponentClient({ cookies });
 
-	try {
-		const { data: irregular_ger } = await supabase.from("irregular_ger").select();
-		const { data: ger_verbs } = await supabase.from("ger_verbs").select();
-		const { data: german_c1 } = await supabase.from("german_c1").select();
+	const dbData = await fetchDataGER();
 
-		return (
-			irregular_ger &&
-			ger_verbs &&
-			german_c1 && (
-				<Quiz data1={irregular_ger} data2={ger_verbs} data3={german_c1} />
-			)
-		);
-	} catch (error) {
-		console.log("Failed to fetch data from server", error);
-		throw error;
-	}
+	return (
+		<>
+			{dbData && (
+				<Quiz
+					data1={dbData.irregular_ger.data}
+					data2={dbData.ger_verbs.data}
+					data3={dbData.german_c1.data}
+				/>
+			)}
+		</>
+	);
 }

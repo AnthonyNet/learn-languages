@@ -3,7 +3,6 @@ import './globals.css'
 /*import '@/components/navbar/Navbar.css'*/
 import Providers from "./Providers";
 import Navbar from "@/components/navbar/Navbar";
-export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Learn languages',
@@ -16,6 +15,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
 		<html lang="en">
 			<body>

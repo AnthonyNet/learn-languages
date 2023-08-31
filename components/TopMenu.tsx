@@ -1,11 +1,11 @@
-import {Data1, Data2} from "@/interface/Irregular";
+import {Data1, Data2, Phrasal} from "@/interface/Irregular";
 
 interface Props {
 	createData: Function;
-	data1?: Data1[];
-	data2: Data2[];
-	data3: Data2[];
-	phrasal?: Data2[];
+	data1?: Data1[] | null;
+	data2: Data2[] | null;
+	data3: Data2[] | null;
+	phrasal?: Phrasal[] | null;
 	setDataTS: Function;
 }
 
