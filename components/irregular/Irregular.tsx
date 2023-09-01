@@ -1,23 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {Data1} from "@/interface/Irregular";
+import {Irregular} from "@/interface/Irregular";
 import Input from "./Card_Input";
 import CardHint from "./Card_Hint";
-
 import Score from "./Score";
-
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Button from "@/components/button/Button";
 import { TbZoomQuestion } from "react-icons/tb";
 import { RxArrowRight } from "react-icons/rx";
 
 
 
-type Props = {
-	lang: string;
-};
-export default function Irregular({ lang }: Props) {
+
+export default function Irregular({ irregular }: { irregular: Irregular[] }) {
 	const [start, setStart] = useState<boolean>(false);
 	const [score, setScore] = useState<number>(0);
 	const [stars, setStars] = useState<number>(0);
@@ -28,31 +23,18 @@ export default function Irregular({ lang }: Props) {
 	const [totalScore, setTotalScore] = useState<number | any>(null);
 
 	const [dataLength, setDataLength] = useState<number>(136);
-	const [dataTS, setDataTS] = useState<Data1[] | []>([]);
-	const supabase = createClientComponentClient();
+	const [dataTS, setDataTS] = useState<Irregular[] | []>([]);
+
 
 	useEffect(() => {
-		const getData = async () => {
-			const { data: irregular_ger } = await supabase
-				.from("irregular_ger")
-				.select();
-			const { data: irregular_eng } = await supabase
-				.from("irregular_eng")
-				.select();
-
-			if (irregular_ger && lang === "ger") {
-				setDataLength(irregular_ger.length);
-				setDataTS(irregular_ger);
-				setStart(true);
-			}
-			if (irregular_eng && lang === "eng") {
-				setDataLength(irregular_eng.length);
-				setDataTS(irregular_eng);
-				setStart(true);
-			}
-		};
-		getData();
-	}, [supabase, setDataTS]);
+		const getPropsData = async () => {
+			const data = await irregular;
+			setDataLength(irregular.length);
+			setDataTS(irregular);
+			setStart(true);
+		}
+		getPropsData()
+	}, []);
 
 	/*------------------------------------------
   SET LOCAL STRORAGE IF NOT EXISTS

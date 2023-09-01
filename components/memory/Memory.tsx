@@ -27,14 +27,14 @@ const styles = {
 
 //write simple function which return result of 1+1
 interface Props  {
-	props1: Irregular[] | any;
-	props2: Data2[] | any;
-	props3: Data2[] |any;
+	irregular: Irregular[];
+	props1: Data2[];
+	props2?: Data2[] ;
 }
 
-export default function Memory({props1, props2, props3}: Props) {
+export default function Memory({props1, props2, irregular}: Props) {
 	const [start, setStart] = useState<boolean>(false);
-	const [dataTS, setDataTS] = useState<Data1[]|Data2[]>(props1);
+	const [dataTS, setDataTS] = useState<Data2[] | Irregular[]>([]);
 
 	const [restartCounter, setRestartCounter] = useState<number>(0);
 	const [score, setScore] = useState<number>(0);
@@ -43,27 +43,23 @@ export default function Memory({props1, props2, props3}: Props) {
 	const [prev, setPrev] = useState<number>(-1);
 	const [progress, setProgress] = useState<number>(0);
 
-
 	const getData = async (): Promise<void> => {
-				const propsData = await props1;
-				setDataTS(propsData);
-				setStart(true);
-
+		const propsData = await props1;
+		setDataTS(propsData);
+		setStart(true);
 	};
 
 	useEffect(() => {
 		getData();
 	}, []);
 
-	const createData = async (dataLanguage: Data1[] | Data2[] ) => {
+	const createData = async (dataLanguage: Irregular[] | Data2[]) => {
 		const data = await dataLanguage;
-
-
 		const RAW = [...data].sort(() => Math.random() - 0.5).slice(0, 6);
 
 		const randomEnglish = RAW.map((item, index) => ({
 			select: index,
-			eng:  item.word,
+			eng: item.word,
 			check: false,
 			click: false,
 		}));
@@ -78,16 +74,15 @@ export default function Memory({props1, props2, props3}: Props) {
 		setCards(
 			[...randomEnglish, ...randomCzech].sort(() => Math.random() - 0.5)
 		);
-
 	};
 
 	/* --------------------------------------------------- */
 	//       FIRST SETUP
-	//
+	//	 CreateData gets the first data to show
 	/* --------------------------------------------------- */
 
 	useEffect(() => {
-		createData(props1)
+		createData(props1);
 	}, [start]);
 
 	/* -------------------------------------------------------- */
@@ -138,8 +133,6 @@ export default function Memory({props1, props2, props3}: Props) {
 	//  check if the current card matches the previous card
 	/* --------------------------------------------------- */
 	function handleClick(cardId: number, selectId: number) {
-
-
 		if (prev === -1) {
 			/*cards[cardId].click = true;*/
 			setPrev(cardId);
@@ -155,15 +148,21 @@ export default function Memory({props1, props2, props3}: Props) {
 
 	return (
 		<section className={styles.section}>
-
-			<TopMenu createData={createData} setDataTS={setDataTS} data1={props1} data2={props2} data3={props3} />
+			{start && (
+				<TopMenu
+					irregular={irregular}
+					props1={props1}
+					props2={props2}
+					createData={createData}
+					setDataTS={setDataTS}
+				/>
+			)}
 
 			<h2 className={styles.h2}>Skóre: {score}</h2>
 			<div className={styles.progress__container}>
 				<div
 					className={styles.progress}
-					style={{ width: progress + "%" }}>
-				</div>
+					style={{ width: progress + "%" }}></div>
 			</div>
 			<div className={styles.article__cover}>
 				{start && (

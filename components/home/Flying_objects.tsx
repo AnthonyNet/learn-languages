@@ -22,7 +22,7 @@ export default function Flying_objects() {
 						src={gerFlag}
 						alt="Picture of the earth"
 						sizes="70vw"
-						loading="lazy"
+
 						className="w-[70vw] md:w-[40vw] lg:w-[20vw] 2xl:w-[15vw]"
 					/>
 				</span>

@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-
+export const revalidate = 3600;
 
 export default function Select() {
 	const [mounted, setMounted] = useState(false);

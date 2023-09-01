@@ -1,7 +1,9 @@
 import Irregular from '@/components/irregular/Irregular';
-
-export default function Page() {
+export const revalidate = 3600;
+import { fetchDataIrregularGER } from "@/utils/get-data";
+export default async function Page() {
+	const dbData = await fetchDataIrregularGER();
 	return (
-		<Irregular lang={"ger"} />
+		dbData.data && <Irregular irregular={dbData.data} />
 	);
 }

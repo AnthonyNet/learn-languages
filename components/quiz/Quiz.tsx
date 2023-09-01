@@ -6,9 +6,9 @@ import TopMenu from "@/components/TopMenu";
 
 
 interface Props {
-	data1?: Data1[] | null;
-	data2: Data2[] | null;
-	data3: Data2[] | null;
+	irregular: Data1[] | null;
+	props1: Data2[] | null;
+	props2: Data2[] | null;
 	phrasal?: Phrasal[] | null;
 }
 
@@ -18,8 +18,8 @@ const backgroundColor = {
 	2: "__gradient",
 	3: "__gradient",
 };
-export default function Quiz({ data1, data2, data3, phrasal }: Props) {
-	const [dataTS, setDataTS] = useState<Data2[] | null>(data2);
+export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
+	const [dataTS, setDataTS] = useState<Phrasal[] | undefined | null>(phrasal);
 	const [verb, setVerb] = useState<any>([]);
 	const [wrongChoices, setWrongChoices] = useState<Data1[]>([]);
 	const [start, setStart] = useState<boolean>(false);
@@ -30,9 +30,9 @@ export default function Quiz({ data1, data2, data3, phrasal }: Props) {
 	const [wrong, setWrong] = useState<number>(0);
 
 		const getData = async (): Promise<void> => {
-			const propsData = phrasal ? await phrasal : await data1;
-			setStart(true);
+			const propsData = phrasal ? await phrasal : await irregular;
 			createData(propsData);
+			setStart(true);
 
 		};
 
@@ -78,11 +78,11 @@ export default function Quiz({ data1, data2, data3, phrasal }: Props) {
 
 	return (
 		<section className="w-screen h-100-dvh pt-[50px] md:pt-[70px] flex flex-col justify-center items-center">
-			{dataTS && (
+			{start && (
 				<TopMenu
-					data1={data1}
-					data2={data2}
-					data3={data3}
+					irregular={irregular}
+					props1={props1}
+					props2={props2}
 					phrasal={phrasal}
 					createData={createData}
 					setDataTS={setDataTS}

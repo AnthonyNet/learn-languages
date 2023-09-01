@@ -9,9 +9,9 @@ export default async function Page() {
 		<>
 			{dbData && (
 				<Quiz
-					data1={dbData.irregular_ger.data}
-					data2={dbData.ger_verbs.data}
-					data3={dbData.german_c1.data}
+					irregular={dbData.irregular_ger.data}
+					props1={dbData.ger_verbs.data}
+					props2={dbData.german_c1.data}
 				/>
 			)}
 		</>

@@ -10,9 +10,9 @@ export default async function Page() {
 		<>
 			{dbData && (
 				<Quiz
-					data1={dbData.irregular_eng.data}
-					data2={dbData.oxford_b2.data}
-					data3={dbData.oxford_c1.data}
+					irregular={dbData.irregular_eng.data}
+					props1={dbData.oxford_b2.data}
+					props2={dbData.oxford_c1.data}
 					phrasal={dbData.phrasal.data}
 				/>
 			)}

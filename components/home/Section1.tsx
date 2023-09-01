@@ -1,6 +1,5 @@
 "use client";
 import "./Home.css";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Irregular from "@/images/irregular.gif";
 import Memory from "@/images/memory-x.gif";
