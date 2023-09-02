@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Data1, Data2, Phrasal} from "@/interface/Irregular";
+import { Data1, Data2, Phrasal} from "@/interface/Props";
 import TopMenu from "@/components/TopMenu";
 
 

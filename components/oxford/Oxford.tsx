@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/select";
 
 import { useState, useEffect } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Button from "../button/Button";
 import { RxArrowRight } from "react-icons/rx";
 import Items_oxford from './Items_oxford';
@@ -22,47 +21,46 @@ const styles = {
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 	button__animation: " lg:hover:translate-x-[20px] ",
 };
+	interface DataTS {
+		readonly id: string;
+		readonly word: string;
+		readonly sentence: string;
+		readonly cz_word: string;
+		readonly cz_sentence: string;
+		readonly length: number;
+	}
 
-export default function Oxford({ lang }: { lang: string }) {
-	const supabase = createClientComponentClient();
+	interface Randoms {
+		[index: number]: DataTS[];
+	}
+export default function Oxford({ props }: { props: DataTS[] }) {
 	const [start, setStart] = useState<boolean>(false);
-	const [dataTS, setDataTS] = useState<[]|DataTS[]>([]);
-	const [propsData, setPropsData] = useState<[]|DataTS[]>([]);
+	const [dataTS, setDataTS] = useState<DataTS | []>([]);
+	const [propsData, setPropsData] = useState<Randoms>([]);
 	const [selectValue, setSelectValue] = useState<string>("3");
 
-	interface DataTS{
-		readonly id: string,
-		readonly word: string,
-		readonly sentence: string,
-		readonly cz_sentence: string
-	}
- function createRandoms(dataTS:DataTS[]):void{
-	setPropsData([
-		dataTS[Math.floor(Math.random() * dataTS.length)],
-		dataTS[Math.floor(Math.random() * dataTS.length)],
-		dataTS[Math.floor(Math.random() * dataTS.length)],
-	]);
+
+
+ function createRandoms(dataTS: Randoms | any ):void{
+	const myLength = Object.keys(dataTS).length;
+	const data = [
+		dataTS[Math.floor(Math.random() * myLength)],
+		dataTS[Math.floor(Math.random() * myLength)],
+		dataTS[Math.floor(Math.random() * myLength)],
+	];
+	setPropsData(data);
+
 }
-	const getData = async (): Promise<void> => {
-		try {
-			const { data: oxford_c1} = await supabase
-				.from("oxford_c1")
-				.select();
-				const { data: ger_verbs } = await supabase.from("ger_verbs").select();
-			if (oxford_c1&&ger_verbs) {
-				const data = lang === "eng" ? oxford_c1 : ger_verbs;
-				setDataTS(data);
-				createRandoms(data);
-				setStart(true);
-			}
-		} catch (error) {
-			console.error("Error in getData:", error);
-			throw error;
-		}
-	};
+
 	useEffect(() => {
+		const getData = async () => {
+			const data = await props;
+			setDataTS(data[1]);
+			createRandoms(data[1]);
+			setStart(true);
+		}
 		getData();
-	}, [supabase, setDataTS]);
+	}, []);
 	const handleSelectChange = (selectValue: string) => {
 		setSelectValue(selectValue);
 	};
@@ -71,8 +69,27 @@ export default function Oxford({ lang }: { lang: string }) {
 	return (
 		<section className="w-screen flex flex-col items-center justify-center pt-[50px] md:pt-[70px] h-100-dvh  min-h-[330px] ">
 			<main className="w-full h-full md:w-auto  md:max-h-[400px] lg:border-4 border-double flex flex-col justify-center lg:justify-around rounded-3xl __border_color relative">
+				{dataTS.length < 300 ? (
+					<button
+						className="p-2  bg-slate-400/10 rounded-xl font-bold ml-auto sm:m-auto"
+						onClick={() => {
+							setDataTS(props[0]);
+							createRandoms(props[0]);
+						}}>
+						Level B2
+					</button>
+				) : (
+					<button
+						className="p-2 max-w-sm bg-slate-400/10 rounded-xl font-bold sm:m-auto"
+						onClick={() => {
+							setDataTS(props[1]);
+							createRandoms(props[1]);
+						}}>
+						Level C1
+					</button>
+				)}
 				<Select onValueChange={handleSelectChange}>
-					<SelectTrigger className="fixed top-2 left-2 ml-2 lg:absolute w-[180px] border-2 __border_color">
+					<SelectTrigger className="fixed top-12 md:top-20 lg:top-2 md:left-2 ml-2 lg:absolute w-[180px] border-2 __border_color">
 						<SelectValue placeholder="Počet vět" />
 					</SelectTrigger>
 					<SelectContent className={"__background __text_color __border_color"}>
@@ -84,7 +101,7 @@ export default function Oxford({ lang }: { lang: string }) {
 
 				{start && (
 					<Items_oxford
-						start={start}
+
 						propsData={propsData}
 						selectValue={selectValue}
 					/>

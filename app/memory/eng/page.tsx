@@ -2,7 +2,7 @@ import Memory from "@/components/memory/Memory";
 
 export const revalidate = 3600;
 import { fetchDataENG } from "@/utils/get-data";
-import { Data1, Data2, Irregular } from "@/interface/Irregular";
+import { Data1, Data2, Irregular } from "@/interface/Props";
 
 interface Props {
 	irregular_eng: Irregular[];

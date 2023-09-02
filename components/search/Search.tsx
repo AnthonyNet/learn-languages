@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-
+import {Irregular} from "@/interface/Props";
 const style = {
 	section: "w-full h-auto mt-[10vh]",
 	form: "shadow-md rounded p-4 md:p-8",
@@ -18,51 +17,28 @@ const style = {
 	th: "text-sm font-medium py-2  sm:p-4 max-w-[25vw] sm:max-w-auto",
 } as const;
 
-type Props = {
-	readonly lang: string;
-}
-
 type Data = {
 	readonly cz_word: string;
 	readonly word: string;
 	readonly past_simple: string;
 	readonly past_participle: string;
 }
-export default function SearchIrregular({lang}: Props) {
+export default function SearchIrregular({irregular}: {irregular: Irregular[] | null}) {
 	const [start, setStart] = useState<boolean>(false);
 	const [dataTS, setDataTS] = useState<Data[]>([]);
 
 	const [search, setSearch] = useState("");
-		const supabase = createClientComponentClient();
-
-		const getData = async (): Promise<void> => {
-			try {
-				const { data: irregular_ger } = await supabase
-					.from("irregular_ger")
-					.select();
-				const { data: irregular_eng } = await supabase
-					.from("irregular_eng")
-					.select();
-
-				if (irregular_ger && irregular_eng) {
-					setStart(true);
-					if (lang === "ger") {
-						setDataTS(irregular_ger);
-					}
-					if (lang === "eng") {
-						setDataTS(irregular_eng);
-					}
-				}
-			} catch (error) {
-				console.error("Error in getData:", error);
-				throw error;
-			}
-		};
 
 	useEffect(() => {
-
+		async function getData() {
+			const propsData = await irregular;
+			if (propsData) {
+				setStart(true);
+				setDataTS(propsData);
+			}
+		}
 		getData();
-	}, [supabase, setDataTS]);
+	}, []);
 
 	return (
 		<section className={style.section}>

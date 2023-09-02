@@ -8,7 +8,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import {Data1} from "@/interface/Irregular";
+import {Data1} from "@/interface/Props";
 
 import { useState, useEffect } from "react";
 

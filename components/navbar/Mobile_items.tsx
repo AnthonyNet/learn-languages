@@ -110,12 +110,12 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>
 								<Link href="/oxford-flip/eng">
-									Slovní zásoba C1 ({navData.oxfordC1}){" "}
+									Flip karta
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>
 								<Link href="/oxford/eng">
-									Překládej věty C1 ({navData.oxfordC1}){" "}
+									Akordeón věty
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>
@@ -159,12 +159,12 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>
 								<Link href="/oxford-flip/ger">
-									Slovní zásoba B2 ({navData.ger_verbs}){" "}
+									Flip karta
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>
 								<Link href="/oxford/ger">
-									Překládej věty B2 ({navData.ger_verbs}){" "}
+									Akordeón věty
 								</Link>
 							</li>
 							<li onClick={handleNav} className={styles.main.ul__li__open}>

@@ -3,7 +3,7 @@
 import MemoryCard from "./MemoryCard";
 import { useState, useEffect } from "react";
 import TopMenu from "../TopMenu";
-import { Data1, Data2, Irregular } from "@/interface/Irregular";
+import { Data1, Data2, Irregular } from "@/interface/Props";
 interface Item {
 	readonly cz?: string;
 	readonly eng?: string;

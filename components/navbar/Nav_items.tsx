@@ -32,26 +32,24 @@ export default function NavItems({navData} : {navData: NavData}) {
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/memory/eng">
-								Slovní pexeso
-							</Link>
+							<Link href="/memory/eng">Slovní pexeso</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/quiz/eng">Kvíz</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/search/eng">
-								Najdi sloveso ({navData.irregularEng}){" "}
-							</Link>
-						</li>
-						<li className={styles.ul__li}>
 							<Link href="/oxford-flip/eng">
-								Slovní zásoba C1 ({navData.oxfordC1}){" "}
+								Flip karta
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/oxford/eng">
-								Překládej věty C1 ({navData.oxfordC1}){" "}
+								Akordeón věty
+							</Link>
+						</li>
+						<li className={styles.ul__li}>
+							<Link href="/search/eng">
+								Najdi sloveso ({navData.irregularEng}){" "}
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
@@ -76,21 +74,19 @@ export default function NavItems({navData} : {navData: NavData}) {
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/memory/ger">
-								Slovní pexeso
-							</Link>
+							<Link href="/memory/ger">Slovní pexeso</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/quiz/ger">Kvíz</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/oxford-flip/ger">
-								Slovní zásoba B2 ({navData.ger_verbs}){" "}
+								Flip karta
 							</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/oxford/ger">
-								Překládej věty B2 ({navData.ger_verbs}){" "}
+								Akordeón věty
 							</Link>
 						</li>
 						<li className={styles.ul__li}>

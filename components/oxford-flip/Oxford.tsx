@@ -6,16 +6,17 @@ import { TbZoomQuestion } from "react-icons/tb";
 import { RxArrowRight } from "react-icons/rx";
 import Button from "@/components/button/Button";
 import { motion } from "framer-motion";
+
 //FLAGS images
 import czFlag from "@/images/cz.png";
 import enFlag from "@/images/eng.png";
 import Text_Card from "./Text_card";
 import Card_Back from "./Card_back";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import {Data2} from "@/interface/Props"
 
 const styles = {
 	section:
-		"relative pt-[50px] md:pt-[70px] md:text-[130%]  w-screen  flex justify-center items-center  h-100-dvh",
+		"relative pt-[40px] md:pt-[70px] md:text-[130%]  w-screen  flex flex-col justify-center items-center  h-100-dvh",
 	card__container:
 		"w-full max-w-[600px] h-full  md:max-h-[400px] lg:border-4  border-double px-4  rounded-lg  preserve-3d group my-rotate-y-180 duration-1000 flex flex-col  __border_color",
 	card__btn__container:
@@ -28,17 +29,23 @@ const styles = {
 		"hover:rotate-90 transition ease-in-out duration-700 fixed  md:top-2 left-2  ring-2 rounded-full  drop-shadow-sm __background __gradient",
 };
 
+interface Props {
+	[index:number]:Data2[];
+}
+
+
 interface Data {
 	readonly word: string;
 	readonly sentence: string;
 	readonly cz_word: string;
 	readonly cz_sentence: string;
 }
-export default function Oxford ({lang}: {lang: string}) {
-	const supabase = createClientComponentClient();
+export default function Oxford ({props}: { props: Props}) {
+
 	const [start, setStart] = useState<boolean>(false);
 	const [rand, setRand] = useState<number>(Math.floor(Math.random() * 50));
 	const [dataTS, setDataTS] = useState<Data[]|[]>([]);
+	const [switchButton, setSwitchButton] = useState<boolean>(true);
 	const [switchSide, setSwitchSide] = useState<boolean>(true);
 	const [switchLanguage, setSwitchLanguage] = useState<boolean>(true);
 
@@ -47,22 +54,15 @@ async function createRandoms(): Promise<void> {
 	setRand(Math.floor(Math.random() * data.length));
 }
 const getData = async (): Promise<void> => {
-	try {
-		const { data: oxford_c1 } = await supabase.from("oxford_c1").select();
-		const { data: ger_verbs } = await supabase.from("ger_verbs").select();
-		if (oxford_c1&&ger_verbs) {
-			setDataTS(lang==="eng"?oxford_c1:ger_verbs);
-			createRandoms();
-			setStart(true);
-		}
-	} catch (error) {
-		console.error("Error in getData:", error);
-		throw error;
-	}
+ const propsData = await props;
+ setDataTS(propsData[0]);
+ createRandoms();
+ setStart(true);
+
 };
 useEffect(() => {
 	getData();
-}, [supabase, setDataTS]);
+}, []);
 
 
 	return (
@@ -72,6 +72,27 @@ useEffect(() => {
 			exit={{ opacity: 0 }}
 			transition={{ duration: 1 }}
 			className={styles.section}>
+			{switchButton ? (
+				<button
+					className="py-4 bg-slate-400/10 rounded-xl font-bold"
+					onClick={() => {
+						setDataTS(props[0]);
+						setRand(Math.floor(Math.random() * props[0].length));
+						setSwitchButton(item=> !item);
+					}}>
+					Level B2
+				</button>
+			) : (
+				<button
+					className="py-4 bg-slate-400/10 rounded-xl font-bold"
+					onClick={() => {
+						setDataTS(props[1]);
+						setRand(Math.floor(Math.random() * props[1].length));
+						setSwitchButton((item) => !item);
+					}}>
+					Level C1
+				</button>
+			)}
 			<motion.div
 				className={styles.card__container}
 				animate={{ rotateY: switchSide ? 0 : 180 }}
@@ -102,8 +123,7 @@ useEffect(() => {
 				<div className={styles.card__btn__container}>
 					{switchSide && (
 						<>
-
-							<Button onClick={() =>setSwitchSide(!switchSide)}>
+							<Button onClick={() => setSwitchSide(!switchSide)}>
 								<TbZoomQuestion className={styles.button} />
 							</Button>
 

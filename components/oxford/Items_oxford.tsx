@@ -4,8 +4,15 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
+interface DataTS {
+		readonly id: string;
+		readonly word: string;
+		readonly sentence: string;
+		readonly cz_word: string;
+		readonly cz_sentence: string;
+	}
 
-export default function Items_oxford({selectValue, propsData}:any) {
+export default function Items_oxford({selectValue, propsData}:{selectValue: string, propsData: DataTS[] | any}) {
 
 
 	return (

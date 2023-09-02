@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {Irregular} from "@/interface/Irregular";
+import {Irregular} from "@/interface/Props";
 import Input from "./Card_Input";
 import CardHint from "./Card_Hint";
 import Score from "./Score";
