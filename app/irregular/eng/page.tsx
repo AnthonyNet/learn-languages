@@ -1,8 +1,8 @@
 import Irregular from "@/components/irregular/Irregular";
 export const revalidate = 3600;
-import {cachedALL,  fetchDataALL } from "@/utils/get-data";
+import {fetchDataALL } from "@/utils/get-data";
 export default async function Page() {
-const dbData = cachedALL? cachedALL : await fetchDataALL();
+const dbData = await fetchDataALL();
 
 	return (
 		dbData[1].irregular_eng && <Irregular irregular={dbData[1].irregular_eng} />

@@ -2,14 +2,6 @@ import Memory from "@/components/memory/Memory";
 
 export const revalidate = 3600;
 import {fetchDataALL } from "@/utils/get-data";
-import { Data2, Irregular } from "@/interface/Props";
-
-interface Props {
-	irregular_eng: Irregular[];
-	oxford_b2?: Data2[];
-	oxford_c1?: Data2[];
-	phrasal?: Data2[];
-}
 
 export default async function Page() {
 

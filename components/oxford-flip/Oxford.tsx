@@ -34,7 +34,7 @@ const styles = {
 };
 
 interface Props {
-	[index:number]:Data2[];
+	props: { [index: number]: Data2[]  };
 }
 
 
@@ -44,7 +44,7 @@ interface Data {
 	readonly cz_word: string;
 	readonly cz_sentence: string;
 }
-export default function Oxford ({props}: { props: Props}) {
+export default function Oxford ({props}: Props) {
 
 	const [start, setStart] = useState<boolean>(false);
 	const [rand, setRand] = useState<number>(Math.floor(Math.random() * 50));
