@@ -5,7 +5,6 @@ import Irregular from "@/images/irregular.gif";
 import Memory from "@/images/memory-x.gif";
 import Search from "@/images/search.gif";
 import Pagination from "@/images/pagination.gif";
-import ArrowDown from "@/components/home/Arrow_down";
 import Typewriter from "typewriter-effect";
 
 const styles = {
@@ -14,7 +13,7 @@ const styles = {
 	div_left:
 		"h-screen max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 pt-[50px] px-8 xl:p-0",
 	div_right:
-		"w-full  max-w-xl  rounded-lg shadow-lg h-[700px] __my_grid lg:pt-[70px] ",
+		"w-full  max-w-xl    shadow-lg h-[700px] __my_grid lg:pt-[40px]",
 	image_cover: "relative  __my_grid_item rounded-[30px]",
 	image:
 		"border-4 border-double rounded-[30px] border-blue-700 hover:scale-[102%] transition-all duration-500 ease-in-out bg-black overflow-hidden hue-rotate-[var(--hue-rotate)] brightness-[var(--saturation)]",

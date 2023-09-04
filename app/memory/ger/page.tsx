@@ -1,19 +1,19 @@
 import Memory from "@/components/memory/Memory";
 export const revalidate = 3600;
-import { fetchDataGER } from "@/utils/get-data";
+import { fetchDataALL } from "@/utils/get-data";
 export default async function Page() {
 
-const dbData: any = await fetchDataGER();
+const dbData:any = await fetchDataALL();
 	return (
 		<>
 			{dbData && (
 				<Memory
-					irregular={dbData.irregular_ger.data}
-					props1={dbData.ger_verbs.data}
-					props2={dbData.german_c1.data}
+					irregular={dbData[1].irregular_ger}
+					props1={dbData[1].ger_verbs}
+					props2={dbData[1].german_c1}
 				/>
 			)}
 		</>
-	)
+	);
 
 }

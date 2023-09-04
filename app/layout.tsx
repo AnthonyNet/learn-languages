@@ -3,7 +3,7 @@ import './globals.css'
 /*import '@/components/navbar/Navbar.css'*/
 import Providers from "./Providers";
 import Navbar from "@/components/navbar/Navbar";
-import { dataNavbar } from '@/utils/get-data';
+import { fetchDataALL } from '@/utils/get-data';
 
 export const metadata = {
   title: 'Learn languages',
@@ -15,7 +15,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-const items = await dataNavbar();
+let dbData = await fetchDataALL();
+
 
   return (
 		<html lang="en">
@@ -23,7 +24,7 @@ const items = await dataNavbar();
 				<main className="bg-background flex flex-col items-center">
 					<Providers>
 						{" "}
-						<Navbar props={items} /> {children}{" "}
+						<Navbar props={dbData[0]} /> {children}{" "}
 					</Providers>
 				</main>
 			</body>

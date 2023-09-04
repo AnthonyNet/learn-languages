@@ -3,7 +3,7 @@
 import MemoryCard from "./MemoryCard";
 import { useState, useEffect } from "react";
 import TopMenu from "../TopMenu";
-import { Data1, Data2, Irregular } from "@/interface/Props";
+import { Data2, Irregular } from "@/interface/Props";
 interface Item {
 	readonly cz?: string;
 	readonly eng?: string;
@@ -33,6 +33,7 @@ interface Props  {
 }
 
 export default function Memory({props1, props2, irregular}: Props) {
+
 	const [start, setStart] = useState<boolean>(false);
 	const [dataTS, setDataTS] = useState<Data2[] | Irregular[]>([]);
 
@@ -154,7 +155,7 @@ export default function Memory({props1, props2, irregular}: Props) {
 					props1={props1}
 					props2={props2}
 					createData={createData}
-					setDataTS={setDataTS}
+
 				/>
 			)}
 

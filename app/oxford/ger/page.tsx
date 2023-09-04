@@ -1,9 +1,9 @@
 import Oxford from '@/components/oxford/Oxford';
 export const revalidate = 3600;
-import { fetchDataGER } from "@/utils/get-data";
+import { fetchDataALL } from "@/utils/get-data";
 export default async function Page() {
-	const dbData = await fetchDataGER();
-	const dataArr = [dbData.ger_verbs.data, dbData.german_c1.data];
+	const dbData = await fetchDataALL();
+	const dataArr = [dbData[1].ger_verbs, dbData[1].german_c1];
 	return <Oxford props={dataArr}></Oxford>
 
 }

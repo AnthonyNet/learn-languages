@@ -1,7 +1,56 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cache } from "react";
-export const revalidate = 3600;
 
+import { cache } from "react";
+
+export const fetchDataALL = cache(async () => {
+
+	  const supabase = createClientComponentClient();
+	const tableNames = [
+		"irregular_eng",
+		"oxford_b2",
+		"oxford_c1",
+		"phrasal_verbs",
+		"irregular_ger",
+		"ger_verbs",
+		"german_c1",
+	];
+
+	const dataCounts = Promise.all(
+		[...tableNames].map((tableName) =>
+			supabase.from(tableName).select("*", { count: "exact", head: true })
+		)
+	).then((values) => {
+		const counts = {
+			irregularEng: values[0].count ? values[0].count : 0,
+			irregularGer: values[1].count ? values[1].count : 0,
+			ger_verbs: values[2].count ? values[2].count : 0,
+			oxfordB2: values[3].count ? values[3].count : 0,
+			oxfordC1: values[4].count ? values[4].count : 0,
+		};
+		return counts;
+	});
+
+	const data = Promise.all(
+		[...tableNames].map((tableName) => supabase.from(tableName).select())
+	).then((values) => {
+		const dataArr = {
+			irregular_eng: values[0].data,
+			oxford_b2: values[1].data,
+			oxford_c1: values[2].data,
+			phrasal: values[3].data,
+			irregular_ger: values[4].data,
+			ger_verbs: values[5].data,
+			german_c1: values[6].data,
+		};
+
+		return dataArr;
+	});
+
+	const together = await Promise.all([dataCounts, data]);
+	return together;
+});
+
+/*
 let cachedENG: any = null;
 export const fetchDataENG = cache(async () => {
 	if (cachedENG) {
@@ -34,6 +83,7 @@ export const fetchDataENG = cache(async () => {
 	}
 	}
 });
+
 
 let cachedGER: any = null;
 export const fetchDataGER = cache(async () => {
@@ -114,7 +164,7 @@ export const dataNavbar = cache(async () => {
 				"ger_verbs",
 				"oxford_b2",
 				"oxford_c1",
-				"ger_verbs",
+				"german_c1",
 			];
 			const countedData = Promise.all(
 				[...tableNames].map((tableName) =>
@@ -133,48 +183,6 @@ export const dataNavbar = cache(async () => {
 
 			return countedData;
 	}
-});
-
-/*
-export const fetchDataALL = cache(async () => {
-	const supabase = createClientComponentClient();
-	 const tableNames = [
-			"irregular_eng",
-			"irregular_ger",
-			"ger_verbs",
-			"oxford_b2",
-			"oxford_c1",
-			"ger_verbs",
-			"german_c1",
-		];
-const dataCounts = Promise.all(
-		[...tableNames].map((tableName) =>
-			supabase.from(tableName).select("*", { count: "exact", head: true })
-		)
-	).then((values) => {
-		const counts = {
-			irregularEng: values[0].count ? values[0].count : 0,
-			irregularGer: values[1].count ? values[1].count : 0,
-			ger_verbs: values[2].count ? values[2].count : 0,
-			oxfordB2: values[3].count ? values[3].count : 0,
-			oxfordC1: values[4].count ? values[4].count : 0,
-		};
-	return counts;
-	});
-
-	const data = Promise.all(
-		[...tableNames].map((tableName) =>
-			supabase.from(tableName).select()
-		)).then((values) => {
-			const dataArr = [...values];
-			return dataArr.map((item) => {
-				return item.data
-			})
-		})
-
-		const together = await Promise.all([dataCounts, data]);
-
-		return together
 
 });
 */

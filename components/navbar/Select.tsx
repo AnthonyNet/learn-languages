@@ -32,14 +32,22 @@ export default function Select() {
 			className="outline-none border-animation bg-transparent cursor-pointer text-xl xl:text-3xl __background"
 			title="col"
 			name="colors"
-
 			onChange={handleChange}>
-			<option value="blue">Modrý</option>
-			<option value="green">Zelený</option>
-			<option value="violet">Fialový</option>
-			<option value="pink">Růžový</option>
-			<option value="yellow">Žlutý</option>
-
+			<option className="text-blue-500" value="blue">
+				➊
+			</option>
+			<option className="text-green-500" value="green">
+				❷
+			</option>
+			<option className="text-violet-500" value="violet">
+				❸
+			</option>
+			<option className="text-pink-500" value="pink">
+				❹
+			</option>
+			<option className="text-yellow-500" value="yellow">
+				❺
+			</option>
 		</select>
 	);
 }

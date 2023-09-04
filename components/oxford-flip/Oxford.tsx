@@ -13,6 +13,10 @@ import enFlag from "@/images/eng.png";
 import Text_Card from "./Text_card";
 import Card_Back from "./Card_back";
 import {Data2} from "@/interface/Props"
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
+
 
 const styles = {
 	section:
@@ -72,31 +76,34 @@ useEffect(() => {
 			exit={{ opacity: 0 }}
 			transition={{ duration: 1 }}
 			className={styles.section}>
-			{switchButton ? (
-				<button
-					className="py-4 bg-slate-400/10 rounded-xl font-bold"
-					onClick={() => {
-						setDataTS(props[0]);
-						setRand(Math.floor(Math.random() * props[0].length));
-						setSwitchButton(item=> !item);
-					}}>
-					Level B2
-				</button>
-			) : (
-				<button
-					className="py-4 bg-slate-400/10 rounded-xl font-bold"
-					onClick={() => {
-						setDataTS(props[1]);
-						setRand(Math.floor(Math.random() * props[1].length));
-						setSwitchButton((item) => !item);
-					}}>
-					Level C1
-				</button>
-			)}
 			<motion.div
 				className={styles.card__container}
 				animate={{ rotateY: switchSide ? 0 : 180 }}
 				transition={{ duration: 0.5 }}>
+				<RadioGroup
+					className="fixed top-[6px] left-1/2 transform -translate-x-1/2 flex flex-row justify-center h-10"
+					defaultValue="option-one">
+					<div
+						className="flex items-center space-x-2"
+						onClick={() => {
+							setDataTS(props[0]);
+							setRand(Math.floor(Math.random() * props[0].length));
+							setSwitchButton(false);
+						}}>
+						<RadioGroupItem value="option-one" id="option-one" />
+						<Label htmlFor="option-one">B2</Label>
+					</div>
+					<div
+						className="flex items-center space-x-2"
+						onClick={() => {
+							setDataTS(props[1]);
+							setRand(Math.floor(Math.random() * props[1].length));
+							setSwitchButton(true);
+						}}>
+						<RadioGroupItem value="option-two" id="option-two" />
+						<Label htmlFor="option-two">C1</Label>
+					</div>
+				</RadioGroup>
 				{switchSide && (
 					<button onClick={() => [setSwitchLanguage(!switchLanguage)]}>
 						{switchLanguage ? (

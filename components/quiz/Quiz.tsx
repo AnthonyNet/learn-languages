@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Data1, Data2, Phrasal} from "@/interface/Props";
+import {  Irregular, Data2, Phrasal} from "@/interface/Props";
 import TopMenu from "@/components/TopMenu";
 
 
 interface Props {
-	irregular: Data1[] | null;
+	irregular: Irregular[] | null;
 	props1: Data2[] | null;
 	props2: Data2[] | null;
 	phrasal?: Phrasal[] | null;
@@ -18,10 +18,15 @@ const backgroundColor = {
 	2: "__gradient",
 	3: "__gradient",
 };
+type Definition = {
+	id: string;
+	word: string;
+	cz_word: string;
+}
 export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
-	const [dataTS, setDataTS] = useState<Phrasal[] | undefined | null>(phrasal);
-	const [verb, setVerb] = useState<any>([]);
-	const [wrongChoices, setWrongChoices] = useState<Data1[]>([]);
+
+	const [definition, setDefinition] = useState<Definition>({ id: "", word: "", cz_word: "" });
+	const [wrongChoices, setWrongChoices] = useState<Irregular[]>([]);
 	const [start, setStart] = useState<boolean>(false);
 	const [answerColor, setAnswerColor] = useState<{ [key: number]: string }>(
 		backgroundColor
@@ -31,6 +36,7 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 
 		const getData = async (): Promise<void> => {
 			const propsData = phrasal ? await phrasal : await irregular;
+
 			createData(propsData);
 			setStart(true);
 
@@ -41,13 +47,19 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 		}, []);
 
 	const createData = (data: any): void => {
+
 		function randomNum() {
 			return Math.floor(Math.random() * data.length);
 		}
-		const trueAnswer = data[randomNum()];
-		const addBoolean = () => {
+		const definitionObj = data[randomNum()];
+		const definition = {
+			id: definitionObj.id,
+			word: definitionObj.word,
+			cz_word: definitionObj.cz_word
+		}
+		const dataArray = () => {
 			const all = [
-				trueAnswer,
+				definition,
 				data[randomNum()],
 				data[randomNum()],
 				data[randomNum()],
@@ -55,19 +67,19 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 
 			return all;
 		};
-		const allAnswers = addBoolean();
-		setVerb(trueAnswer);
+		const allAnswers = dataArray();
+		setDefinition(definitionObj);
 		setWrongChoices(allAnswers.sort(() => Math.random() - 0.5));
 	};
 
 
-	const checkAnswer = (choice: Data1, index: number): void => {
-		if (choice.id === verb.id) {
+	const checkAnswer = (choice: Irregular, index: number): void => {
+		if (choice.id === definition.id) {
 			setScore(score + 1);
 			setAnswerColor((prev) => ({ ...prev, [index]: "__bg_green" }));
 			setTimeout(() => {
 				setAnswerColor(backgroundColor);
-				createData(dataTS);
+				createData(phrasal);
 			}, 1000);
 
 		} else {
@@ -85,7 +97,7 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 					props2={props2}
 					phrasal={phrasal}
 					createData={createData}
-					setDataTS={setDataTS}
+
 				/>
 			)}
 			<div className="flex flex-col w-full h-auto max-w-[600px] min-h-[400px] m-auto justify-center lg:justify-around p-6 lg:border-4 border-double rounded-[30px] __border_color ">
@@ -94,11 +106,11 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 					<p className="bg-green-500 px-4 py-2 rounded-xl">Správně: {score}</p>
 				</span>
 				<p className="text-lg font-semibold my-4 text-center">
-					{(start && verb.cz) || verb.cz_word}
+					{definition.cz_word}
 				</p>
 				<div className="flex flex-col space-y-2">
 					{start &&
-						wrongChoices.map((choice: any, index: number) => {
+						wrongChoices.map((choice, index: number) => {
 							return (
 								<button
 									key={index}

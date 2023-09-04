@@ -11,6 +11,8 @@ import { useState, useEffect } from "react";
 import Button from "../button/Button";
 import { RxArrowRight } from "react-icons/rx";
 import Items_oxford from './Items_oxford';
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const styles = {
 	card__btn__container:
@@ -33,7 +35,8 @@ const styles = {
 	interface Randoms {
 		[index: number]: DataTS[];
 	}
-export default function Oxford({ props }: { props: DataTS[] }) {
+export default function Oxford({ props }: { props: DataTS[] | any }) {
+
 	const [start, setStart] = useState<boolean>(false);
 	const [dataTS, setDataTS] = useState<DataTS | []>([]);
 	const [propsData, setPropsData] = useState<Randoms>([]);
@@ -69,27 +72,31 @@ export default function Oxford({ props }: { props: DataTS[] }) {
 	return (
 		<section className="w-screen flex flex-col items-center justify-center pt-[50px] md:pt-[70px] h-100-dvh  min-h-[330px] ">
 			<main className="w-full h-full md:w-auto  md:max-h-[400px] lg:border-4 border-double flex flex-col justify-center lg:justify-around rounded-3xl __border_color relative">
-				{dataTS.length < 300 ? (
-					<button
-						className="p-2  bg-slate-400/10 rounded-xl font-bold ml-auto sm:m-auto"
+
+				<RadioGroup
+					className="flex flex-row justify-center h-10"
+					defaultValue="option-one">
+					<div
+						className="flex items-center space-x-2"
 						onClick={() => {
 							setDataTS(props[0]);
 							createRandoms(props[0]);
 						}}>
-						Level B2
-					</button>
-				) : (
-					<button
-						className="p-2 max-w-sm bg-slate-400/10 rounded-xl font-bold sm:m-auto"
+						<RadioGroupItem value="option-one" id="option-one" />
+						<Label htmlFor="option-one">B2</Label>
+					</div>
+					<div
+						className="flex items-center space-x-2"
 						onClick={() => {
 							setDataTS(props[1]);
 							createRandoms(props[1]);
 						}}>
-						Level C1
-					</button>
-				)}
+						<RadioGroupItem value="option-two" id="option-two" />
+						<Label htmlFor="option-two">C1</Label>
+					</div>
+				</RadioGroup>
 				<Select onValueChange={handleSelectChange}>
-					<SelectTrigger className="fixed top-12 md:top-20 lg:top-2 md:left-2 ml-2 lg:absolute w-[180px] border-2 __border_color">
+					<SelectTrigger className="fixed top-12 md:top-20 lg:top-2 md:left-2 ml-2 lg:absolute w-[110px] border-2 __border_color">
 						<SelectValue placeholder="Počet vět" />
 					</SelectTrigger>
 					<SelectContent className={"__background __text_color __border_color"}>
@@ -100,11 +107,7 @@ export default function Oxford({ props }: { props: DataTS[] }) {
 				</Select>
 
 				{start && (
-					<Items_oxford
-
-						propsData={propsData}
-						selectValue={selectValue}
-					/>
+					<Items_oxford propsData={propsData} selectValue={selectValue} />
 				)}
 
 				<footer className={styles.card__btn__container}>
