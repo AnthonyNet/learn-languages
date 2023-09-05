@@ -66,11 +66,12 @@ export default function Pagination() {
 	//                                0                  20
 	const currentPosts = dataTS.slice(firstWordIndex, lastWordIndex);
 
-	let pages: number[] = [];
+	// Function to generate an array of page numbers
+	const generatePagesArray = (totalPages: number) => {
+		return Array.from({ length: totalPages }, (_, index) => index + 1);
+	};
 
-	for (let i = 1; i <= Math.ceil(dataTS.length / wordsPerPage); i++) {
-		pages.push(i);
-	}
+	const pages = generatePagesArray(Math.ceil(dataTS.length / wordsPerPage));
 
 	const prevPage = () => {
 		if (currentPage < 2) {
@@ -118,7 +119,9 @@ Watch the value that is set up in Top_menu
 
 			<main className="w-full flex flex-col justify-between items-center">
 				<Table>
-					<TableCaption className="hidden lg:visible">Vyber stránku</TableCaption>
+					<TableCaption className="hidden lg:visible">
+						Vyber stránku
+					</TableCaption>
 					<TableHeader>
 						<TableRow className="hover:bg-indigo-800/40">
 							<TableHead className="xl:w-[100px]">Nr.</TableHead>
