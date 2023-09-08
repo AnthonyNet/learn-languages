@@ -198,6 +198,7 @@ body,
 .__background { background: var(--black); }
 .__background2 { background: var(--btn-background); }
 .__gradient { background: var(--gradient); }
+.__background_hover:hover{background: hsla(var(--color-main)10%);}
 
 .__text_shadow { text-shadow: var(--text-shadow); }
 .__button_color { background: var(--gradient3); }
@@ -329,5 +330,14 @@ Logo
   100% {
     opacity: 0;
     transform: translate(-100vw, -100vh) rotate(70deg);
+  }
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

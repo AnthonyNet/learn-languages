@@ -22,10 +22,10 @@ export const fetchDataALL = cache(async () => {
 	).then((values) => {
 		const counts = {
 			irregularEng: values[0].count ? values[0].count : 0,
-			irregularGer: values[1].count ? values[1].count : 0,
-			ger_verbs: values[2].count ? values[2].count : 0,
-			oxfordB2: values[3].count ? values[3].count : 0,
-			oxfordC1: values[4].count ? values[4].count : 0,
+			oxfordB2: values[1].count ? values[1].count : 0,
+			oxfordC1: values[2].count ? values[2].count : 0,
+			irregularGer: values[4].count ? values[4].count : 0,
+			ger_verbs: values[5].count ? values[5].count : 0,
 		};
 		return counts;
 	});

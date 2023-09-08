@@ -89,17 +89,18 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 	};
 
 	return (
-		<section className="w-screen h-100-dvh pt-[50px] md:pt-[70px] flex flex-col justify-center items-center">
-			{start && (
-				<TopMenu
-					irregular={irregular}
-					props1={props1}
-					props2={props2}
-					phrasal={phrasal}
-					createData={createData}
-
-				/>
-			)}
+		<section className="w-screen h-100-dvh pt-[50px] md:pt-[70px] flex flex-col justify-center items-center  __small_screen_h-auto">
+			<div className="mb-[-60px]">
+				{start && (
+					<TopMenu
+						irregular={irregular}
+						props1={props1}
+						props2={props2}
+						phrasal={phrasal}
+						createData={createData}
+					/>
+				)}
+			</div>
 			<div className="flex flex-col w-full h-auto max-w-[600px] min-h-[400px] m-auto justify-center lg:justify-around p-6 lg:border-4 border-double rounded-[30px] __border_color ">
 				<span className="flex justify-around text-[var(--white)] font-bold">
 					<p className="bg-red-500 px-4 py-2 rounded-xl">Špatně: {wrong}</p>
@@ -116,7 +117,7 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 									key={index}
 									onClick={() => checkAnswer(choice, index)}
 									className={
-										"py-2 rounded-md shadow-md font-bold duration-300  " +
+										"py-2 rounded-md shadow-md font-bold duration-300 hover:contrast-150  " +
 										answerColor[index]
 									}>
 									<p className="__text_color2 filter invert">{choice.word}</p>

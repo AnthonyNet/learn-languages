@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import Select from "./Select";
+import Options from "./Options";
 import { useState } from "react";
 import { NavData } from "@/interface/navdata";
 const styles = {
 	section: "flex flex-col z-20",
-	main__div: "flex justify-between items-center",
+	main__div: "flex flex justify-start items-center py-2",
 	main__div__span: "bottom-2 right-4 text-3xl",
 	main__link: "text-2xl font-bold cursor-pointer",
 
@@ -69,7 +69,7 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 			<div className={styles.main__div}>
 
 				<span className={styles.main__div__span}>
-					<Select />
+					<Options />
 				</span>
 			</div>
 

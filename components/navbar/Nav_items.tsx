@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import { NavData } from "@/interface/navdata";
-import Select from "./Select";
+import Options from "./Options";
 const styles = {
 	article: "justify-end gap-16 items-center w-[90%] h-full hidden md:flex",
 	homeBtn: "font-bold hover:text-indigo-800 __nav-item",
@@ -38,14 +38,10 @@ export default function NavItems({navData} : {navData: NavData}) {
 							<Link href="/quiz/eng">Kvíz</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/oxford-flip/eng">
-								Flip karta
-							</Link>
+							<Link href="/oxford-flip/eng">Flip karta</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/oxford/eng">
-								Akordeón věty
-							</Link>
+							<Link href="/oxford/eng">Akordeón věty</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/search/eng">
@@ -80,14 +76,10 @@ export default function NavItems({navData} : {navData: NavData}) {
 							<Link href="/quiz/ger">Kvíz</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/oxford-flip/ger">
-								Flip karta
-							</Link>
+							<Link href="/oxford-flip/ger">Flip karta</Link>
 						</li>
 						<li className={styles.ul__li}>
-							<Link href="/oxford/ger">
-								Akordeón věty
-							</Link>
+							<Link href="/oxford/ger">Akordeón věty</Link>
 						</li>
 						<li className={styles.ul__li}>
 							<Link href="/search/ger">
@@ -98,7 +90,7 @@ export default function NavItems({navData} : {navData: NavData}) {
 				</div>
 			</div>
 			<span className="hidden md:flex bottom-2 right-4 text-3xl">
-				<Select />
+				<Options />
 			</span>
 		</article>
 	);

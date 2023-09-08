@@ -63,10 +63,11 @@ export default function Pagination() {
 	const lastWordIndex: number = currentPage * wordsPerPage;
 	//      0              20                 20
 	const firstWordIndex: number = lastWordIndex - wordsPerPage;
-	//                                0                  20
+	// Slice the data to get the current page's words
+	//									 0                  20
 	const currentPosts = dataTS.slice(firstWordIndex, lastWordIndex);
 
-	// Function to generate an array of page numbers
+	// Function to generate an array of page numbers based on the total number of pages
 	const generatePagesArray = (totalPages: number) => {
 		return Array.from({ length: totalPages }, (_, index) => index + 1);
 	};
