@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {  Irregular, Data2, Phrasal} from "@/interface/Props";
+import { Irregular, Data2, Phrasal } from "@/interface/Props";
 import TopMenu from "@/components/TopMenu";
-
 
 interface Props {
 	irregular: Irregular[] | null;
@@ -22,10 +21,13 @@ type Definition = {
 	id: string;
 	word: string;
 	cz_word: string;
-}
+};
 export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
-
-	const [definition, setDefinition] = useState<Definition>({ id: "", word: "", cz_word: "" });
+	const [definition, setDefinition] = useState<Definition>({
+		id: "",
+		word: "",
+		cz_word: "",
+	});
 	const [wrongChoices, setWrongChoices] = useState<Irregular[]>([]);
 	const [start, setStart] = useState<boolean>(false);
 	const [answerColor, setAnswerColor] = useState<{ [key: number]: string }>(
@@ -34,20 +36,18 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 	const [score, setScore] = useState<number>(0);
 	const [wrong, setWrong] = useState<number>(0);
 
-		const getData = async (): Promise<void> => {
-			const propsData = phrasal ? await phrasal : await irregular;
+	const getData = async (): Promise<void> => {
+		const propsData = phrasal ? await phrasal : await irregular;
 
-			createData(propsData);
-			setStart(true);
+		createData(propsData);
+		setStart(true);
+	};
 
-		};
-
-		useEffect(() => {
-			getData();
-		}, []);
+	useEffect(() => {
+		getData();
+	}, []);
 
 	const createData = (data: any): void => {
-
 		function randomNum() {
 			return Math.floor(Math.random() * data.length);
 		}
@@ -55,8 +55,8 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 		const definition = {
 			id: definitionObj.id,
 			word: definitionObj.word,
-			cz_word: definitionObj.cz_word
-		}
+			cz_word: definitionObj.cz_word,
+		};
 		const dataArray = () => {
 			const all = [
 				definition,
@@ -72,7 +72,6 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 		setWrongChoices(allAnswers.sort(() => Math.random() - 0.5));
 	};
 
-
 	const checkAnswer = (choice: Irregular, index: number): void => {
 		if (choice.id === definition.id) {
 			setScore(score + 1);
@@ -81,7 +80,6 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 				setAnswerColor(backgroundColor);
 				createData(phrasal);
 			}, 1000);
-
 		} else {
 			setWrong(wrong + 1);
 			setAnswerColor((prev) => ({ ...prev, [index]: "__bg_red" }));
