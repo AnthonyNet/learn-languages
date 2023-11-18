@@ -40,10 +40,12 @@ export default function Navbar({ props }: Props) {
 								duration: 3,
 								ease: "easeOut",
 							}}
-							className="border-4 border-double bg-gradient-to-br from-blue-700 via-transparent to-indigo-800 rounded-tl-xl rounded-tr-md rounded-bl-md rounded-br-xl -skew-x-12 border-opacity-50 cursor-pointer overflow-hidden flex justify-center __border_color">
+							className="cursor-pointer">
 							<h1 className="transform font-bold relative text-transparent bg-clip-text __text_shadow">
-								<span className="text-blue-700">Learn</span>{" "}
-								<strong className="text-indigo-400">languages</strong>
+								<span className="__text_color hue-rotate-15 brightness-125">
+									Learn
+								</span>{" "}
+								<strong className="text-indigo-200">languages</strong>
 							</h1>
 						</motion.div>
 					</Link>

@@ -226,6 +226,9 @@ body,
 .__gradient {
 	background: var(--gradient);
 }
+.gradient-logo {
+	background: var(--color-main);
+}
 .__background_hover:hover {
 	background: hsla(var(--color-main) 10%);
 }
