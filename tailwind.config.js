@@ -106,6 +106,13 @@ module.exports = {
 				orbit: "orbit 27s linear infinite",
 				"orbit-reverse": "orbit-reverse 33s linear infinite",
 			},
+			keyframes: {
+				shimmer: {
+					"100%": {
+						transform: "translateX(100%)",
+					},
+				},
+			},
 		},
 	},
 	plugins: [require("tailwindcss-animate"), myClass],

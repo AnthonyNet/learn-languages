@@ -1,16 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {Irregular} from "@/interface/Props";
+import { Suspense } from "react";
+import {
+	IrregularInputsSkeleton,
+	IrregularButtonsSkeleton,
+} from "../ui/skeletons";
+import { Irregular } from "@/interface/Props";
 import Input from "./Card_Input";
 import CardHint from "./Card_Hint";
 import Score from "./Score";
 import Button from "@/components/button/Button";
 import { TbZoomQuestion } from "react-icons/tb";
 import { RxArrowRight } from "react-icons/rx";
-
-
-
 
 export default function Irregular({ irregular }: { irregular: Irregular[] }) {
 	const [start, setStart] = useState<boolean>(false);
@@ -25,15 +27,14 @@ export default function Irregular({ irregular }: { irregular: Irregular[] }) {
 	const [dataLength, setDataLength] = useState<number>(136);
 	const [dataTS, setDataTS] = useState<Irregular[] | []>([]);
 
-
 	useEffect(() => {
 		const getPropsData = async () => {
 			const data = await irregular;
 			setDataLength(irregular.length);
 			setDataTS(irregular);
 			setStart(true);
-		}
-		getPropsData()
+		};
+		getPropsData();
 	}, []);
 
 	/*------------------------------------------
@@ -91,12 +92,12 @@ HIDE HINTS
 					<Score score={stars} />
 
 					<div className="px-6 inputs">
-						<h5 className="text-3xl dark:bg-black font-medium p-2">
-							{start ? dataTS[rand]?.cz_word || "...loading" : ""}
-						</h5>
-						<ul className="flex flex-col justify-around text-center mb-2">
-							{start &&
-								Object.values(dataTS[rand] || {})
+						<Suspense fallback={<IrregularInputsSkeleton />}>
+							<h5 className="text-3xl dark:bg-black font-medium p-2">
+								{start ? dataTS[rand]?.cz_word || "...loading" : ""}
+							</h5>
+							<ul className="flex flex-col justify-around text-center mb-2">
+								{Object.values(dataTS[rand] || {})
 									.slice(2)
 									.map((value, index) => {
 										const array = [
@@ -114,34 +115,36 @@ HIDE HINTS
 												placeholder={array[index]}
 												defaultInput={defaultInput}
 												totalScore={totalScore}
-
 											/>
 										);
 									})}
-						</ul>
+							</ul>
+						</Suspense>
 					</div>
 				</main>
 
 				<footer className="h-auto w-full max-w-[300px] md:max-w-[400px] md:pb-2 flex flex-col">
-					<div className="flex justify-around h-[30px]">
-						{hint && start ? (
-							<CardHint
-								word={dataTS[rand]?.word}
-								pastSimple={dataTS[rand]?.past_simple}
-								pastParticiple={dataTS[rand]?.past_participle}
-							/>
-						) : null}
-					</div>
+					<Suspense fallback={<IrregularButtonsSkeleton />}>
+						<div className="flex justify-around h-[30px]">
+							{hint ? (
+								<CardHint
+									word={dataTS[rand]?.word}
+									pastSimple={dataTS[rand]?.past_simple}
+									pastParticiple={dataTS[rand]?.past_participle}
+								/>
+							) : null}
+						</div>
 
-					<div className="flex justify-around">
-						<Button onClick={() => setHint(!hint)}>
-							<TbZoomQuestion className="flex items-center justify-center h-full w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000" />
-						</Button>
+						<div className="flex justify-around">
+							<Button onClick={() => setHint(!hint)}>
+								<TbZoomQuestion className="flex items-center justify-center h-full w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000" />
+							</Button>
 
-						<Button onClick={randomWord}>
-							<RxArrowRight className="flex items-center justify-center h-full w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000 lg:hover:translate-x-[20px]" />
-						</Button>
-					</div>
+							<Button onClick={randomWord}>
+								<RxArrowRight className="flex items-center justify-center h-full w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000 lg:hover:translate-x-[20px]" />
+							</Button>
+						</div>
+					</Suspense>
 				</footer>
 			</div>
 		</section>
