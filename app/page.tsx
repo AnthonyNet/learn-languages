@@ -11,7 +11,7 @@ export default function MainPage() {
 		<>
 			{" "}
 			<Flying_objects />
-			<main className="relative grid w-full h-100-dvh items-center justify-center">
+			<main className="relative grid w-full h-100-vh items-center justify-center">
 				<SnowAnimation />
 
 				<motion.div

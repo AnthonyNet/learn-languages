@@ -23,6 +23,7 @@
     "lucide-react": "^0.263.1",
     "next": "latest",
     "next-themes": "^0.2.1",
+    "pnpm": "^8.12.1",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",

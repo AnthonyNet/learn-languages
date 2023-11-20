@@ -18,7 +18,8 @@ const styles = {
 	h2: "text-lg sm:text-2xl",
 	navItem: "__nav-item",
 	progress__container: "w-[300px] border-[1px] __border_color rounded-full ",
-	progress: " h-2.5 rounded-full dark:bg-transparent  transition-all duration-700 ease-in-out __gradient",
+	progress:
+		" h-2.5 rounded-full dark:bg-transparent  transition-all duration-700 ease-in-out __gradient",
 	article__cover:
 		"m-auto w-full max-w-[1000px] max-h-[700px] h-full grid items-center grow ",
 	article:
@@ -26,14 +27,13 @@ const styles = {
 };
 
 //write simple function which return result of 1+1
-interface Props  {
+interface Props {
 	irregular: Irregular[];
 	props1: Data2[];
-	props2?: Data2[] ;
+	props2?: Data2[];
 }
 
-export default function Memory({props1, props2, irregular}: Props) {
-
+export default function Memory({ props1, props2, irregular }: Props) {
 	const [start, setStart] = useState<boolean>(false);
 	const [dataTS, setDataTS] = useState<Data2[] | Irregular[]>([]);
 
@@ -155,7 +155,6 @@ export default function Memory({props1, props2, irregular}: Props) {
 					props1={props1}
 					props2={props2}
 					createData={createData}
-
 				/>
 			)}
 

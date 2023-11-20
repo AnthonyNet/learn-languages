@@ -1,5 +1,4 @@
-
-export  interface Data2 {
+export interface Data2 {
 	readonly id: string;
 	readonly word: string;
 	readonly sentence: string;
@@ -7,7 +6,7 @@ export  interface Data2 {
 	readonly cz_sentence: string;
 }
 
-export interface Irregular{
+export interface Irregular {
 	readonly id: string;
 	readonly cz_word: string;
 	readonly word: string;
