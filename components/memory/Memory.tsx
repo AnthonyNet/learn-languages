@@ -1,9 +1,13 @@
 "use client";
 
 import MemoryCard from "./MemoryCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import TopMenu from "../TopMenu";
 import { Data2, Irregular } from "@/interface/Props";
+import {
+	IrregularButtonsSkeleton,
+	IrregularInputsSkeleton,
+} from "../ui/skeletons";
 interface Item {
 	readonly cz?: string;
 	readonly eng?: string;
@@ -165,7 +169,7 @@ export default function Memory({ props1, props2, irregular }: Props) {
 					style={{ width: progress + "%" }}></div>
 			</div>
 			<div className={styles.article__cover}>
-				{start && (
+				<Suspense fallback={<IrregularButtonsSkeleton />}>
 					<article className={styles.article}>
 						{cards.map((item: Item, index: number) => {
 							return (
@@ -178,7 +182,7 @@ export default function Memory({ props1, props2, irregular }: Props) {
 							);
 						})}
 					</article>
-				)}
+				</Suspense>
 			</div>
 		</section>
 	);
