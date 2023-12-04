@@ -8,7 +8,11 @@ export default async function Page() {
 
 	return (
 		<>
-			{dbData && (
+			{!dbData ? (
+				<section className="flex h-screen w-screen items-center justify-center">
+					<h1>Loading...</h1>
+				</section>
+			) : (
 				<Quiz
 					irregular={dbData[1].irregular_eng}
 					props1={dbData[1].oxford_b2}
