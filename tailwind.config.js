@@ -96,6 +96,11 @@ module.exports = {
 					from: { height: "var(--radix-accordion-content-height)" },
 					to: { height: 0 },
 				},
+				shimmer: {
+					"100%": {
+						transform: "translateX(100%)",
+					},
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
@@ -105,13 +110,6 @@ module.exports = {
 				"ping-slower": "bounce 3s linear infinite",
 				orbit: "orbit 27s linear infinite",
 				"orbit-reverse": "orbit-reverse 33s linear infinite",
-			},
-			keyframes: {
-				shimmer: {
-					"100%": {
-						transform: "translateX(100%)",
-					},
-				},
 			},
 		},
 	},
