@@ -23,8 +23,8 @@ const SnowfallAnimation: React.FC = () => {
 			return {
 				x: Math.random() * canvas.width,
 				y: 0,
-				size: Math.random() * 2 + 2,
-				speed: Math.random() * 1 + 1,
+				size: Math.random() * 2 + 1,
+				speed: Math.random() * 0.1 + 0.1,
 			};
 		}
 
@@ -44,7 +44,7 @@ const SnowfallAnimation: React.FC = () => {
 				snowflake.y += snowflake.speed;
 				if (snowflake.y > canvas.height) {
 					snowflake.y = 0;
-					snowflake.x = Math.random() * canvas.width;
+					snowflake.x = Math.random() * canvas.width +21;
 				}
 			});
 
@@ -73,7 +73,7 @@ const SnowfallAnimation: React.FC = () => {
 		};
 	}, []);
 
-	return <canvas ref={canvasRef} style={{ display: "block", width: "100%", opacity: 0.3, zIndex: -50}} />;
+	return <canvas ref={canvasRef} style={{ display: "block", width: "40vw", height: "100vh", opacity: 0.3, zIndex: -50}} />;
 };
 
 export default SnowfallAnimation;
