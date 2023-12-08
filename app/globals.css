@@ -84,6 +84,7 @@
 	--black: rgb(1, 1, 1);
 
 	--color-main: hsl(214, 100%, 50%);
+	--color-main-opacity: hsla(214, 100%, 50%, 0.5);
 
 	--hue-rotate: 0;
 	--saturation: 100%;
@@ -272,6 +273,27 @@ strong {
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	text-shadow: 2px 2px 4px rgba(157, 0, 255, 0.337); /* Add a subtle text shadow */
+}
+
+.__shimmer::before {
+	content: "";
+	display: block;
+	position: absolute;
+
+	/* Gradient definition */
+	background: linear-gradient(
+		to right,
+		transparent,
+		var(--color-main),
+		transparent
+	);
+
+	/* Set the size and position of the pseudo-element */
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	opacity: 0.5;
 }
 
 /* ------------------
