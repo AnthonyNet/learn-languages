@@ -14,7 +14,7 @@ export function IrregularSkeleton() {
 				<div className="relative overflow-hidden rounded-xl h-8 border-2 opacity-50 __border_color w-full">
 					<span className={shimmer + " h-full __background"}> </span>
 				</div>
-				<h5 className="text-3xl px-6 py-3 m-auto">Loading...</h5>
+				<h5 className="text-3xl px-6 py-2 m-auto">Loading...</h5>
 				<ul className="relative overflow-hidden flex flex-col justify-around text-center mb-2 opacity-50">
 					<li
 						className={
@@ -52,7 +52,7 @@ export function IrregularSkeleton() {
 
 export function IrregularButtonsSkeleton() {
 	return (
-		<div className="flex w-full flex-row justify-between mt-6 mb-2">
+		<div className="flex w-full flex-row justify-between mt-8 mb-2">
 			<button
 				type="button"
 				className={
