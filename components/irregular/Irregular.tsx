@@ -76,7 +76,7 @@ HIDE HINTS
 	}
 
 	return (
-		<div className="w-full h-full md:h-auto md:w-auto min-w-[350px] flex flex-col justify-center items-center md:border-4 border-double __border_color rounded-[50px] text-center">
+		<>
 			<main className="mt-[25px] md:text-[140%] lg:text-[100%] max-w-[300px] md:max-w-[400px] h-full md:h-auto flex flex-col justify-center items-center">
 				<div className="py-2 px-6">
 					Celkové skóre: <span>{totalScore}</span>
@@ -136,6 +136,6 @@ HIDE HINTS
 					</Button>
 				</div>
 			</footer>
-		</div>
+		</>
 	);
 }
