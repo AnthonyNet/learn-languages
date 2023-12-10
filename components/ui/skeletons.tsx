@@ -81,3 +81,52 @@ export function IrregularButtonsSkeleton() {
 		</div>
 	);
 }
+
+export function MemorySkeleton() {
+	return (
+		<div className="w-full h-full flex flex-col justify-around  opacity-50">
+			<div className="w-full lg:h-[300px] lg:pt-20 gap-4 flex flex-col justify-start">
+				<div className="w-full max-w-[500px] flex justify-between self-center relative overflow-hidden">
+					<MemorySkeletonSpanDiv />
+					<MemorySkeletonSpanDiv />
+					<MemorySkeletonSpanDiv />
+				</div>
+				<div className="w-20 h-6 rounded-xl self-center pt-4 relative overflow-hidden">
+					<span className={shimmer}></span>
+				</div>
+				<div className="w-[300px]  rounded-full self-center relative overflow-hidden">
+					<div className={shimmer + " h-2.5 rounded-full m-auto"}></div>
+				</div>
+			</div>
+
+			<article className="self-center w-full h-full max-h-[700px] max-w-[1000px] grid grid-cols-2 sm:grid-cols-4 grid-rows-8 sm:grid-rows-3 gap-2 sm:gap-4 grid-flow-row p-2">
+				<MemorySkeletonGridDiv />
+				<MemorySkeletonGridDiv />
+				<MemorySkeletonGridDiv />
+				<MemorySkeletonGridDiv />
+				<MemorySkeletonGridDiv />
+				<MemorySkeletonGridDiv />
+				<MemorySkeletonGridDiv />
+				<MemorySkeletonGridDiv />
+				<MemorySkeletonGridDiv />
+				<MemorySkeletonGridDiv />
+				<MemorySkeletonGridDiv />
+				<MemorySkeletonGridDiv />
+			</article>
+		</div>
+	);
+}
+export function MemorySkeletonSpanDiv() {
+	return (
+		<div className="relative w-40 h-6 rounded-xl overflow-hidden">
+			<span className={shimmer + " w-40 h-6 rounded-xl __background2"}></span>
+		</div>
+	);
+}
+export function MemorySkeletonGridDiv() {
+	return (
+		<div className="rounded-xl relative overflow-hidden">
+			<span className={shimmer}></span>
+		</div>
+	);
+}

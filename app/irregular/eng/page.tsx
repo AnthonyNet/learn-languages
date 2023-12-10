@@ -1,9 +1,9 @@
-import Irregular from "@/components/irregular/Irregular";
 import { Suspense } from "react";
 
 export const revalidate = 3600;
 import { fetchDataALL } from "@/utils/get-data";
 
+import Irregular from "@/components/irregular/Irregular";
 import { IrregularSkeleton } from "@/components/ui/skeletons";
 export default async function Page() {
 	const dbData = await fetchDataALL();

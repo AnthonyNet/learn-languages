@@ -4,10 +4,6 @@ import MemoryCard from "./MemoryCard";
 import { useState, useEffect, Suspense } from "react";
 import TopMenu from "../TopMenu";
 import { Data2, Irregular } from "@/interface/Props";
-import {
-	IrregularButtonsSkeleton,
-	IrregularInputsSkeleton,
-} from "../ui/skeletons";
 interface Item {
 	readonly cz?: string;
 	readonly eng?: string;
@@ -17,15 +13,13 @@ interface Item {
 }
 
 const styles = {
-	section:
-		"w-screen  flex flex-col items-center justify-center pt-[50px] sm:pt-[80px] h-screen",
 	h2: "text-lg sm:text-2xl",
 	navItem: "__nav-item",
 	progress__container: "w-[300px] border-[1px] __border_color rounded-full ",
 	progress:
 		" h-2.5 rounded-full dark:bg-transparent  transition-all duration-700 ease-in-out __gradient",
 	article__cover:
-		"m-auto w-full max-w-[1000px] max-h-[700px] h-full grid items-center grow ",
+		"m-auto w-full max-w-[1000px] max-h-[700px] h-full grid grow ",
 	article:
 		"w-full h-full grid grid-cols-2 sm:grid-cols-4 grid-rows-8 sm:grid-rows-3 gap-2 sm:gap-4 grid-flow-row p-2 ",
 };
@@ -38,7 +32,6 @@ interface Props {
 }
 
 export default function Memory({ props1, props2, irregular }: Props) {
-	const [start, setStart] = useState<boolean>(false);
 	const [dataTS, setDataTS] = useState<Data2[] | Irregular[]>([]);
 
 	const [restartCounter, setRestartCounter] = useState<number>(0);
@@ -51,7 +44,6 @@ export default function Memory({ props1, props2, irregular }: Props) {
 	const getData = async (): Promise<void> => {
 		const propsData = await props1;
 		setDataTS(propsData);
-		setStart(true);
 	};
 
 	useEffect(() => {
@@ -88,7 +80,7 @@ export default function Memory({ props1, props2, irregular }: Props) {
 
 	useEffect(() => {
 		createData(props1);
-	}, [start]);
+	}, []);
 
 	/* -------------------------------------------------------- */
 	/* All answers RIGHT => Restart Field */
@@ -152,38 +144,34 @@ export default function Memory({ props1, props2, irregular }: Props) {
 	}
 
 	return (
-		<section className={styles.section}>
-			{start && (
-				<TopMenu
-					irregular={irregular}
-					props1={props1}
-					props2={props2}
-					createData={createData}
-				/>
-			)}
+		<>
+			<TopMenu
+				irregular={irregular}
+				props1={props1}
+				props2={props2}
+				createData={createData}
+			/>
 
-			<h2 className={styles.h2}>Skóre: {score}</h2>
-			<div className={styles.progress__container}>
+			<h2 className="text-lg sm:text-2xl">Skóre: {score}</h2>
+			<div className="w-[300px] border-[1px] __border_color rounded-full">
 				<div
-					className={styles.progress}
+					className="h-2.5 rounded-full dark:bg-transparent  transition-all duration-700 ease-in-out __gradient"
 					style={{ width: progress + "%" }}></div>
 			</div>
-			<div className={styles.article__cover}>
-				<Suspense fallback={<IrregularButtonsSkeleton />}>
-					<article className={styles.article}>
-						{cards.map((item: Item, index: number) => {
-							return (
-								<MemoryCard
-									key={index}
-									id={index}
-									item={item}
-									handleClick={handleClick}
-								/>
-							);
-						})}
-					</article>
-				</Suspense>
+			<div className="m-auto w-full max-w-[1000px] max-h-[700px] h-full grid grow">
+				<article className="w-full h-full grid grid-cols-2 sm:grid-cols-4 grid-rows-8 sm:grid-rows-3 gap-2 sm:gap-4 grid-flow-row p-2">
+					{cards.map((item: Item, index: number) => {
+						return (
+							<MemoryCard
+								key={index}
+								id={index}
+								item={item}
+								handleClick={handleClick}
+							/>
+						);
+					})}
+				</article>
 			</div>
-		</section>
+		</>
 	);
 }
