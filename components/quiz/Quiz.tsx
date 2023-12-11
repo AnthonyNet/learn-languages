@@ -5,24 +5,20 @@ import { Irregular, Data2, Phrasal } from "@/interface/Props";
 import TopMenu from "@/components/TopMenu";
 
 interface Props {
-	irregular: Irregular[] | null;
 	props1: Data2[] | null;
 	props2: Data2[] | null;
 	phrasal?: Phrasal[] | null;
 }
 
-const backgroundColor = {
-	0: "__gradient",
-	1: "__gradient",
-	2: "__gradient",
-	3: "__gradient",
-};
+const backgroundColor = new Array(4).fill("__gradient");
+
 type Definition = {
 	id: string;
 	word: string;
 	cz_word: string;
 };
-export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
+
+export default function Quiz({ props1, props2, phrasal }: Props) {
 	const [definition, setDefinition] = useState<Definition>({
 		id: "",
 		word: "",
@@ -37,7 +33,7 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 	const [wrong, setWrong] = useState<number>(0);
 
 	const getData = async (): Promise<void> => {
-		const propsData = phrasal ? await phrasal : await irregular;
+		const propsData = phrasal ? await phrasal : await phrasal;
 
 		createData(propsData);
 		setStart(true);
@@ -91,7 +87,6 @@ export default function Quiz({ irregular, props1, props2, phrasal }: Props) {
 			<div className="mb-[-60px]">
 				{start && (
 					<TopMenu
-						irregular={irregular}
 						props1={props1}
 						props2={props2}
 						phrasal={phrasal}
