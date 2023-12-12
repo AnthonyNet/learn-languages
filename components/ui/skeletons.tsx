@@ -156,3 +156,20 @@ export function QuizSkeleton() {
 		</>
 	);
 }
+
+export function FlipCardSkeleton() {
+	return (
+		<section className="flex w-screen h-screen">
+			<div className="flex flex-row items-center w-full mt-[60px] h-14 mx-2">
+				<div className="relative overflow-hidden w-12 h-12 rounded-full">
+					<span className={shimmer}></span>
+				</div>
+				<div className="flex grow h-full justify-center items-center">
+					<div className="relative overflow-hidden h-10 w-20 rounded-xl  -ml-2">
+						<span className={shimmer}></span>
+					</div>
+				</div>
+			</div>
+		</section>
+	);
+}

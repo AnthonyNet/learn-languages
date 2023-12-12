@@ -14,7 +14,7 @@ export default function TopMenu({
 	createData,
 }: Props) {
 	return (
-		<header className="w-full max-w-[750px] grid grid-cols-2 grid-rows-2 gap-2 lg:flex lg:justify-center lg:gap-8 p-2 font-bold">
+		<header className="w-full max-w-[750px] flex justify-center flex-wrap  p-2 gap-6 font-bold">
 			{phrasal && (
 				<button
 					onClick={() => {
