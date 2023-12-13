@@ -91,7 +91,7 @@ export default function Quiz({ props1, props2, phrasal }: Props) {
 				createData={createData}
 			/>
 
-			<div className="flex flex-col w-full grow  max-w-[600px] min-h-[400px] m-auto justify-center lg:justify-center p-6 lg:border-4 border-double rounded-[30px] __border_color ">
+			<div className="flex flex-col w-full grow  max-w-[600px] min-h-[400px] m-auto justify-center lg:justify-center p-6">
 				<span className="flex justify-around text-[var(--white)] font-bold">
 					<p className="bg-red-500 px-4 py-2 rounded-xl">Špatně: {wrong}</p>
 					<p className="bg-green-500 px-4 py-2 rounded-xl">Správně: {score}</p>
