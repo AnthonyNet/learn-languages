@@ -135,21 +135,21 @@ export function QuizSkeleton() {
 	return (
 		<>
 			{/* Skeleton for TopMenu */}
-			<div className="animate-pulse bg-gray-300 w-[300px] h-[105px] rounded-md"></div>
+			<div className="motion-safe:animate-pulse  opacity-10 w-[300px] h-[105px] rounded-md __background-50"></div>
 
 			<div className="flex flex-col w-full h-auto max-w-[600px] min-h-[400px] m-auto justify-center lg:justify-around p-6 ">
 				{/* Skeleton for definition */}
 				<span className="flex justify-around">
-					<p className="animate-pulse bg-gray-300 w-20 h-8 rounded-xl"></p>
-					<p className="animate-pulse bg-gray-300 w-20 h-8 rounded-xl"></p>
+					<p className="motion-safe:animate-pulse opacity-10 w-20 h-8 rounded-xl __background-50"></p>
+					<p className="motion-safe:animate-pulse opacity-10 w-20 h-8 rounded-xl __background-50"></p>
 				</span>
-				<p className="animate-pulse self-center text-lg font-semibold my-4 text-center bg-gray-300 w-[200px] h-8 rounded-md"></p>
+				<p className="motion-safe:animate-pulse self-center text-lg font-semibold my-4 text-center opacity-10 w-[200px] h-8 rounded-md __background-50"></p>
 				<div className="flex flex-col space-y-2">
 					{/* Skeleton for answer choices */}
 					{[1, 2, 3, 4].map((index) => (
 						<div
 							key={index}
-							className="animate-pulse bg-gray-300 w-full h-[40px] rounded-md"></div>
+							className="motion-safe:animate-pulse opacity-10 w-full h-[40px] rounded-md __background-50"></div>
 					))}
 				</div>
 			</div>

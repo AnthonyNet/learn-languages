@@ -84,7 +84,7 @@
 	--black: rgb(1, 1, 1);
 
 	--color-main: hsl(214, 100%, 50%);
-	--color-main-opacity: hsla(214, 100%, 50%, 0.5);
+	--color-main-opacity: hsla(214, 100%, 50%, 0.3);
 
 	--hue-rotate: 0;
 	--saturation: 100%;
@@ -223,6 +223,9 @@ body,
 }
 .__background2 {
 	background: var(--btn-background);
+}
+.__background-50 {
+	background: var(--color-main-opacity);
 }
 .__gradient {
 	background: var(--gradient);
