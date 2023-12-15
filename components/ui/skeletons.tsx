@@ -159,17 +159,25 @@ export function QuizSkeleton() {
 
 export function FlipCardSkeleton() {
 	return (
-		<section className="flex w-screen h-screen">
-			<div className="flex flex-row items-center w-full mt-[60px] h-14 mx-2">
+		<section className="flex flex-col lg:justify-center lg:items-center w-screen h-screen pb-4">
+			<header className="lg:hidden flex flex-row items-center w-full mt-12 h-14 mx-2">
 				<div className="relative overflow-hidden w-12 h-12 rounded-full">
 					<span className={shimmer}></span>
 				</div>
 				<div className="flex grow h-full justify-center items-center">
-					<div className="relative overflow-hidden h-10 w-20 rounded-xl  -ml-2">
+					<div className="relative overflow-hidden h-10 w-20 rounded-xl -ml-2">
 						<span className={shimmer}></span>
 					</div>
 				</div>
-			</div>
+			</header>
+			<main className="flex w-full h-full lg:hidden justify-center items-center">
+				<div className="w-3/4  h-40 animate-pulse motion-reduce:transition-none rounded-xl __background-50 border-2"></div>
+			</main>
+			<footer className="h-16 w-full lg:hidden  flex justify-around">
+				<span className="w-24 rounded-xl animate-pulse motion-reduce:transition-none __background-50"></span>
+				<span className="w-24 rounded-xl animate-pulse motion-reduce:transition-none __background-50"></span>
+			</footer>
+			<main className="hidden lg:flex w-full max-w-screen-sm h-96 items center justify-center animate-pulse motion-reduce:transition-none  __border_color border-4 border-double rounded-md opacity-20 __background-50"></main>
 		</section>
 	);
 }
