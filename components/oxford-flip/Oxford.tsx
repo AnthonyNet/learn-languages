@@ -12,31 +12,21 @@ import czFlag from "@/images/cz.png";
 import enFlag from "@/images/eng.png";
 import Text_Card from "./Text_card";
 import Card_Back from "./Card_back";
-import {Data2} from "@/interface/Props"
+import { Data2 } from "@/interface/Props";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
-
-
 const styles = {
-	section:
-		"relative pt-[40px] md:pt-[70px] md:text-[130%]  w-screen  flex flex-col justify-center items-center  h-100-dvh",
-	card__container:
-		"w-full max-w-[600px] h-full  md:max-h-[400px] lg:border-4  border-double px-4  rounded-lg  preserve-3d group my-rotate-y-180 duration-1000 flex flex-col  __border_color",
-	card__btn__container:
-		"flex justify-around w-full h-[70px] items-center text-center md:border-t-2 __border_color",
-	h3: "py-2 md:py-4  text-center border-b  w-auto mx-auto __border_color",
 	button:
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 	button__animation: " lg:hover:translate-x-[20px] ",
 	flag__icon:
-		"hover:rotate-90 transition ease-in-out duration-700 fixed  md:top-2 left-2  ring-2 rounded-full  drop-shadow-sm __background __gradient",
+		"hover:rotate-90 transition ease-in-out duration-700 fixed  top-4  left-2  ring-2 rounded-full  drop-shadow-sm __background __gradient",
 };
 
 interface Props {
-	props: { [index: number]: Data2[]  };
+	props: { [index: number]: Data2[] };
 }
-
 
 interface Data {
 	readonly word: string;
@@ -44,30 +34,27 @@ interface Data {
 	readonly cz_word: string;
 	readonly cz_sentence: string;
 }
-export default function Oxford ({props}: Props) {
-
+export default function Oxford({ props }: Props) {
 	const [start, setStart] = useState<boolean>(false);
 	const [rand, setRand] = useState<number>(Math.floor(Math.random() * 50));
-	const [dataTS, setDataTS] = useState<Data[]|[]>([]);
+	const [dataTS, setDataTS] = useState<Data[] | []>([]);
 	const [switchButton, setSwitchButton] = useState<boolean>(true);
 	const [switchSide, setSwitchSide] = useState<boolean>(true);
 	const [switchLanguage, setSwitchLanguage] = useState<boolean>(true);
 
-async function createRandoms(): Promise<void> {
-	const data = await dataTS;
-	setRand(Math.floor(Math.random() * data.length));
-}
-const getData = async (): Promise<void> => {
- const propsData = await props;
- setDataTS(propsData[0]);
- createRandoms();
- setStart(true);
-
-};
-useEffect(() => {
-	getData();
-}, []);
-
+	async function createRandoms(): Promise<void> {
+		const data = await dataTS;
+		setRand(Math.floor(Math.random() * data.length));
+	}
+	const getData = async (): Promise<void> => {
+		const propsData = await props;
+		setDataTS(propsData[0]);
+		createRandoms();
+		setStart(true);
+	};
+	useEffect(() => {
+		getData();
+	}, []);
 
 	return (
 		<motion.section
@@ -75,13 +62,13 @@ useEffect(() => {
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
 			transition={{ duration: 1 }}
-			className={styles.section}>
+			className="relative pt-[40px] md:pt-[70px] md:text-[130%]  w-screen  flex flex-col justify-center items-center  h-100-dvh">
 			<motion.div
-				className={styles.card__container}
+				className="w-full max-w-[600px] h-full  md:max-h-[400px] lg:border-4  border-double px-4  rounded-lg  preserve-3d group my-rotate-y-180 duration-1000 flex flex-col  __border_color"
 				animate={{ rotateY: switchSide ? 0 : 180 }}
 				transition={{ duration: 0.5 }}>
 				<RadioGroup
-					className="fixed top-[6px] left-1/2 transform -translate-x-1/2 flex flex-row justify-center h-10"
+					className="fixed top-6 left-1/2 transform -translate-x-1/2 flex flex-row justify-center h-10"
 					defaultValue="option-one">
 					<div
 						className="flex items-center space-x-2"
@@ -127,7 +114,7 @@ useEffect(() => {
 					/>
 				)}
 
-				<div className={styles.card__btn__container}>
+				<div className="flex justify-around w-full h-[70px] items-center text-center md:border-t-2 __border_color">
 					{switchSide && (
 						<>
 							<Button onClick={() => setSwitchSide(!switchSide)}>
@@ -159,4 +146,4 @@ useEffect(() => {
 			</motion.div>
 		</motion.section>
 	);
-};
+}

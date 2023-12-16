@@ -10,7 +10,7 @@ export default async function Page() {
 	return (
 		<div>
 			<Suspense fallback={<FlipCardSkeleton />}>
-				<FlipCardSkeleton />
+				<Oxford props={dataArr} />
 			</Suspense>
 		</div>
 	);

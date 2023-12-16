@@ -171,7 +171,7 @@ export function FlipCardSkeleton() {
 				</div>
 			</header>
 			<main className="flex w-full h-full lg:hidden justify-center items-center">
-				<div className="w-3/4  h-40 animate-pulse motion-reduce:transition-none rounded-xl __background-50 border-2"></div>
+				<div className="w-3/4  h-40 animate-pulse motion-reduce:transition-none rounded-xl __background-50"></div>
 			</main>
 			<footer className="h-16 w-full lg:hidden  flex justify-around">
 				<span className="w-24 rounded-xl animate-pulse motion-reduce:transition-none __background-50"></span>
