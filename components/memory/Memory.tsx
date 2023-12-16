@@ -146,7 +146,6 @@ export default function Memory({ props1, props2, irregular }: Props) {
 	return (
 		<>
 			<TopMenu
-				irregular={irregular}
 				props1={props1}
 				props2={props2}
 				createData={createData}
