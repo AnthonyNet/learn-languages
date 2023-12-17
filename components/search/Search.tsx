@@ -32,10 +32,10 @@ export default function SearchIrregular({irregular}: {irregular: Irregular[] | n
 
 	return (
 		<section className="w-full h-auto mt-[10vh]">
-			<form className="shadow-md rounded p-4 md:p-8">
+			<form className="shadow-md rounded py-4 max-xl:pl-2 md:py-8">
 				<div>
 					<input
-						className="shadow appearance-none border rounded w-full py-2 px-3 max-w-[300px] __border_color ml-auto text-[var(--black)] font-bold"
+						className="shadow appearance-none border rounded w-full py-2 px-3 max-w-sm ml-auto text-black font-bold __border_color"
 						id="search"
 						type="text"
 						placeholder="Hledej slovo"
