@@ -3,6 +3,7 @@ import { fetchDataALL } from "@/utils/get-data";
 import { Suspense } from "react";
 import SearchInput from "@/components/search/SearchInput";
 import Table from "@/components/search/Table";
+export const revalidate = 3600;
 
 export default async function Page() {
 	const data = await fetchDataALL();
