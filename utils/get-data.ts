@@ -3,8 +3,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cache } from "react";
 
 export const fetchDataALL = cache(async () => {
-
-	  const supabase = createClientComponentClient();
+	const supabase = createClientComponentClient();
 	const tableNames = [
 		"irregular_eng",
 		"oxford_b2",

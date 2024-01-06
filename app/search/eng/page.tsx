@@ -1,18 +1,20 @@
-
-import Search from "@/components/search/Search";
-export const revalidate = 3600;
 import { fetchDataALL } from "@/utils/get-data";
-import {Suspense} from "react";
+
+import { Suspense } from "react";
+import SearchInput from "@/components/search/SearchInput";
+import Table from "@/components/search/Table";
 
 export default async function Page() {
-	const dbData = await fetchDataALL();
+	const data = await fetchDataALL();
+
 	return (
 		<section className="w-full h-auto mt-[10vh]">
-			<Suspense fallback={<div>Loading...</div>}>
-				<Search
-					irregular={dbData[1].irregular_eng}
-				/>
-			</Suspense>
+			<SearchInput placeholder="Hledej slovo..." />
+			<div className="flex flex-col">
+				<Suspense fallback={<div>...loading</div>}>
+					<Table data={data[1].irregular_eng} />
+				</Suspense>
+			</div>
 		</section>
 	);
 }
