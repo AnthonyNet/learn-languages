@@ -9,7 +9,7 @@ import Typewriter from "typewriter-effect";
 
 const styles = {
 	section:
-		"bg-transparent w-full h-auto lg:min-h-full flex flex-col xl:flex-row items-center justify-center",
+		"bg-transparent w-full h-auto max-md:py-2 lg:min-h-full flex flex-col xl:flex-row items-center justify-center",
 	div_left:
 		"h-screen max-w-4xl mx-auto text-center flex flex-col justify-center text- gap-4 pt-[50px] px-8 xl:p-0",
 	div_right:
