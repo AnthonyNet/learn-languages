@@ -14,17 +14,14 @@ interface Card {
 	handleClick: (id: number, select: number) => void;
 }
 
-
-
 export default function MemoryCard({ id, item, handleClick }: Card) {
-
 	return (
 		<motion.button
 			className={clsx(
-				"relative flex items-center justify-center  cursor-pointer group perspective transition ease-in-out duration-500  __border_color __border_hover __memory_border_click ",
+				"relative flex items-center justify-center  cursor-pointer group perspective transition ease-in-out duration-500   __border_hover focus:border-border_active ",
 				{
-					"border-2 rounded-3xl p-4 __memory_border_green": item.click,
-					"p-4 border-2 rounded-3xl __border_color":
+					"border-2 rounded-3xl p-4 border-b __memory_border_green": item.click,
+					"p-4 border-2 rounded-3xl border-main":
 						!item.click || (item.click && item.check),
 					"opacity-0 transition-opacity duration-1000 delay-1000 ease-in-out":
 						item.check,
@@ -41,7 +38,7 @@ export default function MemoryCard({ id, item, handleClick }: Card) {
 						{item.cz ? item.cz : item.eng}
 					</h2>
 				</motion.div>
-				<motion.div className="absolute top-0 my-rotate-y-180 backface-hidden overflow-hidden rounded-3xl w-full h-full __background">
+				<motion.div className="absolute top-0 my-rotate-y-180 backface-hidden overflow-hidden rounded-3xl w-full h-full bg-background_main">
 					<div className="w-full h-full flex flex-col items-center justify-center">
 						<h3 className="text-4xl xl:text-6xl">👍</h3>
 					</div>

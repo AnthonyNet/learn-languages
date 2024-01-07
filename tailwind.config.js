@@ -38,13 +38,17 @@ module.exports = {
 		},
 		extend: {
 			colors: {
+				main: "var(--color-main)",
+				border_active: "var(--color-green)",
+				background_main: "var(--black)",
+
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
 				primary: {
-					DEFAULT: "hsl(var(--primary))",
+					DEFAULT: "hsl(var(--color-main))",
 					foreground: "hsl(var(--primary-foreground))",
 				},
 				secondary: {
@@ -108,7 +112,7 @@ module.exports = {
 				"spin-slow": "spin 13s linear infinite",
 				"ping-slow": "bounce 2s linear infinite",
 				"ping-slower": "bounce 3s linear infinite",
-				orbit: "orbit 27s linear infinite",
+				 orbit: "orbit 27s linear infinite",
 				"orbit-reverse": "orbit-reverse 33s linear infinite",
 			},
 		},

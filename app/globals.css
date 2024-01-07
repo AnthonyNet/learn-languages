@@ -76,6 +76,8 @@
 }
 /* CUSTOM ROOT */
 :root {
+	--mainX: hsla(0, 100%, 55%, 0.3);
+
 	--max-width: 1100px;
 	--font-family: "Noto Sans", sans-serif;
 

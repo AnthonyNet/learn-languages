@@ -20,7 +20,7 @@ interface Props {
 	props2?: Data2[];
 }
 
-export default function Memory({ props1, props2, irregular }: Props) {
+export default function Memory({ props1, props2 }: Props) {
 	const [dataTS, setDataTS] = useState<Data2[] | Irregular[]>([]);
 
 	const [restartCounter, setRestartCounter] = useState<number>(0);
@@ -164,6 +164,10 @@ export default function Memory({ props1, props2, irregular }: Props) {
 		// If there's no previous card, just set the current card as the previous one
 		if (prev === -1) {
 			setPrev(cardId);
+			return;
+		} else if (prev === cardId) {
+			// If the current card is the same as the previous one, just return
+
 			return;
 		}
 
