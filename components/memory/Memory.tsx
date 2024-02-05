@@ -12,17 +12,6 @@ interface Item {
 	click: boolean;
 }
 
-const styles = {
-	h2: "text-lg sm:text-2xl",
-	navItem: "__nav-item",
-	progress__container: "w-[300px] border-[1px] __border_color rounded-full ",
-	progress:
-		" h-2.5 rounded-full dark:bg-transparent  transition-all duration-700 ease-in-out __gradient",
-	article__cover:
-		"m-auto w-full max-w-[1000px] max-h-[700px] h-full grid grow ",
-	article:
-		"w-full h-full grid grid-cols-2 sm:grid-cols-4 grid-rows-8 sm:grid-rows-3 gap-2 sm:gap-4 grid-flow-row p-2 ",
-};
 
 //write simple function which return result of 1+1
 interface Props {
@@ -106,7 +95,7 @@ export default function Memory({ props1, props2, irregular }: Props) {
 	/* --------------------------------------------------- */
 	/*       Compare Cards          */
 	/* --------------------------------------------------- */
-	function check(current: number) {
+	/*function check(current: number) {
 		if (cards[prev].select === cards[current].select) {
 			setScore(score + 1);
 			setProgress(progress + 16.667);
@@ -125,31 +114,67 @@ export default function Memory({ props1, props2, irregular }: Props) {
 			);
 		}
 		setPrev(-1);
+	}*/
+	// The check function is used to compare two cards
+	function check(current: number) {
+		// If the selected card matches the previously selected card
+		if (cards[prev].select === cards[current].select) {
+			setScore(score + 1);
+			setProgress(progress + 16.667);
+			setRestartCounter(restartCounter + 1);
+			// Add the selected card to the store
+			setStore([...store, cards[prev].select]);
+
+			// Create a new array of cards
+			const updatedCards = cards.map((item: Item, index: number) => {
+				// If the current card is the previously selected card or the currently selected card
+				if (index === prev || index === current) {
+					// Return a new object with the same properties as the current item,
+					// but with the check and click properties set to true
+					return { ...item, check: true, click: true };
+				} else {
+					// Otherwise, return a new object with the same properties as the current item,
+					// but with the click property set to false
+					return { ...item, click: false };
+				}
+			});
+
+			// Update the cards state with the new array of cards
+			setCards(updatedCards);
+		} else {
+			// If the selected card does not match the previously selected card,
+			// create a new array of cards
+			const updatedCards = cards.map((item: Item) => {
+				// Return a new object with the same properties as the current item,
+				// but with the click property set to false
+				return { ...item, click: false };
+			});
+
+			// Update the cards state with the new array of cards
+			setCards(updatedCards);
+		}
+
+		// Reset the prev state to -1
+		setPrev(-1);
 	}
 	/* --------------------------------------------------- */
 	//  check if the current card matches the previous card
 	/* --------------------------------------------------- */
 	function handleClick(cardId: number, selectId: number) {
+		// If there's no previous card, just set the current card as the previous one
 		if (prev === -1) {
-			/*cards[cardId].click = true;*/
 			setPrev(cardId);
 			return;
-		} else {
-			if (prev === cardId) {
-				return;
-			} else {
-				check(cardId);
-			}
 		}
+
+		// If we reach this point, it means we have a previous card and it's different from the current one
+		// So, we need to check them
+		check(cardId);
 	}
 
 	return (
 		<>
-			<TopMenu
-				props1={props1}
-				props2={props2}
-				createData={createData}
-			/>
+			<TopMenu props1={props1} props2={props2} createData={createData} />
 
 			<h2 className="text-lg sm:text-2xl">Skóre: {score}</h2>
 			<div className="w-[300px] border-[1px] __border_color rounded-full">
