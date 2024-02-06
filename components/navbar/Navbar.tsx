@@ -42,7 +42,7 @@ export default function Navbar({ props }: Props) {
 							}}
 							className="cursor-pointer">
 							<h1 className="transform font-bold relative text-transparent bg-clip-text __text_shadow">
-								<span className="__text_color hue-rotate-15 brightness-125">
+								<span className="text-main hue-rotate-15 brightness-125">
 									Learn
 								</span>{" "}
 								<strong className="text-indigo-200">languages</strong>

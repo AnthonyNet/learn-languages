@@ -11,7 +11,7 @@ const styles = {
 
 	main: {
 		div: "flex flex-row",
-		div__div: "mottoCover border-b border-gray-300 my-4 text-sm sm:text-lg",
+		div__div: "border-b border-gray-300 my-4 text-sm sm:text-lg",
 		icon: "transition duration-700 ease-in-out mr-2",
 		icon__open:
 			"rotate-90 transition duration-700 ease-in-out mr-2",

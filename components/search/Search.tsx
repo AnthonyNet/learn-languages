@@ -22,7 +22,7 @@ export default function SearchIrregular({
 				<div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
 					<div className="inline-block min-w-full sm:px-6 lg:px-8">
 						<div className="overflow-hidden">
-							<table className="w-full text-center text-[var(--color-main-accent)]">
+							<table className="w-full text-center ">
 								<thead className="border-b border-b-slate-700/30 bg-slate-900/70">
 									<tr>
 										<th scope="col" className={style.th}>

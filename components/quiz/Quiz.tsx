@@ -109,7 +109,7 @@ export default function Quiz({ props1, props2, phrasal }: Props) {
 									"py-2 rounded-md shadow-md font-bold duration-300 hover:contrast-150  " +
 									answerColor[index]
 								}>
-								<p className="__text_color2 filter invert">{choice.word}</p>
+								<p className="text-main-secondary filter invert">{choice.word}</p>
 							</button>
 						);
 					})}
