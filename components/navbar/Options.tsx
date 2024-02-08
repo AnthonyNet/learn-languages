@@ -1,6 +1,4 @@
-import {
-	Settings,
-} from "lucide-react";
+import { Settings } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -26,7 +24,6 @@ export default function Options() {
 	const [mounted, setMounted] = useState(false);
 	const { theme, setTheme, systemTheme } = useTheme();
 
-
 	useEffect(() => {
 		setMounted(true);
 		if (theme === "system") {
@@ -44,13 +41,13 @@ export default function Options() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button className="bg-transparent border-none  __text_color hover:bg-slate-500/20    animate-spin-slow rounded-full">
+				<Button className="bg-transparent border-none  text-main hover:bg-slate-500/20    animate-spin-slow rounded-full">
 					<Settings />
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent className="w-56 __background __text_color transition-all duration-1000 ease-in-out transform ">
+			<DropdownMenuContent className="w-56 bg-main-black text-main transition-all duration-1000 ease-in-out transform ">
 				<DropdownMenuLabel>Settings</DropdownMenuLabel>
-				<DropdownMenuSeparator className="bg-[var(--color-main)]" />
+				<DropdownMenuSeparator className="bg-gray-900/70 h-1" />
 
 				<DropdownMenuGroup>
 					<DropdownMenuSub>
@@ -59,7 +56,7 @@ export default function Options() {
 							<span>Colors</span>
 						</DropdownMenuSubTrigger>
 						<DropdownMenuPortal>
-							<DropdownMenuSubContent className="__background __text_color">
+							<DropdownMenuSubContent className="bg-main-black text-main">
 								<DropdownMenuItem
 									className="text-blue-500 hover:bg-blue-500/10 "
 									onClick={() => setTheme("blue")}>

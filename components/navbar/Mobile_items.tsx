@@ -3,25 +3,19 @@ import Link from "next/link";
 import Options from "./Options";
 import { useState } from "react";
 import { NavData } from "@/interface/navdata";
-const styles = {
-	section: "flex flex-col z-20",
-	main__div: "flex flex justify-start items-center py-2",
-	main__div__span: "bottom-2 right-4 text-3xl",
-	main__link: "text-2xl font-bold cursor-pointer",
+import clsx from "clsx";
 
-	main: {
-		div: "flex flex-row",
-		div__div: "border-b border-gray-300 my-4 text-sm sm:text-lg",
-		icon: "transition duration-700 ease-in-out mr-2",
-		icon__open:
-			"rotate-90 transition duration-700 ease-in-out mr-2",
-		h3: "text-xl mb-2 cursor-pointer transition-all duration-700 ease-in-out",
-		h3__open:
-			"text-xl mb-2 cursor-pointer  transition-all duration-700 ease-in-out font-bold __border_color",
-		ul__open:
-			"cursor-pointer transition  duration-100 ease-in-out font-bold ulAnimation",
-		ul__li__open: "transition ease-in-out duration-700 ml-[30px]",
-	},
+const styles = {
+	div: "flex flex-row",
+	div__div: "border-b border-gray-300 my-4 text-sm sm:text-lg",
+	icon: "transition duration-700 ease-in-out mr-2",
+	icon__open: "rotate-90 transition duration-700 ease-in-out mr-2",
+	h3: "text-xl mb-2 cursor-pointer transition-all duration-700 ease-in-out",
+	h3__open:
+		"text-xl mb-2 cursor-pointer  transition-all duration-700 ease-in-out font-bold",
+	ul__open:
+		"cursor-pointer transition  duration-100 ease-in-out font-bold ulAnimation",
+	ul__li__open: "transition ease-in-out duration-700 ml-[30px]",
 } as const;
 
 type Mobile = {
@@ -52,10 +46,7 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 	const menuItems = (items: menuItems[]) => {
 		return items.map((item, index) => {
 			return (
-				<li
-					key={index}
-					onClick={handleNav}
-					className={styles.main.ul__li__open}>
+				<li key={index} onClick={handleNav} className={styles.ul__li__open}>
 					<Link href={item.href}>
 						{item.name} {item.length && `(${item.length})`}
 					</Link>
@@ -65,60 +56,50 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 	};
 
 	return (
-		<section className={styles.section}>
-			<div className={styles.main__div}>
-
-				<span className={styles.main__div__span}>
+		<section className="flex flex-col z-20">
+			<div className="flex justify-start items-center py-2">
+				<span className="bottom-2 right-4 text-3xl">
 					<Options />
 				</span>
 			</div>
 
 			<main>
-				<div className={styles.main.div}>
-					<span
-						className={
-							!english ? styles.main.icon : styles.main.icon__open
-						}>
+				<div className={styles.div}>
+					<span className={clsx(!english ? styles.icon : styles.icon__open)}>
 						➤
 					</span>
 					<h3
 						onClick={handleEnglish}
-						className={!english ? styles.main.h3 : styles.main.h3__open}>
+						className={clsx(!english ? styles.h3 : styles.h3__open)}>
 						Angličtina
 					</h3>
 				</div>
-				<ul className={english ? styles.main.ul__open : " text-transparent"}>
+				<ul className={english ? styles.ul__open : " text-transparent"}>
 					{english && (
 						<>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
+							<li onClick={handleNav} className={styles.ul__li__open}>
 								<Link href="/irregular/eng">
 									Nepravidelná slovesa ({navData.irregularEng}){" "}
 								</Link>
 							</li>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
-								<Link href="/memory/eng">
-									Slovní pexeso
-								</Link>
+							<li onClick={handleNav} className={styles.ul__li__open}>
+								<Link href="/memory/eng">Slovní pexeso</Link>
 							</li>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
+							<li onClick={handleNav} className={styles.ul__li__open}>
 								<Link href="/quiz/eng">Kvíz</Link>
 							</li>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
+							<li onClick={handleNav} className={styles.ul__li__open}>
 								<Link href="/search/eng">
 									Najdi sloveso ({navData.irregularEng}){" "}
 								</Link>
 							</li>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
-								<Link href="/oxford-flip/eng">
-									Flip karta
-								</Link>
+							<li onClick={handleNav} className={styles.ul__li__open}>
+								<Link href="/oxford-flip/eng">Flip karta</Link>
 							</li>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
-								<Link href="/oxford/eng">
-									Akordeón věty
-								</Link>
+							<li onClick={handleNav} className={styles.ul__li__open}>
+								<Link href="/oxford/eng">Akordeón věty</Link>
 							</li>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
+							<li onClick={handleNav} className={styles.ul__li__open}>
 								<Link href="/pagination">
 									Seznam slov B2 ({navData.oxfordB2}){" "}
 								</Link>
@@ -126,48 +107,35 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 						</>
 					)}
 				</ul>
-				<div className={styles.main.div}>
-					<span
-						className={
-							!german ? styles.main.icon : styles.main.icon__open
-						}>
-						➤
-					</span>
+				<div className={styles.div}>
+					<span className={!german ? styles.icon : styles.icon__open}>➤</span>
 					<h3
 						onClick={handleGerman}
-						className={!german ? styles.main.h3 : styles.main.h3__open}>
+						className={!german ? styles.h3 : styles.h3__open}>
 						Němčina
 					</h3>
 				</div>
-				<ul className={german ? styles.main.ul__open : " text-transparent "}>
+				<ul className={german ? styles.ul__open : " text-transparent "}>
 					{german && (
 						<>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
+							<li onClick={handleNav} className={styles.ul__li__open}>
 								<Link href="/irregular/ger">
 									Nepravidelná slovesa ({navData.irregularGer}){" "}
 								</Link>
 							</li>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
-								<Link href="/memory/ger">
-									Slovní pexeso
-								</Link>
+							<li onClick={handleNav} className={styles.ul__li__open}>
+								<Link href="/memory/ger">Slovní pexeso</Link>
 							</li>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
-								<Link href="/quiz/ger">
-									Kvíz
-								</Link>
+							<li onClick={handleNav} className={styles.ul__li__open}>
+								<Link href="/quiz/ger">Kvíz</Link>
 							</li>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
-								<Link href="/oxford-flip/ger">
-									Flip karta
-								</Link>
+							<li onClick={handleNav} className={styles.ul__li__open}>
+								<Link href="/oxford-flip/ger">Flip karta</Link>
 							</li>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
-								<Link href="/oxford/ger">
-									Akordeón věty
-								</Link>
+							<li onClick={handleNav} className={styles.ul__li__open}>
+								<Link href="/oxford/ger">Akordeón věty</Link>
 							</li>
-							<li onClick={handleNav} className={styles.main.ul__li__open}>
+							<li onClick={handleNav} className={styles.ul__li__open}>
 								<Link href="/search/ger">
 									Najdi sloveso ({navData.irregularGer}){" "}
 								</Link>

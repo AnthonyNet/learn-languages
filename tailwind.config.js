@@ -41,6 +41,7 @@ module.exports = {
 				main: {
 					DEFAULT: "var(--color-main)",
 					secondary: "var(--btn-text-color)",
+					black: "var(--black)",
 				},
 				border_active: "var(--color-green)",
 
