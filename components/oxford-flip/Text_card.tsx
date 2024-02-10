@@ -1,9 +1,8 @@
 import React from "react";
 
 const styles = {
-	card__text__cover:
-		"pt-[25px]  w-full  flex flex-col justify-center grow ",
-	h3: "py-2 md:py-4  text-center   w-auto mx-auto __border_color",
+	card__text__cover: "pt-[25px]  w-full  flex flex-col justify-center grow ",
+	h3: "py-2 md:py-4  text-center   w-auto mx-auto border-main",
 };
 
 interface Props {
@@ -13,7 +12,13 @@ interface Props {
 	cz_word: string;
 	cz_sentence: string;
 }
-const Text_Card = ({ switchLanguage, word, sentence, cz_word, cz_sentence }: Props) => {
+const Text_Card = ({
+	switchLanguage,
+	word,
+	sentence,
+	cz_word,
+	cz_sentence,
+}: Props) => {
 	return (
 		<article className={styles.card__text__cover}>
 			{switchLanguage ? (

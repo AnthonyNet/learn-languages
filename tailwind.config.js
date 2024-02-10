@@ -40,10 +40,12 @@ module.exports = {
 			colors: {
 				main: {
 					DEFAULT: "var(--color-main)",
+					50: "var(--color-main-50)",
 					secondary: "var(--btn-text-color)",
 					black: "var(--black)",
+					true: "var(--color-green)",
+					false: "var(--color-red)",
 				},
-				border_active: "var(--color-green)",
 
 				primary: {
 					DEFAULT: "hsl(var(--color-main))",

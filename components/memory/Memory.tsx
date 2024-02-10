@@ -1,9 +1,10 @@
 "use client";
 
 import MemoryCard from "./MemoryCard";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import TopMenu from "../TopMenu";
 import { Data2, Irregular } from "@/interface/Props";
+
 interface Item {
 	readonly cz?: string;
 	readonly eng?: string;
@@ -11,7 +12,6 @@ interface Item {
 	check: boolean;
 	click: boolean;
 }
-
 
 //write simple function which return result of 1+1
 interface Props {
@@ -181,7 +181,7 @@ export default function Memory({ props1, props2 }: Props) {
 			<TopMenu props1={props1} props2={props2} createData={createData} />
 
 			<h2 className="text-lg sm:text-2xl">Skóre: {score}</h2>
-			<div className="w-[300px] border-[1px] __border_color rounded-full">
+			<div className="w-[300px] border-[1px] border-main rounded-full">
 				<div
 					className="h-2.5 rounded-full dark:bg-transparent  transition-all duration-700 ease-in-out __gradient"
 					style={{ width: progress + "%" }}></div>

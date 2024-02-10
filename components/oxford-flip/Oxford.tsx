@@ -21,7 +21,7 @@ const styles = {
 		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 	button__animation: " lg:hover:translate-x-[20px] ",
 	flag__icon:
-		"hover:rotate-90 transition ease-in-out duration-700 fixed  top-4  left-2  ring-2 rounded-full  drop-shadow-sm __background __gradient",
+		"hover:rotate-90 transition ease-in-out duration-700 fixed  top-4  left-2  ring-2 rounded-full  drop-shadow-sm  __gradient",
 };
 
 interface Props {
@@ -64,7 +64,7 @@ export default function Oxford({ props }: Props) {
 			transition={{ duration: 1 }}
 			className="relative pt-[40px] md:pt-[70px] md:text-[130%]  w-screen  flex flex-col justify-center items-center  h-100-dvh">
 			<motion.div
-				className="w-full max-w-[600px] h-full  md:max-h-[400px] lg:border-4  border-double px-4  rounded-lg  preserve-3d group my-rotate-y-180 duration-1000 flex flex-col  __border_color"
+				className="w-full max-w-[600px] h-full  md:max-h-[400px] lg:border-4  border-double px-4  rounded-lg  preserve-3d group my-rotate-y-180 duration-1000 flex flex-col  border-main"
 				animate={{ rotateY: switchSide ? 0 : 180 }}
 				transition={{ duration: 0.5 }}>
 				<RadioGroup
@@ -114,7 +114,7 @@ export default function Oxford({ props }: Props) {
 					/>
 				)}
 
-				<div className="flex justify-around w-full h-[70px] items-center text-center md:border-t-2 __border_color">
+				<div className="flex justify-around w-full h-[70px] items-center text-center md:border-t-2 border-main">
 					{switchSide && (
 						<>
 							<Button onClick={() => setSwitchSide(!switchSide)}>

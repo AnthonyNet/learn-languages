@@ -13,7 +13,7 @@ interface Props {
 }
 
 const styles = {
-	li: "m-1 p-1 font-bold border-2 rounded-xl focus:mainCardBorder borderShadow __border_color __border_hover",
+	li: "m-1 p-1 font-bold border-2 rounded-xl focus:mainCardBorder borderShadow  __border_hover",
 	li_green: "p-2 font-bold",
 	input:
 		"__card_Input w-full text-center text-bold cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent rounded-md p-1  hover:shadow-lg transition ease-in-out duration-500 bg-transparent",
@@ -54,7 +54,7 @@ const Input = ({
 	const runIT = () => {
 		if (word === input) {
 			// True === green border
-			setCheckStyles("border-green-600 border-inset");
+			setCheckStyles("border-main-true border-inset");
 
 			//Props - SCORE + STARS
 			setTotalScore((count: number) => count + 1);
@@ -81,7 +81,7 @@ setInput => CLEAR VALUE IN INPUT
 ------------------------------------------*/
 
 	useEffect(() => {
-		setCheckStyles("");
+		setCheckStyles("border-main");
 		setInput("");
 	}, [defaultInput]);
 

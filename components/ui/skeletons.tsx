@@ -5,21 +5,21 @@ export function IrregularSkeleton() {
 	return (
 		<div className="w-full h-full md:h-auto md:w-auto min-w-[350px] flex flex-col justify-center items-center text-center">
 			<div className="mt-[22px] md:text-[140%] lg:text-[100%]  h-full  md:h-auto flex flex-col justify-center items-center">
-				<div className="relative overflow-hidden m-2 h-6 rounded-xl border-2 w-full __border_color">
+				<div className="relative overflow-hidden m-2 h-6 rounded-xl border-2 w-full border-main">
 					<span className={shimmer}> </span>
 				</div>
-				<div className="relative overflow-hidden m-2 h-6 rounded-xl border-2 w-full __border_color">
+				<div className="relative overflow-hidden m-2 h-6 rounded-xl border-2 w-full border-main">
 					<span className={shimmer}> </span>
 				</div>
-				<div className="relative overflow-hidden rounded-xl h-8 border-2 __border_color w-full">
-					<span className={shimmer + " h-full __background"}> </span>
+				<div className="relative overflow-hidden rounded-xl h-8 border-2 border-main w-full">
+					<span className={shimmer + " h-full bg-main"}> </span>
 				</div>
 				<h5 className="text-3xl px-6 py-2 m-auto">Loading...</h5>
 				<ul className="relative overflow-hidden flex flex-col justify-around text-center mb-2">
 					<li
 						className={
 							shimmer +
-							" relative overflow-hidden m-1 p-1 border-2 rounded-xl __border_color"
+							" relative overflow-hidden m-1 p-1 border-2 rounded-xl border-main"
 						}>
 						<label>
 							<input
@@ -31,7 +31,7 @@ export function IrregularSkeleton() {
 					<li
 						className={
 							shimmer +
-							" relative overflow-hidden m-1 p-1 border-2 rounded-xl __border_color"
+							" relative overflow-hidden m-1 p-1 border-2 rounded-xl border-main"
 						}>
 						<label>
 							<input
@@ -43,7 +43,7 @@ export function IrregularSkeleton() {
 					<li
 						className={
 							shimmer +
-							" relative overflow-hidden m-1 p-1 border-2 rounded-xl __border_color"
+							" relative overflow-hidden m-1 p-1 border-2 rounded-xl border-main"
 						}>
 						<label>
 							<input
@@ -66,7 +66,7 @@ export function IrregularButtonsSkeleton() {
 				type="button"
 				className={
 					shimmer +
-					" relative w-24 h-14 overflow-hidden border-2 rounded-xl  __border_color"
+					" relative w-24 h-14 overflow-hidden border-2 rounded-xl  border-main"
 				}>
 				{" "}
 			</button>
@@ -74,7 +74,7 @@ export function IrregularButtonsSkeleton() {
 				type="button"
 				className={
 					shimmer +
-					" relative w-24 h-14 overflow-hidden border-2 rounded-xl __border_color"
+					" relative w-24 h-14 overflow-hidden border-2 rounded-xl border-main"
 				}>
 				{" "}
 			</button>
@@ -119,7 +119,7 @@ export function MemorySkeleton() {
 export function MemorySkeletonSpanDiv() {
 	return (
 		<div className="relative w-40 h-6 rounded-xl overflow-hidden">
-			<span className={shimmer + " w-40 h-6 rounded-xl __background2"}></span>
+			<span className={shimmer + " w-40 h-6 rounded-xl bg-main"}></span>
 		</div>
 	);
 }
@@ -135,21 +135,21 @@ export function QuizSkeleton() {
 	return (
 		<>
 			{/* Skeleton for TopMenu */}
-			<div className="motion-safe:animate-pulse  opacity-10 w-[300px] h-[105px] rounded-md __background-50"></div>
+			<div className="motion-safe:animate-pulse  opacity-10 w-[300px] h-[105px] rounded-md bg-main-50"></div>
 
 			<div className="flex flex-col w-full h-auto max-w-[600px] min-h-[400px] m-auto justify-center lg:justify-around p-6 ">
 				{/* Skeleton for definition */}
 				<span className="flex justify-around">
-					<p className="motion-safe:animate-pulse opacity-10 w-20 h-8 rounded-xl __background-50"></p>
-					<p className="motion-safe:animate-pulse opacity-10 w-20 h-8 rounded-xl __background-50"></p>
+					<p className="motion-safe:animate-pulse opacity-10 w-20 h-8 rounded-xl bg-main-50"></p>
+					<p className="motion-safe:animate-pulse opacity-10 w-20 h-8 rounded-xl bg-main-50"></p>
 				</span>
-				<p className="motion-safe:animate-pulse self-center text-lg font-semibold my-4 text-center opacity-10 w-[200px] h-8 rounded-md __background-50"></p>
+				<p className="motion-safe:animate-pulse self-center text-lg font-semibold my-4 text-center opacity-10 w-[200px] h-8 rounded-md bg-main-50"></p>
 				<div className="flex flex-col space-y-2">
 					{/* Skeleton for answer choices */}
 					{[1, 2, 3, 4].map((index) => (
 						<div
 							key={index}
-							className="motion-safe:animate-pulse opacity-10 w-full h-[40px] rounded-md __background-50"></div>
+							className="motion-safe:animate-pulse opacity-10 w-full h-[40px] rounded-md bg-main-50"></div>
 					))}
 				</div>
 			</div>
@@ -171,13 +171,13 @@ export function FlipCardSkeleton() {
 				</div>
 			</header>
 			<main className="flex w-full h-full lg:hidden justify-center items-center">
-				<div className="w-3/4  h-40 animate-pulse motion-reduce:transition-none rounded-xl __background-50"></div>
+				<div className="w-3/4  h-40 animate-pulse motion-reduce:transition-none rounded-xl bg-main-50"></div>
 			</main>
 			<footer className="h-16 w-full lg:hidden  flex justify-around">
-				<span className="w-24 rounded-xl animate-pulse motion-reduce:transition-none __background-50"></span>
-				<span className="w-24 rounded-xl animate-pulse motion-reduce:transition-none __background-50"></span>
+				<span className="w-24 rounded-xl animate-pulse motion-reduce:transition-none bg-main-50"></span>
+				<span className="w-24 rounded-xl animate-pulse motion-reduce:transition-none bg-main-50"></span>
 			</footer>
-			<main className="hidden lg:flex w-full max-w-screen-sm h-96 items center justify-center animate-pulse motion-reduce:transition-none  __border_color border-4 border-double rounded-md opacity-20 __background-50"></main>
+			<main className="hidden lg:flex w-full max-w-screen-sm h-96 items center justify-center animate-pulse motion-reduce:transition-none  border-main border-4 border-double rounded-md opacity-20 bg-main-50"></main>
 		</section>
 	);
 }

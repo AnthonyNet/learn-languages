@@ -84,6 +84,7 @@
 	--black: rgb(1, 1, 1);
 
 	--color-main: hsl(214, 100%, 50%);
+	--color-main-50: hsla(214, 100%, 50%, 0.5);
 	--color-main-opacity: hsla(214, 100%, 50%, 0.3);
 
 	--hue-rotate: 0;
@@ -92,7 +93,7 @@
 	--color-light2: #6900c5;
 	--color-dark: #4e0f8c;
 	--color-blue: #0f4c75;
-	--color-green: rgb(0, 128, 0);
+	--color-green: rgb(4, 161, 4);
 	--color-red: rgb(201, 5, 5);
 
 	--font-weight: 850;
@@ -188,7 +189,7 @@ body {
 }
 
 body,
-.main-bg{
+.main-bg {
 	background: var(--black) !important;
 }
 
@@ -202,38 +203,15 @@ body,
 	max-height: 600px !important;
 }
 
-.__text_color {
-	color: var(--color-main);
-}
-.__text_color2 {
-	color: var(--btn-text-color);
-}
-.__border_color {
-	border-color: var(--color-main);
-}
 .__border_hover:hover {
 	box-shadow: var(--border-shadow);
 }
 .__box_shadow_color {
 	box-shadow: var(--border-shadow);
 }
-.__background {
-	background: var(--black);
-}
-.__background2 {
-	background: var(--btn-background);
-}
-.__background-50 {
-	background: var(--color-main-opacity);
-}
+
 .__gradient {
 	background: var(--gradient);
-}
-.gradient-logo {
-	background: var(--color-main);
-}
-.__background_hover:hover {
-	background: hsla(var(--color-main) 10%);
 }
 
 .__text_shadow {
@@ -252,19 +230,7 @@ body,
 strong {
 	font-weight: var(--font-weight);
 }
-/* PHRASAL */
-.__green_focus:focus {
-	background: var(--memory-border-active);
-}
-.__red_focus:focus {
-	background: var(--color-red);
-}
-.__bg_green {
-	background: var(--color-green);
-}
-.__bg_red {
-	background: var(--color-red);
-}
+
 .__h1 {
 	background: linear-gradient(
 		132deg,
@@ -391,15 +357,6 @@ nav {
 .ulAnimation li:nth-child(8) {
 	transition-delay: 1.6s;
 }
-/* ------------------
-Logo
---------------------- */
-/*
-.__logo-icon-container {
-  animation: orbit 46s linear infinite;
-  transform-origin: 80% 50%;
-}
-*/
 
 @keyframes orbit {
 	0% {

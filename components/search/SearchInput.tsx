@@ -20,7 +20,7 @@ export default function SearchInput({ placeholder }: { placeholder: string }) {
 	return (
 		<form className="shadow-md rounded py-4 max-xl:pl-2 md:py-8">
 			<input
-				className="shadow appearance-none border rounded w-full py-2 px-3 max-w-sm ml-auto text-black font-bold __border_color"
+				className="shadow appearance-none border rounded w-full py-2 px-3 max-w-sm ml-auto text-black font-bold border-main"
 				id="search"
 				type="text"
 				placeholder={placeholder}

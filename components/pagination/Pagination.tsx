@@ -15,7 +15,7 @@ import Top_Menu from "./Top_menu";
 import Bottom_Menu from "./Bottom_menu";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
-interface Data{
+interface Data {
 	id: string;
 	word: string;
 	cz_word: string;

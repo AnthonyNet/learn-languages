@@ -18,7 +18,7 @@ export default function MemoryCard({ id, item, handleClick }: Card) {
 	return (
 		<motion.button
 			className={clsx(
-				"relative flex items-center justify-center  cursor-pointer group perspective transition ease-in-out duration-500   __border_hover focus:border-border_active ",
+				"relative flex items-center justify-center  cursor-pointer group perspective transition ease-in-out duration-500   __border_hover focus:border-main-true ",
 				{
 					"border-2 rounded-3xl p-4 border-b __memory_border_green": item.click,
 					"p-4 border-2 rounded-3xl border-primary":

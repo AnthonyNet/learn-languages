@@ -6,8 +6,8 @@ interface Props {
 
 const styles = {
 	nav: " w-full h-auto",
-	ul: "flex flex-row justify-around sm:w-[400px] m-auto flex-wrap border-y-2 __border_color",
-	li__active: "border-b-2 __border_color __box_shadow_color",
+	ul: "flex flex-row justify-around sm:w-[400px] m-auto flex-wrap border-y-2 border-main",
+	li__active: "border-b-2 border-main __box_shadow_color",
 };
 
 export default function Top_Menu({ myNumb, setMyNumb, setCurrentPage }: Props) {

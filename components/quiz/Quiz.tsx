@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Irregular, Data2, Phrasal } from "@/interface/Props";
 import TopMenu from "@/components/TopMenu";
+import { MemorySkeletonSpanDiv } from "../ui/skeletons";
 
 interface Props {
 	props1: Data2[] | null;
@@ -25,7 +26,6 @@ export default function Quiz({ props1, props2, phrasal }: Props) {
 		cz_word: "",
 	});
 	const [wrongChoices, setWrongChoices] = useState<Irregular[]>([]);
-	const [start, setStart] = useState<boolean>(false);
 	const [answerColor, setAnswerColor] = useState<{ [key: number]: string }>(
 		backgroundColor
 	);
@@ -33,10 +33,9 @@ export default function Quiz({ props1, props2, phrasal }: Props) {
 	const [wrong, setWrong] = useState<number>(0);
 
 	const getData = async (): Promise<void> => {
-		const propsData = phrasal ? await phrasal : await phrasal;
+		const propsData = phrasal && (await phrasal);
 
 		createData(propsData);
-		setStart(true);
 	};
 
 	useEffect(() => {
@@ -71,14 +70,14 @@ export default function Quiz({ props1, props2, phrasal }: Props) {
 	const checkAnswer = (choice: Irregular, index: number): void => {
 		if (choice.id === definition.id) {
 			setScore(score + 1);
-			setAnswerColor((prev) => ({ ...prev, [index]: "__bg_green" }));
+			setAnswerColor((prev) => ({ ...prev, [index]: " bg-main-true" }));
 			setTimeout(() => {
 				setAnswerColor(backgroundColor);
 				createData(phrasal);
 			}, 1000);
 		} else {
 			setWrong(wrong + 1);
-			setAnswerColor((prev) => ({ ...prev, [index]: "__bg_red" }));
+			setAnswerColor((prev) => ({ ...prev, [index]: " bg-main-false" }));
 		}
 	};
 
@@ -93,8 +92,8 @@ export default function Quiz({ props1, props2, phrasal }: Props) {
 
 			<div className="flex flex-col w-full grow  max-w-[600px] min-h-[400px] m-auto justify-center lg:justify-center p-6">
 				<span className="flex justify-around text-[var(--white)] font-bold">
-					<p className="bg-red-500 px-4 py-2 rounded-xl">Špatně: {wrong}</p>
-					<p className="bg-green-500 px-4 py-2 rounded-xl">Správně: {score}</p>
+					<p className="bg-main-false px-4 py-2 rounded-xl">Špatně: {wrong}</p>
+					<p className="bg-main-true px-4 py-2 rounded-xl">Správně: {score}</p>
 				</span>
 				<p className="text-lg font-semibold my-4 text-center">
 					{definition.cz_word}
@@ -109,7 +108,9 @@ export default function Quiz({ props1, props2, phrasal }: Props) {
 									"py-2 rounded-md shadow-md font-bold duration-300 hover:contrast-150  " +
 									answerColor[index]
 								}>
-								<p className="text-main-secondary filter invert">{choice.word}</p>
+								<p className="text-main-secondary filter invert">
+									{choice.word}
+								</p>
 							</button>
 						);
 					})}
