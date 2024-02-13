@@ -68,11 +68,14 @@ HIDE HINTS
 		setHint(false);
 		setDefaultInput(!defaultInput);
 
-		const inputs = document.getElementsByClassName("__card_Input");
-		for (let i = 0; i < inputs.length; i++) {
-			let item = inputs[i] as HTMLInputElement;
-			item.readOnly = false;
-		}
+		const inputs = Array.from(
+			document.getElementsByClassName(
+				"__card_Input"
+			) as HTMLCollectionOf<HTMLInputElement>
+		);
+		inputs.forEach((input) => {
+			input.readOnly = false;
+		});
 	}
 
 	return (
