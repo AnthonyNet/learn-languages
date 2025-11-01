@@ -3,8 +3,15 @@
 import React from "react";
 import { ThemeProvider } from "next-themes";
 
-const Providers = ({ children }: { children: React.ReactNode }) => {
-	return <ThemeProvider>{children}</ThemeProvider>;
-};
-
-export default Providers;
+export default function Providers({ children }: { children: React.ReactNode }) {
+	return (
+		<ThemeProvider
+			attribute="data-theme"
+			defaultTheme="blue"
+			enableSystem
+			disableTransitionOnChange
+		>
+			{children}
+		</ThemeProvider>
+	);
+}

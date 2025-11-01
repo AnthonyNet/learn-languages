@@ -89,6 +89,22 @@ export default function NavItems({navData} : {navData: NavData}) {
 					</ul>
 				</div>
 			</div>
+			<div className={styles.container}>
+				<a href="#" className={styles.main__a}>
+					Comptia
+				</a>
+
+				<div className={styles.cover}>
+					<ul className={styles.ul}>
+						<li className={styles.ul__li}>
+							<Link href="/oxford-flip/comptia/acronyms">
+								Zkratky karty ({navData.acronyms}){" "}
+							</Link>
+						</li>
+
+					</ul>
+				</div>
+			</div>
 			<span className="hidden md:flex bottom-2 right-4 text-3xl">
 				<Options />
 			</span>

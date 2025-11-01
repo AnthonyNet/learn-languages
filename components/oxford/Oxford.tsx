@@ -16,7 +16,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const styles = {
 	button:
-		"flex items-center justify-center  h-full w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
+		"flex items-center justify-center  h-8 w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 	button__animation: " lg:hover:translate-x-[20px] ",
 };
 interface DataTS {
@@ -101,7 +101,7 @@ export default function Oxford({ props }: { props: DataTS[] | any }) {
 				)}
 
 				<footer className="flex justify-around w-full h-[70px] items-center text-center  border-main">
-					<Button onClick={() => createRandoms(dataTS)}>
+					<Button onClick={() => createRandoms(dataTS)} description={"Další"}>
 						<RxArrowRight
 							className={styles.button + " " + styles.button__animation}
 						/>

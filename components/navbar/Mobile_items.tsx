@@ -26,6 +26,7 @@ type Mobile = {
 const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 	const [english, setEnglish] = useState(false);
 	const [german, setGerman] = useState(false);
+	const [acronyms, setAcronyms] = useState(false);
 
 	function handleEnglish() {
 		setGerman(false);
@@ -35,6 +36,9 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 	function handleGerman() {
 		setEnglish(false);
 		setGerman(!german);
+	}
+	function handleAcronyms() {
+		setAcronyms(!acronyms);
 	}
 
 	interface menuItems {
@@ -140,6 +144,26 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 									Najdi sloveso ({navData.irregularGer}){" "}
 								</Link>
 							</li>
+						</>
+					)}
+				</ul>
+				<div className={styles.div}>
+					<span className={!acronyms ? styles.icon : styles.icon__open}>➤</span>
+					<h3
+						onClick={handleAcronyms}
+						className={!acronyms ? styles.h3 : styles.h3__open}>
+						Comptia ({navData.acronyms}){" "}
+					</h3>
+				</div>
+				<ul className={acronyms ? styles.ul__open : " text-transparent "}>
+					{acronyms && (
+						<>
+							<li onClick={handleNav} className={styles.ul__li__open}>
+								<Link href="/oxford-flip/comptia/acronyms">
+									Zkratky karty
+								</Link>
+							</li>
+
 						</>
 					)}
 				</ul>

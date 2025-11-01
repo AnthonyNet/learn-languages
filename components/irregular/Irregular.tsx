@@ -130,12 +130,12 @@ HIDE HINTS
 				</div>
 
 				<div className="flex justify-around">
-					<Button onClick={() => setHint(!hint)}>
-						<TbZoomQuestion className="flex items-center justify-center h-full w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000" />
+					<Button onClick={() => setHint(!hint)} description={"Odpověď"}>
+						<TbZoomQuestion className="flex items-center justify-center h-8 w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000" />
 					</Button>
 
-					<Button onClick={randomWord}>
-						<RxArrowRight className="flex items-center justify-center h-full w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000 lg:hover:translate-x-[20px]" />
+					<Button onClick={randomWord} description={"Další"}>
+						<RxArrowRight className="flex items-center justify-center h-8 w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000 lg:hover:translate-x-[20px]" />
 					</Button>
 				</div>
 			</footer>

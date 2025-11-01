@@ -5,7 +5,7 @@ import { RxArrowRight } from "react-icons/rx";
 const styles = {
 	h3: "py-1  text-center  w-auto mx-auto border-main",
 	button:
-		"flex items-center justify-center h-8 w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
+		"flex items-center justify-center  h-8 w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 
 	cardBack:
 		"absolute top-0 left-0 my-rotate-y-180 backface-hidden  w-full h-full  __oxford_card_background",
@@ -60,7 +60,7 @@ export default function Card_Back({ props }: Props) {
 
 				<div className={styles.cardBack__btnCover}>
 					{!switchSide && (
-						<Button onClick={() => setSwitchSide(!switchSide)}>
+						<Button onClick={() => setSwitchSide(!switchSide)} description={"Další"}>
 							<RxArrowRight className={props.stylesProp} />
 						</Button>
 					)}

@@ -17,8 +17,8 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const styles = {
-	button:
-		"flex items-center justify-center  h-8 w-full scale-90 hover:scale-100   opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
+	button_icon:
+		"flex items-center justify-center w-full h-8 hover:scale-100  opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000",
 	button__animation: " lg:hover:translate-x-[20px] ",
 	flag__icon:
 		"hover:rotate-90 transition ease-in-out duration-700 fixed  top-4  left-2  ring-2 rounded-full  drop-shadow-sm  __gradient",
@@ -34,7 +34,7 @@ interface Data {
 	readonly cz_word: string;
 	readonly cz_sentence: string;
 }
-export default function Oxford({ props }: Props) {
+export default function FlipCard({ props }: Props) {
 	const [start, setStart] = useState<boolean>(false);
 	const [rand, setRand] = useState<number>(Math.floor(Math.random() * 50));
 	const [dataTS, setDataTS] = useState<Data[] | []>([]);
@@ -67,30 +67,7 @@ export default function Oxford({ props }: Props) {
 				className="w-full max-w-[600px] h-full  md:max-h-[400px] lg:border-4  border-double px-4  rounded-lg  preserve-3d group my-rotate-y-180 duration-1000 flex flex-col  border-main"
 				animate={{ rotateY: switchSide ? 0 : 180 }}
 				transition={{ duration: 0.5 }}>
-				<RadioGroup
-					className="fixed top-6 left-1/2 transform -translate-x-1/2 flex flex-row justify-center h-10"
-					defaultValue="option-one">
-					<div
-						className="flex items-center space-x-2"
-						onClick={() => {
-							setDataTS(props[0]);
-							setRand(Math.floor(Math.random() * props[0].length));
-							setSwitchButton(false);
-						}}>
-						<RadioGroupItem value="option-one" id="option-one" />
-						<Label htmlFor="option-one">B2</Label>
-					</div>
-					<div
-						className="flex items-center space-x-2"
-						onClick={() => {
-							setDataTS(props[1]);
-							setRand(Math.floor(Math.random() * props[1].length));
-							setSwitchButton(true);
-						}}>
-						<RadioGroupItem value="option-two" id="option-two" />
-						<Label htmlFor="option-two">C1</Label>
-					</div>
-				</RadioGroup>
+
 				{switchSide && (
 					<button onClick={() => [setSwitchLanguage(!switchLanguage)]}>
 						{switchLanguage ? (
@@ -118,12 +95,12 @@ export default function Oxford({ props }: Props) {
 					{switchSide && (
 						<>
 							<Button onClick={() => setSwitchSide(!switchSide)} description={"Odpověď"}>
-								<TbZoomQuestion className={styles.button} />
+								<TbZoomQuestion className={styles.button_icon} />
 							</Button>
 
 							<Button onClick={createRandoms} description={"Další"}>
 								<RxArrowRight
-									className={styles.button + " " + styles.button__animation}
+									className={styles.button_icon + " " + styles.button__animation}
 								/>
 							</Button>
 						</>
