@@ -7,7 +7,6 @@ import { fetchDataALL } from "@/utils/get-data";
 export default async function Page() {
     const dbData = await fetchDataALL();
     const dataArr: any = [dbData[1].acronyms, dbData[1].acronyms];
-    console.log(dataArr);
     return (
         <div>
             <Suspense fallback={<FlipCardSkeleton />}>

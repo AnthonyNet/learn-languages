@@ -152,7 +152,7 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 					<h3
 						onClick={handleAcronyms}
 						className={!acronyms ? styles.h3 : styles.h3__open}>
-						Comptia ({navData.acronyms}){" "}
+						Comptia
 					</h3>
 				</div>
 				<ul className={acronyms ? styles.ul__open : " text-transparent "}>
@@ -160,7 +160,7 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 						<>
 							<li onClick={handleNav} className={styles.ul__li__open}>
 								<Link href="/oxford-flip/comptia/acronyms">
-									Zkratky karty
+									Zkratky karty ({navData.acronyms}){" "}
 								</Link>
 							</li>
 

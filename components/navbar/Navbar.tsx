@@ -26,12 +26,12 @@ export default function Navbar({ props }: Props) {
 	};
 
 	return (
-		<nav className="flex justify-center items-center w-full  h-[50px] md:h-[70px] shadow-xl z-[40] px-4 fixed max-w-[1280px] bg-main-black">
-			<div className="w-full h-full flex items-center relative md:text-xl xl:text-3xl ">
-				<aside className="w-auto md:w-[35vw] lg:w-1/3 transition ease-in-out">
+		<nav className="flex justify-center items-center w-full  h-[50px] lg:h-[70px] shadow-xl z-[40] px-4 fixed max-w-[1280px] bg-main-black border border-red-500">
+			<div className="w-full h-full flex items-center relative lg:text-xl xl:text-3xl ">
+				<aside className="w-auto lg:w-[35vw] xl:w-1/3 transition ease-in-out">
 					<Link
 						href="/"
-						className="text-2xl sm:text-3xl md:text-xl xl:text-3xl ">
+						className="text-2xl sm:text-3xl lg:text-xl xl:text-3xl ">
 						<motion.div
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
@@ -52,7 +52,7 @@ export default function Navbar({ props }: Props) {
 				</aside>
 				{navData && <Nav_Items navData={navData} />}
 
-				<div className="text-4xl md:hidden ml-auto">
+				<div className="text-4xl lg:hidden ml-auto">
 					<TiThMenu onClick={handleNav} />
 				</div>
 			</div>

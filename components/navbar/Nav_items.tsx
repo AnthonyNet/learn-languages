@@ -3,7 +3,7 @@ import Link from "next/link";
 import { NavData } from "@/interface/navdata";
 import Options from "./Options";
 const styles = {
-	article: "justify-end gap-16 items-center w-[90%] h-full hidden md:flex",
+	article: "justify-end gap-16 items-center w-[90%] h-full hidden lg:flex",
 	homeBtn: "font-bold hover:text-indigo-800 __nav-item",
 	container: "relative inline-block tooltip text-xl xl:text-3xl",
 	main__a: "px-2 py-1 font-semibold uppercase  __nav-item", //ulAnimation
@@ -12,7 +12,7 @@ const styles = {
 	ul: "list-disc space-y-2 style-",
 
 	ul__li:
-		"flex items-start text-sm md:text-xl font-extrabold  transition duration-700 ease-in-out transform __nav_li",
+		"flex items-start text-sm lg:text-xl font-extrabold  transition duration-700 ease-in-out transform __nav_li",
 } as const;
 
 export default function NavItems({navData} : {navData: NavData}) {
@@ -105,7 +105,7 @@ export default function NavItems({navData} : {navData: NavData}) {
 					</ul>
 				</div>
 			</div>
-			<span className="hidden md:flex bottom-2 right-4 text-3xl">
+			<span className="hidden lg:flex bottom-2 right-4 text-3xl">
 				<Options />
 			</span>
 		</article>
