@@ -1,7 +1,6 @@
 "use client";
 import {useState, useEffect} from "react";
 
-import Image from "next/image";
 import {TbZoomQuestion} from "react-icons/tb";
 import {RxArrowRight} from "react-icons/rx";
 import Button from "@/components/button/Button";
@@ -113,7 +112,7 @@ export default function FlipCard({props}: Props) {
                             sentence: dataTS[rand].sentence,
                             cz_word: dataTS[rand].cz_word,
                             cz_sentence: dataTS[rand].cz_sentence,
-                            stylesProp: styles.button + " " + styles.button__animation,
+                            stylesProp: styles.button_icon + " " + styles.button__animation,
                         }}
                     />
                 )}

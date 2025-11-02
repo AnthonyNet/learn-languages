@@ -1,22 +1,15 @@
-import { fetchDataALL } from "@/utils/get-data";
 import { Suspense } from "react";
-
-import SearchInput from "@/components/search/SearchInput";
-import Table from "@/components/search/Table";
+import { fetchIrregularGer } from "@/utils/get-data";
+import SearchEngClient from "./SearchGerClient";
 
 export const revalidate = 3600;
 
 export default async function Page() {
-	const data = await fetchDataALL();
+	const irregular = await fetchIrregularGer();
 
 	return (
-		<section className="w-full h-auto mt-[10vh]">
-			<SearchInput placeholder="Hledej slovo..." />
-			<div className="flex flex-col">
-				<Suspense fallback={<div>...loading</div>}>
-					<Table data={data[1].irregular_ger} />
-				</Suspense>
-			</div>
-		</section>
+		<Suspense fallback={<div>...loading</div>}>
+			<SearchEngClient irregular={irregular} />
+		</Suspense>
 	);
 }

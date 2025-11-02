@@ -28,6 +28,8 @@ const Mobile_UL = ({ handleNav, navData }: Mobile) => {
 	const [german, setGerman] = useState(false);
 	const [acronyms, setAcronyms] = useState(false);
 
+	console.log(navData);
+
 	function handleEnglish() {
 		setGerman(false);
 		setEnglish(!english);

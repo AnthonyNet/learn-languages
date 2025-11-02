@@ -4,4 +4,5 @@ export interface NavData {
 	oxfordB2: number;
 	oxfordC1: number;
 	ger_verbs: number;
+	acronyms: number;
 }
