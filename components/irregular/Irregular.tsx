@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Suspense } from "react";
 import { IrregularSkeleton } from "../ui/skeletons";
 import { Irregular } from "@/interface/Props";
 import Input from "./Card_Input";
@@ -12,61 +11,41 @@ import { TbZoomQuestion } from "react-icons/tb";
 import { RxArrowRight } from "react-icons/rx";
 
 export default function Irregular({ irregular }: { irregular: Irregular[] }) {
-	const [start, setStart] = useState<boolean>(false);
-	const [score, setScore] = useState<number>(0);
-	const [stars, setStars] = useState<number>(0);
-	const [hint, setHint] = useState<boolean>(false);
-	const [rand, setRand] = useState<number>(0);
-	const [defaultInput, setDefaultInput] = useState<boolean>(false);
+	const [start, setStart] = useState(false);
+	const [score, setScore] = useState(0);
+	const [stars, setStars] = useState(0);
+	const [hint, setHint] = useState(false);
+	const [rand, setRand] = useState(0);
+	const [defaultInput, setDefaultInput] = useState(false);
+	const [totalScore, setTotalScore] = useState<number>(0);
+	const [dataTS, setDataTS] = useState<Irregular[]>([]);
 
-	const [totalScore, setTotalScore] = useState<number | any>(null);
-
-	const [dataLength, setDataLength] = useState<number>(136);
-	const [dataTS, setDataTS] = useState<Irregular[] | []>([]);
-
+	// init data from props
 	useEffect(() => {
-		const getPropsData = async () => {
-			const data = await irregular;
-			setDataLength(irregular.length);
-			setDataTS(irregular);
-			setStart(true);
-		};
-		getPropsData();
-	}, []);
+		setDataTS(irregular);
+		setStart(true);
+		setRand(irregular.length ? Math.floor(Math.random() * irregular.length) : 0);
+	}, [irregular]);
 
-	/*------------------------------------------
-  SET LOCAL STRORAGE IF NOT EXISTS
-   ------------------------------------------*/
-
-	if (typeof window !== "undefined") {
-		// do localStorage stuff here
+	// init localStorage once
+	useEffect(() => {
+		if (typeof window === "undefined") return;
 		const item = localStorage.getItem("totalScore");
-		if (item == null || undefined) {
-			// localStorage.setItem('totalScore',JSON.stringify('0'));
+		if (item === null) {
 			localStorage.setItem("totalScore", "0");
+			setTotalScore(0);
+		} else {
+			// "0" -> 0
+			setTotalScore(Number(item) || 0);
 		}
-	}
-
-	/*------------------------------------------
-   SET TOTAL SCORE FROM LOCAL STORAGE ONE TIME
-  ------------------------------------------*/
-	useEffect(() => {
-		setTotalScore(JSON.parse(localStorage.getItem("totalScore") || ""));
-		//   setTotalScore(JSON.parse(localStorage.getItem('totalScore') || ''));
 	}, []);
-
-	/*------------------------------------------
-AFTER CLICK ON <CardButton />
-GIVES RANDOM NUMBER
-RESET NUMBER OF STARS
-HIDE HINTS
-------------------------------------------*/
 
 	function randomWord() {
-		setRand(Math.floor(Math.random() * dataLength));
+		if (!dataTS.length) return;
+		setRand(Math.floor(Math.random() * dataTS.length));
 		setStars(0);
 		setHint(false);
-		setDefaultInput(!defaultInput);
+		setDefaultInput((v) => !v);
 
 		const inputs = Array.from(
 			document.getElementsByClassName(
@@ -77,6 +56,8 @@ HIDE HINTS
 			input.readOnly = false;
 		});
 	}
+
+	const current = dataTS[rand];
 
 	return (
 		<>
@@ -91,46 +72,50 @@ HIDE HINTS
 				<Score score={stars} />
 
 				<div className="px-6 inputs">
-					<Suspense fallback={<IrregularSkeleton />}>
-						<h5 className="text-3xl dark:bg-black font-medium p-2">
-							{start ? dataTS[rand]?.cz_word || "...loading" : ""}
-						</h5>
-						<ul className="flex flex-col justify-around text-center mb-2">
-							{Object.values(dataTS[rand] || {})
-								.slice(2)
-								.map((value, index) => {
-									const array = ["Infinitiv", "Minulý čas", "Příčestí minulé"];
-									return (
-										<Input
-											key={index}
-											word={value}
-											setTotalScore={setTotalScore}
-											setScore={setScore}
-											setStars={setStars}
-											placeholder={array[index]}
-											defaultInput={defaultInput}
-											totalScore={totalScore}
-										/>
-									);
-								})}
-						</ul>
-					</Suspense>
+					{!start ? (
+						<IrregularSkeleton />
+					) : (
+						<>
+							<h5 className="text-3xl dark:bg-black font-medium p-2">
+								{current?.cz_word ?? "...loading"}
+							</h5>
+
+							<ul className="flex flex-col justify-around text-center mb-2">
+								{[
+									{ key: "word", label: "Infinitiv" },
+									{ key: "past_simple", label: "Minulý čas" },
+									{ key: "past_participle", label: "Příčestí minulé" },
+								].map(({ key, label }) => (
+									<Input
+										key={key}
+										word={(current as any)?.[key] ?? ""}
+										setTotalScore={setTotalScore}
+										setScore={setScore}
+										setStars={setStars}
+										placeholder={label}
+										defaultInput={defaultInput}
+										totalScore={totalScore}
+									/>
+								))}
+							</ul>
+						</>
+					)}
 				</div>
 			</main>
 
 			<footer className="h-auto w-full max-w-[300px] md:max-w-[400px] md:pb-2 flex flex-col">
 				<div className="flex justify-around h-[30px]">
-					{hint ? (
+					{hint && current ? (
 						<CardHint
-							word={dataTS[rand]?.word}
-							pastSimple={dataTS[rand]?.past_simple}
-							pastParticiple={dataTS[rand]?.past_participle}
+							word={current.word}
+							pastSimple={current.past_simple}
+							pastParticiple={current.past_participle}
 						/>
 					) : null}
 				</div>
 
 				<div className="flex justify-around">
-					<Button onClick={() => setHint(!hint)} description={"Odpověď"}>
+					<Button onClick={() => setHint((v) => !v)} description={"Odpověď"}>
 						<TbZoomQuestion className="flex items-center justify-center h-8 w-full scale-90 hover:scale-100 opacity-100 cursor-pointer transition:scale ease-in-out delay-100 duration-1000" />
 					</Button>
 

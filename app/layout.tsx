@@ -1,4 +1,3 @@
-// app/layout.tsx
 import "./globals.css";
 import Providers from "./Providers";
 import Navbar from "@/components/navbar/Navbar";
@@ -16,14 +15,14 @@ export default async function RootLayout({
 										 }: {
 	children: React.ReactNode;
 }) {
-	const dbData = await fetchDataALL();
+	const [navData] = await fetchDataALL();
 
 	return (
 		<html lang="en" data-theme="blue" suppressHydrationWarning>
 		<body>
 		<main className="bg-background flex flex-col items-center">
 			<Providers>
-				<Navbar props={dbData[0]} />
+				<Navbar props={navData} />
 				{children}
 			</Providers>
 		</main>

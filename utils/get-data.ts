@@ -1,8 +1,28 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cache } from "react";
+import { createSupabaseServerClient } from "@/lib/supabase-server";
 
-export const fetchDataALL = cache(async () => {
-	const supabase = createClientComponentClient();
+export type NavData = {
+	irregularEng: number;
+	oxfordB2: number;
+	oxfordC1: number;
+	irregularGer: number;
+	ger_verbs: number;
+	acronyms: number;
+};
+
+export type DataArr = {
+	irregular_eng: any[] | null;
+	oxford_b2: any[] | null;
+	oxford_c1: any[] | null;
+	phrasal: any[] | null;
+	irregular_ger: any[] | null;
+	ger_verbs: any[] | null;
+	german_c1: any[] | null;
+	acronyms: any[] | null;
+};
+export const fetchDataALL = cache(async (): Promise<[NavData, DataArr]> => {
+	const supabase = createSupabaseServerClient();
 
 	const tableNames = [
 		"irregular_eng",
@@ -22,7 +42,7 @@ export const fetchDataALL = cache(async () => {
 		)
 	);
 
-	const dataCounts = {
+	const dataCounts: NavData = {
 		irregularEng: countsRaw[0].count ?? 0,
 		oxfordB2: countsRaw[1].count ?? 0,
 		oxfordC1: countsRaw[2].count ?? 0,
@@ -31,12 +51,13 @@ export const fetchDataALL = cache(async () => {
 		acronyms: countsRaw[7].count ?? 0,
 	};
 
+
 	// 2) načti skutečná data
 	const dataRaw = await Promise.all(
 		tableNames.map((tableName) => supabase.from(tableName).select())
 	);
 
-	const dataArr = {
+	const dataArr: DataArr = {
 		irregular_eng: dataRaw[0].data,
 		oxford_b2: dataRaw[1].data,
 		oxford_c1: dataRaw[2].data,
@@ -48,4 +69,36 @@ export const fetchDataALL = cache(async () => {
 	};
 
 	return [dataCounts, dataArr];
+});
+
+export const fetchIrregularEng = cache(async () => {
+	const supabase = createSupabaseServerClient();
+
+	const { data, error } = await supabase
+		.from("irregular_eng")
+		.select()
+		.order("id");
+
+	if (error) {
+		console.error("supabase error irregular_eng:", error);
+		return [];
+	}
+
+	return data ?? [];
+});
+
+export const fetchIrregularGer = cache(async () => {
+	const supabase = createSupabaseServerClient();
+
+	const { data, error } = await supabase
+		.from("irregular_ger")
+		.select()
+		.order("id");
+
+	if (error) {
+		console.error("supabase error irregular_ger:", error);
+		return [];
+	}
+
+	return data ?? [];
 });

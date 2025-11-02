@@ -26,7 +26,7 @@ export default function Navbar({ props }: Props) {
 	};
 
 	return (
-		<nav className="flex justify-center items-center w-full  h-[50px] lg:h-[70px] shadow-xl z-[40] px-4 fixed max-w-[1280px] bg-main-black border border-red-500">
+		<nav className="flex justify-center items-center w-full  h-[50px] lg:h-[70px] shadow-xl z-[40] px-4 fixed max-w-[1280px] bg-main-black">
 			<div className="w-full h-full flex items-center relative lg:text-xl xl:text-3xl ">
 				<aside className="w-auto lg:w-[35vw] xl:w-1/3 transition ease-in-out">
 					<Link
